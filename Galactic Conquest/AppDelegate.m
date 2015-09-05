@@ -7,16 +7,24 @@
 //
 
 #import "AppDelegate.h"
-
-@interface AppDelegate ()
-
-@end
+#import "ACGameViewController.h"
+#import "ACGame.h"
 
 @implementation AppDelegate
+{
+    ACGame *currentGame;
+}
 
-
-- (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
-    // Override point for customization after application launch.
+- (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
+{
+    CGRect applicationFrame = [[UIScreen mainScreen] bounds];
+    self.window = [[UIWindow alloc] initWithFrame:applicationFrame];
+    self.window.rootViewController = [[ACGameViewController alloc] init];
+    
+    [self.window makeKeyAndVisible];
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(changeCurrentGame:) name:@"changeCurrentGame" object:nil];
+    
     return YES;
 }
 
@@ -40,6 +48,11 @@
 
 - (void)applicationWillTerminate:(UIApplication *)application {
     // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
+}
+
+- (void)changeCurrentGame:(NSNotification *)notif
+{
+    currentGame = (ACGame *)notif.object;
 }
 
 @end

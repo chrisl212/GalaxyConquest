@@ -9,24 +9,31 @@
 /* Begin PBXBuildFile section */
 		AB2AB13F1B9940A800D7A8B6 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = AB2AB13E1B9940A800D7A8B6 /* main.m */; };
 		AB2AB1421B9940A800D7A8B6 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = AB2AB1411B9940A800D7A8B6 /* AppDelegate.m */; };
-		AB2AB1451B9940A800D7A8B6 /* GameScene.m in Sources */ = {isa = PBXBuildFile; fileRef = AB2AB1441B9940A800D7A8B6 /* GameScene.m */; };
-		AB2AB1471B9940A800D7A8B6 /* GameScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = AB2AB1461B9940A800D7A8B6 /* GameScene.sks */; };
-		AB2AB14A1B9940A800D7A8B6 /* GameViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AB2AB1491B9940A800D7A8B6 /* GameViewController.m */; };
-		AB2AB14D1B9940A900D7A8B6 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AB2AB14B1B9940A900D7A8B6 /* Main.storyboard */; };
 		AB2AB14F1B9940A900D7A8B6 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AB2AB14E1B9940A900D7A8B6 /* Images.xcassets */; };
 		AB2AB1521B9940A900D7A8B6 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = AB2AB1501B9940A900D7A8B6 /* LaunchScreen.xib */; };
-		AB2AB15E1B9940A900D7A8B6 /* Galactic_ConquestTests.m in Sources */ = {isa = PBXBuildFile; fileRef = AB2AB15D1B9940A900D7A8B6 /* Galactic_ConquestTests.m */; };
+		AB2AB1691B9A1FC700D7A8B6 /* ACPlayer.m in Sources */ = {isa = PBXBuildFile; fileRef = AB2AB1681B9A1FC700D7A8B6 /* ACPlayer.m */; };
+		AB2AB16C1B9A200100D7A8B6 /* ACMainMenuScene.m in Sources */ = {isa = PBXBuildFile; fileRef = AB2AB16B1B9A200100D7A8B6 /* ACMainMenuScene.m */; };
+		AB2AB1701B9A202A00D7A8B6 /* ACGalaxyScene.m in Sources */ = {isa = PBXBuildFile; fileRef = AB2AB16F1B9A202A00D7A8B6 /* ACGalaxyScene.m */; };
+		AB2AB1731B9A203F00D7A8B6 /* ACStarSystemScene.m in Sources */ = {isa = PBXBuildFile; fileRef = AB2AB1721B9A203F00D7A8B6 /* ACStarSystemScene.m */; };
+		AB2AB1761B9A205F00D7A8B6 /* ACPlanetScene.m in Sources */ = {isa = PBXBuildFile; fileRef = AB2AB1751B9A205F00D7A8B6 /* ACPlanetScene.m */; };
+		AB2AB1791B9A207200D7A8B6 /* ACSpaceBattleScene.m in Sources */ = {isa = PBXBuildFile; fileRef = AB2AB1781B9A207200D7A8B6 /* ACSpaceBattleScene.m */; };
+		AB2AB17C1B9A208B00D7A8B6 /* ACLandBattleScene.m in Sources */ = {isa = PBXBuildFile; fileRef = AB2AB17B1B9A208B00D7A8B6 /* ACLandBattleScene.m */; };
+		AB2AB1801B9A214200D7A8B6 /* ACPlanetNode.m in Sources */ = {isa = PBXBuildFile; fileRef = AB2AB17F1B9A214200D7A8B6 /* ACPlanetNode.m */; };
+		AB2AB1831B9A255B00D7A8B6 /* ACStarNode.m in Sources */ = {isa = PBXBuildFile; fileRef = AB2AB1821B9A255B00D7A8B6 /* ACStarNode.m */; };
+		AB2AB1861B9A256900D7A8B6 /* ACGalaxyNode.m in Sources */ = {isa = PBXBuildFile; fileRef = AB2AB1851B9A256900D7A8B6 /* ACGalaxyNode.m */; };
+		AB2AB1891B9A257800D7A8B6 /* ACShipNode.m in Sources */ = {isa = PBXBuildFile; fileRef = AB2AB1881B9A257800D7A8B6 /* ACShipNode.m */; };
+		AB2AB18C1B9A258C00D7A8B6 /* ACTroopCarrierShipNode.m in Sources */ = {isa = PBXBuildFile; fileRef = AB2AB18B1B9A258C00D7A8B6 /* ACTroopCarrierShipNode.m */; };
+		AB2AB1901B9A25A900D7A8B6 /* ACFleetNode.m in Sources */ = {isa = PBXBuildFile; fileRef = AB2AB18F1B9A25A900D7A8B6 /* ACFleetNode.m */; };
+		AB2AB1931B9A25CB00D7A8B6 /* ACGameViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AB2AB1921B9A25CB00D7A8B6 /* ACGameViewController.m */; };
+		AB2AB1961B9A720500D7A8B6 /* ACGame.m in Sources */ = {isa = PBXBuildFile; fileRef = AB2AB1951B9A720500D7A8B6 /* ACGame.m */; };
+		AB2AB1D21B9A751700D7A8B6 /* button@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = AB2AB1D11B9A751700D7A8B6 /* button@2x.png */; };
+		AB2AB1D51B9A754900D7A8B6 /* ACButtonNode.m in Sources */ = {isa = PBXBuildFile; fileRef = AB2AB1D41B9A754900D7A8B6 /* ACButtonNode.m */; };
+		AB2AB1D81B9A85B200D7A8B6 /* ACLoadGameScene.m in Sources */ = {isa = PBXBuildFile; fileRef = AB2AB1D71B9A85B200D7A8B6 /* ACLoadGameScene.m */; };
+		AB2AB1DC1B9A8A8700D7A8B6 /* ACPlanet.m in Sources */ = {isa = PBXBuildFile; fileRef = AB2AB1DB1B9A8A8700D7A8B6 /* ACPlanet.m */; };
+		AB2AB1DF1B9A8A9D00D7A8B6 /* ACGalaxy.m in Sources */ = {isa = PBXBuildFile; fileRef = AB2AB1DE1B9A8A9D00D7A8B6 /* ACGalaxy.m */; };
+		AB2AB1E21B9A8AAB00D7A8B6 /* ACStar.m in Sources */ = {isa = PBXBuildFile; fileRef = AB2AB1E11B9A8AAB00D7A8B6 /* ACStar.m */; };
+		AB2AB1E41B9A974700D7A8B6 /* spiral-1.png in Resources */ = {isa = PBXBuildFile; fileRef = AB2AB1E31B9A974700D7A8B6 /* spiral-1.png */; };
 /* End PBXBuildFile section */
-
-/* Begin PBXContainerItemProxy section */
-		AB2AB1581B9940A900D7A8B6 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = AB2AB1311B9940A800D7A8B6 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = AB2AB1381B9940A800D7A8B6;
-			remoteInfo = "Galactic Conquest";
-		};
-/* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
 		AB2AB1391B9940A800D7A8B6 /* Galactic Conquest.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Galactic Conquest.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -34,28 +41,54 @@
 		AB2AB13E1B9940A800D7A8B6 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		AB2AB1401B9940A800D7A8B6 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		AB2AB1411B9940A800D7A8B6 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		AB2AB1431B9940A800D7A8B6 /* GameScene.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GameScene.h; sourceTree = "<group>"; };
-		AB2AB1441B9940A800D7A8B6 /* GameScene.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GameScene.m; sourceTree = "<group>"; };
-		AB2AB1461B9940A800D7A8B6 /* GameScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = GameScene.sks; sourceTree = "<group>"; };
-		AB2AB1481B9940A800D7A8B6 /* GameViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GameViewController.h; sourceTree = "<group>"; };
-		AB2AB1491B9940A800D7A8B6 /* GameViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GameViewController.m; sourceTree = "<group>"; };
-		AB2AB14C1B9940A900D7A8B6 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		AB2AB14E1B9940A900D7A8B6 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		AB2AB1511B9940A900D7A8B6 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
-		AB2AB1571B9940A900D7A8B6 /* Galactic ConquestTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Galactic ConquestTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
-		AB2AB15C1B9940A900D7A8B6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		AB2AB15D1B9940A900D7A8B6 /* Galactic_ConquestTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Galactic_ConquestTests.m; sourceTree = "<group>"; };
+		AB2AB1671B9A1FC700D7A8B6 /* ACPlayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ACPlayer.h; sourceTree = "<group>"; };
+		AB2AB1681B9A1FC700D7A8B6 /* ACPlayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ACPlayer.m; sourceTree = "<group>"; };
+		AB2AB16A1B9A200100D7A8B6 /* ACMainMenuScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ACMainMenuScene.h; sourceTree = "<group>"; };
+		AB2AB16B1B9A200100D7A8B6 /* ACMainMenuScene.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ACMainMenuScene.m; sourceTree = "<group>"; };
+		AB2AB16E1B9A202A00D7A8B6 /* ACGalaxyScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ACGalaxyScene.h; sourceTree = "<group>"; };
+		AB2AB16F1B9A202A00D7A8B6 /* ACGalaxyScene.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ACGalaxyScene.m; sourceTree = "<group>"; };
+		AB2AB1711B9A203F00D7A8B6 /* ACStarSystemScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ACStarSystemScene.h; sourceTree = "<group>"; };
+		AB2AB1721B9A203F00D7A8B6 /* ACStarSystemScene.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ACStarSystemScene.m; sourceTree = "<group>"; };
+		AB2AB1741B9A205F00D7A8B6 /* ACPlanetScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ACPlanetScene.h; sourceTree = "<group>"; };
+		AB2AB1751B9A205F00D7A8B6 /* ACPlanetScene.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ACPlanetScene.m; sourceTree = "<group>"; };
+		AB2AB1771B9A207200D7A8B6 /* ACSpaceBattleScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ACSpaceBattleScene.h; sourceTree = "<group>"; };
+		AB2AB1781B9A207200D7A8B6 /* ACSpaceBattleScene.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ACSpaceBattleScene.m; sourceTree = "<group>"; };
+		AB2AB17A1B9A208B00D7A8B6 /* ACLandBattleScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ACLandBattleScene.h; sourceTree = "<group>"; };
+		AB2AB17B1B9A208B00D7A8B6 /* ACLandBattleScene.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ACLandBattleScene.m; sourceTree = "<group>"; };
+		AB2AB17E1B9A214200D7A8B6 /* ACPlanetNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ACPlanetNode.h; sourceTree = "<group>"; };
+		AB2AB17F1B9A214200D7A8B6 /* ACPlanetNode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ACPlanetNode.m; sourceTree = "<group>"; };
+		AB2AB1811B9A255B00D7A8B6 /* ACStarNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ACStarNode.h; sourceTree = "<group>"; };
+		AB2AB1821B9A255B00D7A8B6 /* ACStarNode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ACStarNode.m; sourceTree = "<group>"; };
+		AB2AB1841B9A256900D7A8B6 /* ACGalaxyNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ACGalaxyNode.h; sourceTree = "<group>"; };
+		AB2AB1851B9A256900D7A8B6 /* ACGalaxyNode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ACGalaxyNode.m; sourceTree = "<group>"; };
+		AB2AB1871B9A257800D7A8B6 /* ACShipNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ACShipNode.h; sourceTree = "<group>"; };
+		AB2AB1881B9A257800D7A8B6 /* ACShipNode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ACShipNode.m; sourceTree = "<group>"; };
+		AB2AB18A1B9A258C00D7A8B6 /* ACTroopCarrierShipNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ACTroopCarrierShipNode.h; sourceTree = "<group>"; };
+		AB2AB18B1B9A258C00D7A8B6 /* ACTroopCarrierShipNode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ACTroopCarrierShipNode.m; sourceTree = "<group>"; };
+		AB2AB18E1B9A25A900D7A8B6 /* ACFleetNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ACFleetNode.h; sourceTree = "<group>"; };
+		AB2AB18F1B9A25A900D7A8B6 /* ACFleetNode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ACFleetNode.m; sourceTree = "<group>"; };
+		AB2AB1911B9A25CB00D7A8B6 /* ACGameViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ACGameViewController.h; sourceTree = "<group>"; };
+		AB2AB1921B9A25CB00D7A8B6 /* ACGameViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ACGameViewController.m; sourceTree = "<group>"; };
+		AB2AB1941B9A720500D7A8B6 /* ACGame.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ACGame.h; sourceTree = "<group>"; };
+		AB2AB1951B9A720500D7A8B6 /* ACGame.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ACGame.m; sourceTree = "<group>"; };
+		AB2AB1D11B9A751700D7A8B6 /* button@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "button@2x.png"; path = "../Assets/button@2x.png"; sourceTree = "<group>"; };
+		AB2AB1D31B9A754900D7A8B6 /* ACButtonNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ACButtonNode.h; sourceTree = "<group>"; };
+		AB2AB1D41B9A754900D7A8B6 /* ACButtonNode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ACButtonNode.m; sourceTree = "<group>"; };
+		AB2AB1D61B9A85B200D7A8B6 /* ACLoadGameScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ACLoadGameScene.h; sourceTree = "<group>"; };
+		AB2AB1D71B9A85B200D7A8B6 /* ACLoadGameScene.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ACLoadGameScene.m; sourceTree = "<group>"; };
+		AB2AB1DA1B9A8A8700D7A8B6 /* ACPlanet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ACPlanet.h; sourceTree = "<group>"; };
+		AB2AB1DB1B9A8A8700D7A8B6 /* ACPlanet.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ACPlanet.m; sourceTree = "<group>"; };
+		AB2AB1DD1B9A8A9D00D7A8B6 /* ACGalaxy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ACGalaxy.h; sourceTree = "<group>"; };
+		AB2AB1DE1B9A8A9D00D7A8B6 /* ACGalaxy.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ACGalaxy.m; sourceTree = "<group>"; };
+		AB2AB1E01B9A8AAB00D7A8B6 /* ACStar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ACStar.h; sourceTree = "<group>"; };
+		AB2AB1E11B9A8AAB00D7A8B6 /* ACStar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ACStar.m; sourceTree = "<group>"; };
+		AB2AB1E31B9A974700D7A8B6 /* spiral-1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "spiral-1.png"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
 		AB2AB1361B9940A800D7A8B6 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		AB2AB1541B9940A900D7A8B6 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -69,7 +102,6 @@
 			isa = PBXGroup;
 			children = (
 				AB2AB13B1B9940A800D7A8B6 /* Galactic Conquest */,
-				AB2AB15A1B9940A900D7A8B6 /* Galactic ConquestTests */,
 				AB2AB13A1B9940A800D7A8B6 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -78,7 +110,6 @@
 			isa = PBXGroup;
 			children = (
 				AB2AB1391B9940A800D7A8B6 /* Galactic Conquest.app */,
-				AB2AB1571B9940A900D7A8B6 /* Galactic ConquestTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -86,14 +117,15 @@
 		AB2AB13B1B9940A800D7A8B6 /* Galactic Conquest */ = {
 			isa = PBXGroup;
 			children = (
+				AB2AB1D01B9A750700D7A8B6 /* Assets */,
 				AB2AB1401B9940A800D7A8B6 /* AppDelegate.h */,
 				AB2AB1411B9940A800D7A8B6 /* AppDelegate.m */,
-				AB2AB1431B9940A800D7A8B6 /* GameScene.h */,
-				AB2AB1441B9940A800D7A8B6 /* GameScene.m */,
-				AB2AB1461B9940A800D7A8B6 /* GameScene.sks */,
-				AB2AB1481B9940A800D7A8B6 /* GameViewController.h */,
-				AB2AB1491B9940A800D7A8B6 /* GameViewController.m */,
-				AB2AB14B1B9940A900D7A8B6 /* Main.storyboard */,
+				AB2AB1911B9A25CB00D7A8B6 /* ACGameViewController.h */,
+				AB2AB1921B9A25CB00D7A8B6 /* ACGameViewController.m */,
+				AB2AB1D91B9A8A7300D7A8B6 /* Objects */,
+				AB2AB16D1B9A201900D7A8B6 /* Scenes */,
+				AB2AB18D1B9A259400D7A8B6 /* Nodes */,
+				AB2AB17D1B9A20D700D7A8B6 /* Sprite Nodes */,
 				AB2AB14E1B9940A900D7A8B6 /* Images.xcassets */,
 				AB2AB1501B9940A900D7A8B6 /* LaunchScreen.xib */,
 				AB2AB13C1B9940A800D7A8B6 /* Supporting Files */,
@@ -110,21 +142,79 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
-		AB2AB15A1B9940A900D7A8B6 /* Galactic ConquestTests */ = {
+		AB2AB16D1B9A201900D7A8B6 /* Scenes */ = {
 			isa = PBXGroup;
 			children = (
-				AB2AB15D1B9940A900D7A8B6 /* Galactic_ConquestTests.m */,
-				AB2AB15B1B9940A900D7A8B6 /* Supporting Files */,
+				AB2AB16A1B9A200100D7A8B6 /* ACMainMenuScene.h */,
+				AB2AB16B1B9A200100D7A8B6 /* ACMainMenuScene.m */,
+				AB2AB1D61B9A85B200D7A8B6 /* ACLoadGameScene.h */,
+				AB2AB1D71B9A85B200D7A8B6 /* ACLoadGameScene.m */,
+				AB2AB16E1B9A202A00D7A8B6 /* ACGalaxyScene.h */,
+				AB2AB16F1B9A202A00D7A8B6 /* ACGalaxyScene.m */,
+				AB2AB1711B9A203F00D7A8B6 /* ACStarSystemScene.h */,
+				AB2AB1721B9A203F00D7A8B6 /* ACStarSystemScene.m */,
+				AB2AB1741B9A205F00D7A8B6 /* ACPlanetScene.h */,
+				AB2AB1751B9A205F00D7A8B6 /* ACPlanetScene.m */,
+				AB2AB1771B9A207200D7A8B6 /* ACSpaceBattleScene.h */,
+				AB2AB1781B9A207200D7A8B6 /* ACSpaceBattleScene.m */,
+				AB2AB17A1B9A208B00D7A8B6 /* ACLandBattleScene.h */,
+				AB2AB17B1B9A208B00D7A8B6 /* ACLandBattleScene.m */,
 			);
-			path = "Galactic ConquestTests";
+			name = Scenes;
 			sourceTree = "<group>";
 		};
-		AB2AB15B1B9940A900D7A8B6 /* Supporting Files */ = {
+		AB2AB17D1B9A20D700D7A8B6 /* Sprite Nodes */ = {
 			isa = PBXGroup;
 			children = (
-				AB2AB15C1B9940A900D7A8B6 /* Info.plist */,
+				AB2AB1D31B9A754900D7A8B6 /* ACButtonNode.h */,
+				AB2AB1D41B9A754900D7A8B6 /* ACButtonNode.m */,
+				AB2AB17E1B9A214200D7A8B6 /* ACPlanetNode.h */,
+				AB2AB17F1B9A214200D7A8B6 /* ACPlanetNode.m */,
+				AB2AB1811B9A255B00D7A8B6 /* ACStarNode.h */,
+				AB2AB1821B9A255B00D7A8B6 /* ACStarNode.m */,
+				AB2AB1841B9A256900D7A8B6 /* ACGalaxyNode.h */,
+				AB2AB1851B9A256900D7A8B6 /* ACGalaxyNode.m */,
+				AB2AB1871B9A257800D7A8B6 /* ACShipNode.h */,
+				AB2AB1881B9A257800D7A8B6 /* ACShipNode.m */,
+				AB2AB18A1B9A258C00D7A8B6 /* ACTroopCarrierShipNode.h */,
+				AB2AB18B1B9A258C00D7A8B6 /* ACTroopCarrierShipNode.m */,
 			);
-			name = "Supporting Files";
+			name = "Sprite Nodes";
+			sourceTree = "<group>";
+		};
+		AB2AB18D1B9A259400D7A8B6 /* Nodes */ = {
+			isa = PBXGroup;
+			children = (
+				AB2AB18E1B9A25A900D7A8B6 /* ACFleetNode.h */,
+				AB2AB18F1B9A25A900D7A8B6 /* ACFleetNode.m */,
+			);
+			name = Nodes;
+			sourceTree = "<group>";
+		};
+		AB2AB1D01B9A750700D7A8B6 /* Assets */ = {
+			isa = PBXGroup;
+			children = (
+				AB2AB1E31B9A974700D7A8B6 /* spiral-1.png */,
+				AB2AB1D11B9A751700D7A8B6 /* button@2x.png */,
+			);
+			name = Assets;
+			sourceTree = "<group>";
+		};
+		AB2AB1D91B9A8A7300D7A8B6 /* Objects */ = {
+			isa = PBXGroup;
+			children = (
+				AB2AB1941B9A720500D7A8B6 /* ACGame.h */,
+				AB2AB1951B9A720500D7A8B6 /* ACGame.m */,
+				AB2AB1671B9A1FC700D7A8B6 /* ACPlayer.h */,
+				AB2AB1681B9A1FC700D7A8B6 /* ACPlayer.m */,
+				AB2AB1DA1B9A8A8700D7A8B6 /* ACPlanet.h */,
+				AB2AB1DB1B9A8A8700D7A8B6 /* ACPlanet.m */,
+				AB2AB1DD1B9A8A9D00D7A8B6 /* ACGalaxy.h */,
+				AB2AB1DE1B9A8A9D00D7A8B6 /* ACGalaxy.m */,
+				AB2AB1E01B9A8AAB00D7A8B6 /* ACStar.h */,
+				AB2AB1E11B9A8AAB00D7A8B6 /* ACStar.m */,
+			);
+			name = Objects;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -147,24 +237,6 @@
 			productReference = AB2AB1391B9940A800D7A8B6 /* Galactic Conquest.app */;
 			productType = "com.apple.product-type.application";
 		};
-		AB2AB1561B9940A900D7A8B6 /* Galactic ConquestTests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = AB2AB1641B9940A900D7A8B6 /* Build configuration list for PBXNativeTarget "Galactic ConquestTests" */;
-			buildPhases = (
-				AB2AB1531B9940A900D7A8B6 /* Sources */,
-				AB2AB1541B9940A900D7A8B6 /* Frameworks */,
-				AB2AB1551B9940A900D7A8B6 /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				AB2AB1591B9940A900D7A8B6 /* PBXTargetDependency */,
-			);
-			name = "Galactic ConquestTests";
-			productName = "Galactic ConquestTests";
-			productReference = AB2AB1571B9940A900D7A8B6 /* Galactic ConquestTests.xctest */;
-			productType = "com.apple.product-type.bundle.unit-test";
-		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -176,10 +248,6 @@
 				TargetAttributes = {
 					AB2AB1381B9940A800D7A8B6 = {
 						CreatedOnToolsVersion = 6.4;
-					};
-					AB2AB1561B9940A900D7A8B6 = {
-						CreatedOnToolsVersion = 6.4;
-						TestTargetID = AB2AB1381B9940A800D7A8B6;
 					};
 				};
 			};
@@ -197,7 +265,6 @@
 			projectRoot = "";
 			targets = (
 				AB2AB1381B9940A800D7A8B6 /* Galactic Conquest */,
-				AB2AB1561B9940A900D7A8B6 /* Galactic ConquestTests */,
 			);
 		};
 /* End PBXProject section */
@@ -207,17 +274,10 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AB2AB1E41B9A974700D7A8B6 /* spiral-1.png in Resources */,
 				AB2AB1521B9940A900D7A8B6 /* LaunchScreen.xib in Resources */,
+				AB2AB1D21B9A751700D7A8B6 /* button@2x.png in Resources */,
 				AB2AB14F1B9940A900D7A8B6 /* Images.xcassets in Resources */,
-				AB2AB1471B9940A800D7A8B6 /* GameScene.sks in Resources */,
-				AB2AB14D1B9940A900D7A8B6 /* Main.storyboard in Resources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		AB2AB1551B9940A900D7A8B6 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -228,40 +288,34 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				AB2AB14A1B9940A800D7A8B6 /* GameViewController.m in Sources */,
+				AB2AB1831B9A255B00D7A8B6 /* ACStarNode.m in Sources */,
+				AB2AB16C1B9A200100D7A8B6 /* ACMainMenuScene.m in Sources */,
+				AB2AB1D81B9A85B200D7A8B6 /* ACLoadGameScene.m in Sources */,
+				AB2AB1E21B9A8AAB00D7A8B6 /* ACStar.m in Sources */,
+				AB2AB1791B9A207200D7A8B6 /* ACSpaceBattleScene.m in Sources */,
 				AB2AB1421B9940A800D7A8B6 /* AppDelegate.m in Sources */,
-				AB2AB1451B9940A800D7A8B6 /* GameScene.m in Sources */,
+				AB2AB1DC1B9A8A8700D7A8B6 /* ACPlanet.m in Sources */,
+				AB2AB1901B9A25A900D7A8B6 /* ACFleetNode.m in Sources */,
 				AB2AB13F1B9940A800D7A8B6 /* main.m in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		AB2AB1531B9940A900D7A8B6 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				AB2AB15E1B9940A900D7A8B6 /* Galactic_ConquestTests.m in Sources */,
+				AB2AB1861B9A256900D7A8B6 /* ACGalaxyNode.m in Sources */,
+				AB2AB1D51B9A754900D7A8B6 /* ACButtonNode.m in Sources */,
+				AB2AB1701B9A202A00D7A8B6 /* ACGalaxyScene.m in Sources */,
+				AB2AB1DF1B9A8A9D00D7A8B6 /* ACGalaxy.m in Sources */,
+				AB2AB1801B9A214200D7A8B6 /* ACPlanetNode.m in Sources */,
+				AB2AB1761B9A205F00D7A8B6 /* ACPlanetScene.m in Sources */,
+				AB2AB1691B9A1FC700D7A8B6 /* ACPlayer.m in Sources */,
+				AB2AB17C1B9A208B00D7A8B6 /* ACLandBattleScene.m in Sources */,
+				AB2AB18C1B9A258C00D7A8B6 /* ACTroopCarrierShipNode.m in Sources */,
+				AB2AB1731B9A203F00D7A8B6 /* ACStarSystemScene.m in Sources */,
+				AB2AB1961B9A720500D7A8B6 /* ACGame.m in Sources */,
+				AB2AB1931B9A25CB00D7A8B6 /* ACGameViewController.m in Sources */,
+				AB2AB1891B9A257800D7A8B6 /* ACShipNode.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
-/* Begin PBXTargetDependency section */
-		AB2AB1591B9940A900D7A8B6 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = AB2AB1381B9940A800D7A8B6 /* Galactic Conquest */;
-			targetProxy = AB2AB1581B9940A900D7A8B6 /* PBXContainerItemProxy */;
-		};
-/* End PBXTargetDependency section */
-
 /* Begin PBXVariantGroup section */
-		AB2AB14B1B9940A900D7A8B6 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				AB2AB14C1B9940A900D7A8B6 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		AB2AB1501B9940A900D7A8B6 /* LaunchScreen.xib */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -360,6 +414,7 @@
 				INFOPLIST_FILE = "Galactic Conquest/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				WARNING_CFLAGS = "-Wno-arc-performSelector-leaks";
 			};
 			name = Debug;
 		};
@@ -370,40 +425,7 @@
 				INFOPLIST_FILE = "Galactic Conquest/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-			};
-			name = Release;
-		};
-		AB2AB1651B9940A900D7A8B6 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(SDKROOT)/Developer/Library/Frameworks",
-					"$(inherited)",
-				);
-				GCC_PREPROCESSOR_DEFINITIONS = (
-					"DEBUG=1",
-					"$(inherited)",
-				);
-				INFOPLIST_FILE = "Galactic ConquestTests/Info.plist";
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Galactic Conquest.app/Galactic Conquest";
-			};
-			name = Debug;
-		};
-		AB2AB1661B9940A900D7A8B6 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(SDKROOT)/Developer/Library/Frameworks",
-					"$(inherited)",
-				);
-				INFOPLIST_FILE = "Galactic ConquestTests/Info.plist";
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Galactic Conquest.app/Galactic Conquest";
+				WARNING_CFLAGS = "-Wno-arc-performSelector-leaks";
 			};
 			name = Release;
 		};
@@ -424,14 +446,6 @@
 			buildConfigurations = (
 				AB2AB1621B9940A900D7A8B6 /* Debug */,
 				AB2AB1631B9940A900D7A8B6 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-		};
-		AB2AB1641B9940A900D7A8B6 /* Build configuration list for PBXNativeTarget "Galactic ConquestTests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				AB2AB1651B9940A900D7A8B6 /* Debug */,
-				AB2AB1661B9940A900D7A8B6 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 		};
