@@ -7,7 +7,14 @@
 //
 
 #import <SpriteKit/SpriteKit.h>
+#import "ACPlanetNode.h"
 
-@interface ACStarSystemScene : SKScene
+@class ACStar;
+
+@interface ACStarSystemScene : SKScene <ACPlanetNodeDelegate>
+
+@property (strong, nonatomic) ACStar *star;
+
+- (id)initWithStar:(ACStar *)star size:(CGSize)size;
 
 @end

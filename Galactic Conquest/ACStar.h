@@ -20,4 +20,6 @@ extern NSString *const ACStarKeyParentGalaxy;
 @property (strong, nonatomic) NSString *name;
 @property (strong, nonatomic) NSArray *planets;
 
+- (id)initWithName:(NSString *)name parentGalaxy:(ACGalaxy *)parent;
+
 @end

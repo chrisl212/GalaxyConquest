@@ -20,7 +20,7 @@ NSString *const ACGameKeyName = @"game-name";
     if (self = [super init])
     {
         self.name = name;
-        self.galaxy = [[ACGalaxy alloc] initWithName:name image:[UIImage imageNamed:@"spiral-1.png"]];
+        self.galaxy = [[ACGalaxy alloc] initWithFile:[[NSBundle mainBundle] pathForResource:@"MilkyWay" ofType:@"galaxy"]];
     }
     return self;
 }

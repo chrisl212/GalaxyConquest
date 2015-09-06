@@ -19,5 +19,6 @@ extern NSString *const ACGalaxyKeyTextureImage;
 @property (strong, nonatomic) UIImage *textureImage;
 
 - (id)initWithName:(NSString *)name image:(UIImage *)textureImage;
+- (id)initWithFile:(NSString *)filePath;
 
 @end

@@ -8,6 +8,12 @@
 
 #import <SpriteKit/SpriteKit.h>
 
+@class ACPlanet;
+
 @interface ACPlanetScene : SKScene
+
+@property (strong, nonatomic) ACPlanet *planet;
+
+- (id)initWithPlanet:(ACPlanet *)planet size:(CGSize)size;
 
 @end

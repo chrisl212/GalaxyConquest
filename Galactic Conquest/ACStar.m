@@ -7,12 +7,24 @@
 //
 
 #import "ACStar.h"
+#import "ACPlanet.h"
 
 NSString *const ACStarKeyName = @"star-name";
 NSString *const ACStarKeyPlanets = @"star-planets";
 NSString *const ACStarKeyParentGalaxy = @"star-parentGalaxy";
 
 @implementation ACStar
+
+- (id)initWithName:(NSString *)name parentGalaxy:(ACGalaxy *)parent
+{
+    if (self = [super init])
+    {
+        self.parentGalaxy = parent;
+        self.name = name;
+        self.planets = @[];
+    }
+    return self;
+}
 
 #pragma mark - NSCoding
 

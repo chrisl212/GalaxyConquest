@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		AB227C001B9BF765003880CF /* MilkyWay.galaxy in Resources */ = {isa = PBXBuildFile; fileRef = AB227BFF1B9BF765003880CF /* MilkyWay.galaxy */; };
+		AB227C031B9BFB8B003880CF /* ACInfoNode.m in Sources */ = {isa = PBXBuildFile; fileRef = AB227C021B9BFB8B003880CF /* ACInfoNode.m */; };
 		AB2AB13F1B9940A800D7A8B6 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = AB2AB13E1B9940A800D7A8B6 /* main.m */; };
 		AB2AB1421B9940A800D7A8B6 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = AB2AB1411B9940A800D7A8B6 /* AppDelegate.m */; };
 		AB2AB14F1B9940A900D7A8B6 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AB2AB14E1B9940A900D7A8B6 /* Images.xcassets */; };
@@ -33,9 +35,17 @@
 		AB2AB1DF1B9A8A9D00D7A8B6 /* ACGalaxy.m in Sources */ = {isa = PBXBuildFile; fileRef = AB2AB1DE1B9A8A9D00D7A8B6 /* ACGalaxy.m */; };
 		AB2AB1E21B9A8AAB00D7A8B6 /* ACStar.m in Sources */ = {isa = PBXBuildFile; fileRef = AB2AB1E11B9A8AAB00D7A8B6 /* ACStar.m */; };
 		AB2AB1E41B9A974700D7A8B6 /* spiral-1.png in Resources */ = {isa = PBXBuildFile; fileRef = AB2AB1E31B9A974700D7A8B6 /* spiral-1.png */; };
+		AB2AB1E91B9A9CFC00D7A8B6 /* ACStarMapParticle.sks in Resources */ = {isa = PBXBuildFile; fileRef = AB2AB1E71B9A9CFC00D7A8B6 /* ACStarMapParticle.sks */; };
+		AB2AB1EA1B9A9CFC00D7A8B6 /* spark.png in Resources */ = {isa = PBXBuildFile; fileRef = AB2AB1E81B9A9CFC00D7A8B6 /* spark.png */; };
+		AB2AB1ED1B9AA33600D7A8B6 /* ACStarMapNode.m in Sources */ = {isa = PBXBuildFile; fileRef = AB2AB1EC1B9AA33600D7A8B6 /* ACStarMapNode.m */; };
+		AB2AB1EF1B9B3E5900D7A8B6 /* ACStar.sks in Resources */ = {isa = PBXBuildFile; fileRef = AB2AB1EE1B9B3E5900D7A8B6 /* ACStar.sks */; };
+		AB2AB1F11B9B491F00D7A8B6 /* planet-1.png in Resources */ = {isa = PBXBuildFile; fileRef = AB2AB1F01B9B491F00D7A8B6 /* planet-1.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		AB227BFF1B9BF765003880CF /* MilkyWay.galaxy */ = {isa = PBXFileReference; explicitFileType = text.json; fileEncoding = 4; path = MilkyWay.galaxy; sourceTree = "<group>"; };
+		AB227C011B9BFB8B003880CF /* ACInfoNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ACInfoNode.h; sourceTree = "<group>"; };
+		AB227C021B9BFB8B003880CF /* ACInfoNode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = ACInfoNode.m; sourceTree = "<group>"; };
 		AB2AB1391B9940A800D7A8B6 /* Galactic Conquest.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Galactic Conquest.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		AB2AB13D1B9940A800D7A8B6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		AB2AB13E1B9940A800D7A8B6 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -85,6 +95,12 @@
 		AB2AB1E01B9A8AAB00D7A8B6 /* ACStar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ACStar.h; sourceTree = "<group>"; };
 		AB2AB1E11B9A8AAB00D7A8B6 /* ACStar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ACStar.m; sourceTree = "<group>"; };
 		AB2AB1E31B9A974700D7A8B6 /* spiral-1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "spiral-1.png"; sourceTree = "<group>"; };
+		AB2AB1E71B9A9CFC00D7A8B6 /* ACStarMapParticle.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = ACStarMapParticle.sks; sourceTree = "<group>"; };
+		AB2AB1E81B9A9CFC00D7A8B6 /* spark.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = spark.png; sourceTree = "<group>"; };
+		AB2AB1EB1B9AA33600D7A8B6 /* ACStarMapNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ACStarMapNode.h; sourceTree = "<group>"; };
+		AB2AB1EC1B9AA33600D7A8B6 /* ACStarMapNode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ACStarMapNode.m; sourceTree = "<group>"; };
+		AB2AB1EE1B9B3E5900D7A8B6 /* ACStar.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = ACStar.sks; sourceTree = "<group>"; };
+		AB2AB1F01B9B491F00D7A8B6 /* planet-1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "planet-1.png"; path = "Assets/planet-1.png"; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -151,6 +167,7 @@
 				AB2AB1D71B9A85B200D7A8B6 /* ACLoadGameScene.m */,
 				AB2AB16E1B9A202A00D7A8B6 /* ACGalaxyScene.h */,
 				AB2AB16F1B9A202A00D7A8B6 /* ACGalaxyScene.m */,
+				AB2AB1E81B9A9CFC00D7A8B6 /* spark.png */,
 				AB2AB1711B9A203F00D7A8B6 /* ACStarSystemScene.h */,
 				AB2AB1721B9A203F00D7A8B6 /* ACStarSystemScene.m */,
 				AB2AB1741B9A205F00D7A8B6 /* ACPlanetScene.h */,
@@ -168,10 +185,16 @@
 			children = (
 				AB2AB1D31B9A754900D7A8B6 /* ACButtonNode.h */,
 				AB2AB1D41B9A754900D7A8B6 /* ACButtonNode.m */,
+				AB227C011B9BFB8B003880CF /* ACInfoNode.h */,
+				AB227C021B9BFB8B003880CF /* ACInfoNode.m */,
 				AB2AB17E1B9A214200D7A8B6 /* ACPlanetNode.h */,
 				AB2AB17F1B9A214200D7A8B6 /* ACPlanetNode.m */,
+				AB2AB1EB1B9AA33600D7A8B6 /* ACStarMapNode.h */,
+				AB2AB1EC1B9AA33600D7A8B6 /* ACStarMapNode.m */,
+				AB2AB1E71B9A9CFC00D7A8B6 /* ACStarMapParticle.sks */,
 				AB2AB1811B9A255B00D7A8B6 /* ACStarNode.h */,
 				AB2AB1821B9A255B00D7A8B6 /* ACStarNode.m */,
+				AB2AB1EE1B9B3E5900D7A8B6 /* ACStar.sks */,
 				AB2AB1841B9A256900D7A8B6 /* ACGalaxyNode.h */,
 				AB2AB1851B9A256900D7A8B6 /* ACGalaxyNode.m */,
 				AB2AB1871B9A257800D7A8B6 /* ACShipNode.h */,
@@ -194,8 +217,10 @@
 		AB2AB1D01B9A750700D7A8B6 /* Assets */ = {
 			isa = PBXGroup;
 			children = (
+				AB2AB1F01B9B491F00D7A8B6 /* planet-1.png */,
 				AB2AB1E31B9A974700D7A8B6 /* spiral-1.png */,
 				AB2AB1D11B9A751700D7A8B6 /* button@2x.png */,
+				AB227BFF1B9BF765003880CF /* MilkyWay.galaxy */,
 			);
 			name = Assets;
 			sourceTree = "<group>";
@@ -275,7 +300,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				AB2AB1E41B9A974700D7A8B6 /* spiral-1.png in Resources */,
+				AB227C001B9BF765003880CF /* MilkyWay.galaxy in Resources */,
+				AB2AB1F11B9B491F00D7A8B6 /* planet-1.png in Resources */,
+				AB2AB1EA1B9A9CFC00D7A8B6 /* spark.png in Resources */,
 				AB2AB1521B9940A900D7A8B6 /* LaunchScreen.xib in Resources */,
+				AB2AB1E91B9A9CFC00D7A8B6 /* ACStarMapParticle.sks in Resources */,
+				AB2AB1EF1B9B3E5900D7A8B6 /* ACStar.sks in Resources */,
 				AB2AB1D21B9A751700D7A8B6 /* button@2x.png in Resources */,
 				AB2AB14F1B9940A900D7A8B6 /* Images.xcassets in Resources */,
 			);
@@ -293,6 +323,7 @@
 				AB2AB1D81B9A85B200D7A8B6 /* ACLoadGameScene.m in Sources */,
 				AB2AB1E21B9A8AAB00D7A8B6 /* ACStar.m in Sources */,
 				AB2AB1791B9A207200D7A8B6 /* ACSpaceBattleScene.m in Sources */,
+				AB227C031B9BFB8B003880CF /* ACInfoNode.m in Sources */,
 				AB2AB1421B9940A800D7A8B6 /* AppDelegate.m in Sources */,
 				AB2AB1DC1B9A8A8700D7A8B6 /* ACPlanet.m in Sources */,
 				AB2AB1901B9A25A900D7A8B6 /* ACFleetNode.m in Sources */,
@@ -302,6 +333,7 @@
 				AB2AB1701B9A202A00D7A8B6 /* ACGalaxyScene.m in Sources */,
 				AB2AB1DF1B9A8A9D00D7A8B6 /* ACGalaxy.m in Sources */,
 				AB2AB1801B9A214200D7A8B6 /* ACPlanetNode.m in Sources */,
+				AB2AB1ED1B9AA33600D7A8B6 /* ACStarMapNode.m in Sources */,
 				AB2AB1761B9A205F00D7A8B6 /* ACPlanetScene.m in Sources */,
 				AB2AB1691B9A1FC700D7A8B6 /* ACPlayer.m in Sources */,
 				AB2AB17C1B9A208B00D7A8B6 /* ACLandBattleScene.m in Sources */,
@@ -412,6 +444,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = "Galactic Conquest/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WARNING_CFLAGS = "-Wno-arc-performSelector-leaks";
@@ -423,6 +456,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = "Galactic Conquest/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WARNING_CFLAGS = "-Wno-arc-performSelector-leaks";
@@ -448,6 +482,7 @@
 				AB2AB1631B9940A900D7A8B6 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

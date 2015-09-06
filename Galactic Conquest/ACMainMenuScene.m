@@ -17,10 +17,18 @@
     [super didMoveToView:view];
     self.backgroundColor = [SKColor blackColor];
     
-    ACButtonNode *startGameButton = [[ACButtonNode alloc] initWithTitle:@"Start Game"];
-    startGameButton.position = CGPointMake(CGRectGetMidX(self.frame), CGRectGetMidY(self.frame));
-    [startGameButton addTarget:self action:@selector(startGame)];
-    [self addChild:startGameButton];
+    NSArray *buttonTitles = @[@"Start Game", @"Add-ons", @"Options"];
+    NSArray *selectors = @[@"startGame", @"", @""];
+    
+    for (NSInteger i = 0; i < buttonTitles.count; i++)
+    {
+        CGFloat partHeight = self.size.height/(buttonTitles.count+1);
+        
+        ACButtonNode *button = [[ACButtonNode alloc] initWithTitle:buttonTitles[i]];
+        button.position = CGPointMake(CGRectGetMidX(self.frame), self.size.height - (partHeight * (i + 1)));
+        [button addTarget:self action:NSSelectorFromString(selectors[i])];
+        [self addChild:button];
+    }
 }
 
 - (void)startGame

@@ -61,6 +61,8 @@
 {
     ACMainMenuScene *mainMenuScene = [[ACMainMenuScene alloc] initWithSize:self.size];
     [self.view presentScene:mainMenuScene transition:[SKTransition fadeWithDuration:0.5]];
+    
+    [self.gameNameTextField removeFromSuperview];
 }
 
 @end
