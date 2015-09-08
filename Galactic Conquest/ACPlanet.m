@@ -7,11 +7,22 @@
 //
 
 #import "ACPlanet.h"
+#import "ACPlayer.h"
 
 NSString *const ACPlanetKeyName = @"planet-name";
 NSString *const ACPlanetKeyParentStar = @"planet-parentStar";
 NSString *const ACPlanetKeyTextureImage = @"planet-texture";
 NSString *const ACPlanetKeyOrbitalDistance = @"planet-orbitalDistance";
+NSString *const ACPlanetKeyOwner = @"planet-owner";
+NSString *const ACPlanetKeyMineralValue = @"planet-mineralValue";
+NSString *const ACPlanetKeyFuelValue = @"planet-fuelValue";
+NSString *const ACPlanetKeyFleets = @"planet-fleets";
+NSString *const ACPlanetKeyType = @"planet-type";
+NSString *const ACPlanetKeyInhabited = @"planet-inhabited";
+NSString *const ACPlanetKeyAtmosphere = @"planet-atmosphere";
+
+NSString *const ACPlanetTypeGas = @"planetType-gas";
+NSString *const ACPlanetTypeRocky = @"planetType-rocky";
 
 @implementation ACPlanet
 
@@ -23,6 +34,7 @@ NSString *const ACPlanetKeyOrbitalDistance = @"planet-orbitalDistance";
         self.parentStar = parentStar;
         self.textureImage = textureImage;
         self.orbitalDistance = distance;
+        self.owner = [[ACPlayer alloc] initWithName:@"None"];
     }
     return self;
 }
@@ -33,8 +45,13 @@ NSString *const ACPlanetKeyOrbitalDistance = @"planet-orbitalDistance";
 {
     [aCoder encodeObject:self.name forKey:ACPlanetKeyName];
     [aCoder encodeObject:self.parentStar forKey:ACPlanetKeyParentStar];
-    [aCoder encodeObject:self.textureImage forKey:ACPlanetKeyTextureImage];
+    [aCoder encodeObject:UIImagePNGRepresentation(self.textureImage) forKey:ACPlanetKeyTextureImage];
     [aCoder encodeDouble:self.orbitalDistance forKey:ACPlanetKeyOrbitalDistance];
+    [aCoder encodeObject:self.owner forKey:ACPlanetKeyOwner];
+    [aCoder encodeInteger:self.mineralValue forKey:ACPlanetKeyMineralValue];
+    [aCoder encodeInteger:self.fuelValue forKey:ACPlanetKeyFuelValue];
+    [aCoder encodeObject:self.fleets forKey:ACPlanetKeyFleets];
+    [aCoder encodeBool:self.atmosphere forKey:ACPlanetKeyAtmosphere];
 }
 
 - (id)initWithCoder:(NSCoder *)aDecoder
@@ -43,8 +60,13 @@ NSString *const ACPlanetKeyOrbitalDistance = @"planet-orbitalDistance";
     {
         self.name = [aDecoder decodeObjectForKey:ACPlanetKeyName];
         self.parentStar = [aDecoder decodeObjectForKey:ACPlanetKeyParentStar];
-        self.textureImage = [aDecoder decodeObjectForKey:ACPlanetKeyTextureImage];
+        self.textureImage = [UIImage imageWithData:[aDecoder decodeObjectForKey:ACPlanetKeyTextureImage]];
         self.orbitalDistance = [aDecoder decodeDoubleForKey:ACPlanetKeyOrbitalDistance];
+        self.owner = [aDecoder decodeObjectForKey:ACPlanetKeyOwner];
+        self.mineralValue = [aDecoder decodeIntegerForKey:ACPlanetKeyMineralValue];
+        self.fuelValue = [aDecoder decodeIntegerForKey:ACPlanetKeyFuelValue];
+        self.fleets = [aDecoder decodeObjectForKey:ACPlanetKeyFleets];
+        self.atmosphere = [aDecoder decodeBoolForKey:ACPlanetKeyAtmosphere];
     }
     return self;
 }

@@ -9,11 +9,9 @@
 #import "AppDelegate.h"
 #import "ACGameViewController.h"
 #import "ACGame.h"
+#import <GameKit/GameKit.h>
 
 @implementation AppDelegate
-{
-    ACGame *currentGame;
-}
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
@@ -24,6 +22,14 @@
     [self.window makeKeyAndVisible];
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(changeCurrentGame:) name:@"changeCurrentGame" object:nil];
+    
+    [[GKLocalPlayer localPlayer] setAuthenticateHandler:^(UIViewController *vc, NSError *err)
+     {
+        if (vc)
+            [self.window.rootViewController presentViewController:vc animated:YES completion:nil];
+         if (err)
+             NSLog(@"%@", err);
+     }];
     
     return YES;
 }
@@ -52,7 +58,20 @@
 
 - (void)changeCurrentGame:(NSNotification *)notif
 {
-    currentGame = (ACGame *)notif.object;
+    self.currentGame = (ACGame *)notif.object;
+}
+
+@end
+
+@interface UIFont (SpaceFont)
+
+@end
+
+@implementation UIFont (SpaceFont)
+
++ (UIFont *)systemFontOfSize:(CGFloat)fontSize
+{
+    return [UIFont fontWithName:@"Futura" size:fontSize];
 }
 
 @end

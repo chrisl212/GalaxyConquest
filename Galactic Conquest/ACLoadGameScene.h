@@ -7,7 +7,8 @@
 //
 
 #import <SpriteKit/SpriteKit.h>
+#import "ACLoadGameViewController.h"
 
-@interface ACLoadGameScene : SKScene
+@interface ACLoadGameScene : SKScene <ACLoadGameViewControllerDelegate>
 
 @end

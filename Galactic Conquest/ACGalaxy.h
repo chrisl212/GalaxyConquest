@@ -11,12 +11,14 @@
 extern NSString *const ACGalaxyKeyName;
 extern NSString *const ACGalaxyKeyStars;
 extern NSString *const ACGalaxyKeyTextureImage;
+extern NSString *const ACGalaxyKeyGalacticRadius;
 
 @interface ACGalaxy : NSObject <NSCoding>
 
 @property (strong, nonatomic) NSString *name;
 @property (strong, nonatomic) NSArray *stars;
 @property (strong, nonatomic) UIImage *textureImage;
+@property (nonatomic) CGFloat galacticRadius;
 
 - (id)initWithName:(NSString *)name image:(UIImage *)textureImage;
 - (id)initWithFile:(NSString *)filePath;

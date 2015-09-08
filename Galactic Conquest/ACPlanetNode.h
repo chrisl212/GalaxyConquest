@@ -16,7 +16,7 @@
 @property (strong, nonatomic) ACPlanet *planet;
 @property (weak, nonatomic) id<ACPlanetNodeDelegate> delegate;
 
-- (id)initWithPlanet:(ACPlanet *)planet size:(CGSize)size;
+- (id)initWithPlanet:(ACPlanet *)planet size:(CGSize)size lightAngle:(CGFloat)degrees;
 
 @end
 

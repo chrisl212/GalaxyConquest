@@ -22,7 +22,7 @@
     if (self = [super init])
     {
         self.emitterNode = [NSKeyedUnarchiver unarchiveObjectWithFile:[[NSBundle mainBundle] pathForResource:@"ACStar" ofType:@"sks"]];
-        [self.emitterNode advanceSimulationTime:50.0];
+        [self.emitterNode advanceSimulationTime:80.0];
         [self addChild:self.emitterNode];
     }
     return self;

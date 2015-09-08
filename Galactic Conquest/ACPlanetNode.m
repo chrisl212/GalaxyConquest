@@ -10,20 +10,61 @@
 #import "ACPlanet.h"
 #import <SceneKit/SceneKit.h>
 
+NSInteger quadrantFromDegrees(double deg)
+{
+    if (deg >= 0 && deg <= 90)
+        return 1;
+    else if (deg <= 180)
+        return 4;
+    else if (deg <= 270)
+        return 3;
+    else
+        return 2;
+}
+
+SCNVector3 vectorFromQuadrant(NSInteger q)
+{
+    switch (q)
+    {
+        case 1:
+            return SCNVector3Make(-1.0, -1.0, 8.0);
+            
+        case 2:
+            return SCNVector3Make(1.0, -1.0, 8.0);
+            
+        case 3:
+            return SCNVector3Make(1.0, 1.0, 8.0);
+            
+        case 4:
+            return SCNVector3Make(-1.0, 1.0, 8.0);
+            
+        default:
+            return SCNVector3Make(1.0, 1.0, 8.0);
+    }
+}
+
 @implementation ACPlanetNode
 
-- (id)initWithPlanet:(ACPlanet *)planet size:(CGSize)size
+- (id)initWithPlanet:(ACPlanet *)planet size:(CGSize)size lightAngle:(CGFloat)degrees
 {
     if (self = [super initWithViewportSize:size])
     {
         self.planet = planet;
         self.userInteractionEnabled = YES;
-        
-        self.scnScene = [[SCNScene alloc] init];
+
+        self.scnScene = [SCNScene scene];
+
         SCNNode *planetNode = [[SCNNode alloc] init];
         planetNode.geometry = [SCNSphere sphereWithRadius:2.0];
         planetNode.geometry.firstMaterial.diffuse.contents = planet.textureImage;
         [self.scnScene.rootNode addChildNode:planetNode];
+        
+        if (planet.atmosphere)
+        {
+            SCNNode *atmosphereNode = [SCNNode nodeWithGeometry:[SCNSphere sphereWithRadius:2.05]];
+            atmosphereNode.opacity = 0.3;
+            [self.scnScene.rootNode addChildNode:atmosphereNode];
+        }
         
         CABasicAnimation *rotationAnimation = [CABasicAnimation animationWithKeyPath:@"rotation"];
         rotationAnimation.toValue = [NSValue valueWithSCNVector4:SCNVector4Make(0, 1, 0, M_PI * 2)];
@@ -41,8 +82,15 @@
         cameraNode.position = SCNVector3Make(0, 0, 5);
         [self.scnScene.rootNode addChildNode:cameraNode];
         
+        SCNLight *light = [SCNLight light];
+        light.type = SCNLightTypeSpot;
+        SCNNode *lightNode = [SCNNode node];
+        lightNode.light = light;
+        lightNode.position = vectorFromQuadrant(quadrantFromDegrees(degrees));
+        [self.scnScene.rootNode addChildNode:lightNode];
+        
         self.pointOfView = cameraNode;
-        self.autoenablesDefaultLighting = YES;
+        //self.autoenablesDefaultLighting = YES;
     }
     return self;
 }

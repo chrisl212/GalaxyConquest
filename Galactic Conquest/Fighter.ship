@@ -1,0 +1,6 @@
+{
+    "name" : "Fighter",
+    "mineralCost" : 10.0,
+    "fuelCost" : 1.0, //per 1000 light years
+    "hp" : 100.0
+}

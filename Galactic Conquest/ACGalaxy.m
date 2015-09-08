@@ -13,6 +13,7 @@
 NSString *const ACGalaxyKeyName = @"galaxy-name";
 NSString *const ACGalaxyKeyStars = @"galaxy-stars";
 NSString *const ACGalaxyKeyTextureImage = @"galaxy-texture";
+NSString *const ACGalaxyKeyGalacticRadius = @"galaxy-galacticRadius";
 
 @implementation ACGalaxy
 
@@ -42,6 +43,7 @@ NSString *letters = @"abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ012345
             [stars addObject:[[ACStar alloc] initWithName:[self randomStringWithLength:7] parentGalaxy:self]];
         }
         self.stars = [NSArray arrayWithArray:stars];
+        self.galacticRadius = 100000;
     }
     return self;
 }
@@ -57,18 +59,32 @@ NSString *letters = @"abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ012345
         NSMutableArray *starsArray = [NSMutableArray array];
         for (NSDictionary *starDictionary in rootDictionary[@"stars"])
         {
-            ACStar *star = [[ACStar alloc] initWithName:starDictionary[@"name"] parentGalaxy:self];
-            
-            NSMutableArray *planetsArray = [NSMutableArray array];
-            for (NSDictionary *planetDictionary in starDictionary[@"planets"])
+            if ([starDictionary isKindOfClass:[NSDictionary class]])
             {
-                ACPlanet *planet = [[ACPlanet alloc] initWithName:planetDictionary[@"name"] parentStar:star textureImage:[UIImage imageNamed:planetDictionary[@"textureImage"]] orbitalDistance:[planetDictionary[@"orbitalDistance"] doubleValue]];
-                [planetsArray addObject:planet];
+                ACStar *star = [[ACStar alloc] initWithName:starDictionary[@"name"] parentGalaxy:self];
+                star.orbitalDistance = [starDictionary[@"orbitalDistance"] doubleValue];
+                star.orbitalAngle = [starDictionary[@"orbitalAngle"] doubleValue];
+                
+                NSMutableArray *planetsArray = [NSMutableArray array];
+                for (NSDictionary *planetDictionary in starDictionary[@"planets"])
+                {
+                    ACPlanet *planet = [[ACPlanet alloc] initWithName:planetDictionary[@"name"] parentStar:star textureImage:[UIImage imageNamed:planetDictionary[@"textureImage"]] orbitalDistance:[planetDictionary[@"orbitalDistance"] doubleValue]];
+                    planet.mineralValue = [planetDictionary[@"mineralValue"] integerValue];
+                    planet.fuelValue = [planetDictionary[@"fuelValue"] integerValue];
+                    [planetsArray addObject:planet];
+                }
+                star.planets = [NSArray arrayWithArray:planetsArray];
+                [starsArray addObject:star];
             }
-            star.planets = [NSArray arrayWithArray:planetsArray];
-            [starsArray addObject:star];
+            else
+            {
+                NSString *filePath = [[NSBundle mainBundle] pathForResource:(NSString *)starDictionary ofType:@"star"];
+                ACStar *star = [[ACStar alloc] initWithFile:filePath parentGalaxy:self];
+                [starsArray addObject:star];
+            }
         }
         self.stars = [NSArray arrayWithArray:starsArray];
+        self.galacticRadius = [rootDictionary[@"galacticRadius"] doubleValue];
     }
     return self;
 }
@@ -79,7 +95,8 @@ NSString *letters = @"abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ012345
 {
     [aCoder encodeObject:self.name forKey:ACGalaxyKeyName];
     [aCoder encodeObject:self.stars forKey:ACGalaxyKeyStars];
-    [aCoder encodeObject:self.textureImage forKey:ACGalaxyKeyTextureImage];
+    [aCoder encodeObject:UIImagePNGRepresentation(self.textureImage) forKey:ACGalaxyKeyTextureImage];
+    [aCoder encodeDouble:self.galacticRadius forKey:ACGalaxyKeyGalacticRadius];
 }
 
 - (id)initWithCoder:(NSCoder *)aDecoder
@@ -88,7 +105,8 @@ NSString *letters = @"abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ012345
     {
         self.name = [aDecoder decodeObjectForKey:ACGalaxyKeyName];
         self.stars = [aDecoder decodeObjectForKey:ACGalaxyKeyStars];
-        self.textureImage = [aDecoder decodeObjectForKey:ACGalaxyKeyTextureImage];
+        self.textureImage = [UIImage imageWithData:[aDecoder decodeObjectForKey:ACGalaxyKeyTextureImage]];
+        self.galacticRadius = [aDecoder decodeDoubleForKey:ACGalaxyKeyGalacticRadius];
     }
     return self;
 }

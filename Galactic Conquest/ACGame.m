@@ -7,22 +7,62 @@
 //
 
 #import "ACGame.h"
+#import "ACPlayer.h"
 #import "ACGalaxy.h"
+#import "ACStar.h"
+#import "ACPlanet.h"
 
 NSString *const ACGameKeyGalaxy = @"game-galaxy";
 NSString *const ACGameKeyPlayers = @"game-players";
 NSString *const ACGameKeyName = @"game-name";
+NSString *const ACGameKeyCurrentPlayer = @"game-currentPlayer";
 
 @implementation ACGame
 
-- (id)initWithName:(NSString *)name
+- (NSString *)localSavesPath
+{
+    NSString *localSavesPath = [[NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) objectAtIndex:0] stringByAppendingPathComponent:@"Saves"];
+    if (![[NSFileManager defaultManager] fileExistsAtPath:localSavesPath])
+        [[NSFileManager defaultManager] createDirectoryAtPath:localSavesPath withIntermediateDirectories:YES attributes:nil error:nil];
+    return localSavesPath;
+}
+
+- (id)initWithName:(NSString *)name players:(NSArray *)players
 {
     if (self = [super init])
     {
         self.name = name;
         self.galaxy = [[ACGalaxy alloc] initWithFile:[[NSBundle mainBundle] pathForResource:@"MilkyWay" ofType:@"galaxy"]];
+        self.players = players;
+        for (ACPlayer *player in self.players)
+        {
+            do
+            {
+                NSUInteger randomStarNumber = arc4random_uniform((uint32_t)self.galaxy.stars.count);
+                ACStar *star = self.galaxy.stars[randomStarNumber];
+                NSUInteger randomPlanetNumber = arc4random_uniform((uint32_t)star.planets.count);
+                ACPlanet *planet = star.planets[randomPlanetNumber];
+                if ([planet.owner.name isEqualToString:@"None"])
+                {
+                    planet.owner = player;
+                    player.planets = @[planet];
+                    break;
+                }
+            } while (1);
+        }
+        self.currentPlayer = self.players[0];
     }
     return self;
+}
+
+- (void)saveGame
+{
+    [self saveToPath:[[self localSavesPath] stringByAppendingPathComponent:self.name]];
+}
+
+- (void)saveToPath:(NSString *)path
+{
+    [NSKeyedArchiver archiveRootObject:self toFile:path];
 }
 
 #pragma mark - NSCoding
@@ -32,6 +72,7 @@ NSString *const ACGameKeyName = @"game-name";
     [aCoder encodeObject:self.galaxy forKey:ACGameKeyGalaxy];
     [aCoder encodeObject:self.players forKey:ACGameKeyPlayers];
     [aCoder encodeObject:self.name forKey:ACGameKeyName];
+    [aCoder encodeObject:self.currentPlayer forKey:ACGameKeyCurrentPlayer];
 }
 
 - (id)initWithCoder:(NSCoder *)aDecoder
@@ -41,6 +82,7 @@ NSString *const ACGameKeyName = @"game-name";
         self.galaxy = [aDecoder decodeObjectForKey:ACGameKeyGalaxy];
         self.players = [aDecoder decodeObjectForKey:ACGameKeyPlayers];
         self.name = [aDecoder decodeObjectForKey:ACGameKeyName];
+        self.currentPlayer = [aDecoder decodeObjectForKey:ACGameKeyCurrentPlayer];
     }
     return self;
 }

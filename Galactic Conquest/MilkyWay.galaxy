@@ -1,31 +1,10 @@
 {
     "name":"Milky Way",
     "textureImage":"spiral-1.png",
+    "galacticRadius":100000,
     "stars":[
-        {
-            "name":"Alpha Centauri",
-            "planets":[
-                {
-                    "name":"planet1",
-                    "textureImage":"planet-1.png",
-                    "orbitalDistance":1.0
-                }
-            ]
-        },
-        {
-            "name":"VY Canis Majoris",
-            "planets":[
-                {
-                    "name":"planet1",
-                    "textureImage":"planet-1.png",
-                    "orbitalDistance":0.7
-                },
-                {
-                    "name":"planet6",
-                    "textureImage":"planet-1.png",
-                    "orbitalDistance":0.4
-                }
-            ]
-        }
+             "VYCanisMajoris",
+             "Betelgeuse",
+             "AlphaCentauri"
     ]
 }

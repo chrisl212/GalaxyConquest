@@ -15,7 +15,10 @@
 - (void)didMoveToView:(SKView *)view
 {
     [super didMoveToView:view];
-    self.backgroundColor = [SKColor blackColor];
+    //self.backgroundColor = [SKColor blackColor];
+    SKSpriteNode *backgroundNode = [[SKSpriteNode alloc] initWithTexture:[SKTexture textureWithImageNamed:@"stars.jpg"] color:nil size:self.size];
+    [self insertChild:backgroundNode atIndex:0];
+    backgroundNode.position = CGPointMake(CGRectGetMidX(self.frame), CGRectGetMidY(self.frame));
     
     NSArray *buttonTitles = @[@"Start Game", @"Add-ons", @"Options"];
     NSArray *selectors = @[@"startGame", @"", @""];
