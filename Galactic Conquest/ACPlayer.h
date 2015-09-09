@@ -16,6 +16,9 @@ extern NSString *const ACPlayerKeyMoney;
 extern NSString *const ACPlayerKeyMinerals;
 extern NSString *const ACPlayerKeyFuel;
 extern NSString *const ACPlayerKeyPlayer1;
+extern NSString *const ACPlayerKeyDelegate;
+
+@protocol ACPlayerDelegate;
 
 @interface ACPlayer : NSObject <NSCoding>
 
@@ -27,7 +30,16 @@ extern NSString *const ACPlayerKeyPlayer1;
 @property (nonatomic) NSInteger minerals;
 @property (nonatomic) NSInteger fuel;
 @property (nonatomic, getter=isPlayer1) BOOL player1;
+@property (weak, nonatomic) id<ACPlayerDelegate> delegate;
 
 - (id)initWithName:(NSString *)name;
+- (void)incrementResources;
+- (void)beginTurn;
+
+@end
+
+@protocol ACPlayerDelegate <NSObject>
+
+- (void)playerDidFinishTurn:(ACPlayer *)player;
 
 @end

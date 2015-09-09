@@ -16,6 +16,7 @@
 #import "ACGame.h"
 #import "AppDelegate.h"
 #import "ACStarSystemScene.h"
+#import "ACPauseMenuScene.h"
 
 @implementation ACPlanetScene
 
@@ -76,8 +77,13 @@
 
 - (void)pauseMenu
 {
-    ACMainMenuScene *mainMenuScene = [[ACMainMenuScene alloc] initWithSize:self.size];
-    [self.view presentScene:mainMenuScene transition:[SKTransition fadeWithDuration:0.5]];
+    UIGraphicsBeginImageContextWithOptions(self.view.bounds.size, NO, 2.0);
+    [self.view drawViewHierarchyInRect:self.frame afterScreenUpdates:NO];
+    UIImage *viewImage = UIGraphicsGetImageFromCurrentImageContext();
+    UIGraphicsEndImageContext();
+    
+    ACPauseMenuScene *pauseMenuScene = [[ACPauseMenuScene alloc] initWithPreviousScene:self snapshot:viewImage];
+    [self.view presentScene:pauseMenuScene];
 }
 
 - (void)displayStar

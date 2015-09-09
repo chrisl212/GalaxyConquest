@@ -11,6 +11,7 @@
 #import "ACGame.h"
 #import "ACGalaxyScene.h"
 #import "ACPlayer.h"
+#import "ACAIPlayer.h"
 #import "ACButtonNode.h"
 #import "AppDelegate.h"
 #import <GameKit/GameKit.h>
@@ -18,11 +19,16 @@
 @interface ACLoadGameScene ()
 
 @property (strong, nonatomic) UITextField *gameNameTextField;
-@property (strong, nonatomic) UITextField *numberOfPlayersTextField;
+@property (strong, nonatomic) UILabel *numberOfPlayersLabel;
 
 @end
 
 @implementation ACLoadGameScene
+
+- (NSMutableArray *)colorsArray
+{
+    return @[[UIColor redColor], [UIColor greenColor], [UIColor orangeColor], [UIColor purpleColor], [UIColor cyanColor], [UIColor yellowColor], [UIColor brownColor]].mutableCopy;
+}
 
 - (AppDelegate *)appDelegate
 {
@@ -32,7 +38,7 @@
 - (void)createUIInView:(SKView *)view
 {
     self.gameNameTextField = [[UITextField alloc] initWithFrame:CGRectMake(0.0, 0.0, 100.0, 20.0)];
-    self.gameNameTextField.center = CGPointMake(CGRectGetMidX(view.frame) + self.gameNameTextField.frame.size.width/2.0, CGRectGetMidY(view.frame) - view.frame.size.height/4.0);
+    self.gameNameTextField.center = CGPointMake(CGRectGetMidX(view.frame) + self.gameNameTextField.frame.size.width/2.0, CGRectGetMidY(view.frame) - view.frame.size.height/5.0);
     self.gameNameTextField.text = @"Game name";
     self.gameNameTextField.textColor = [UIColor whiteColor];
     self.gameNameTextField.autocorrectionType = UITextAutocorrectionTypeNo;
@@ -47,22 +53,21 @@
     gameNameLabel.textAlignment = NSTextAlignmentRight;
     [view addSubview:gameNameLabel];
     
-    self.numberOfPlayersTextField = [[UITextField alloc] initWithFrame:CGRectMake(0.0, 0.0, 100.0, 20.0)];
-    self.numberOfPlayersTextField.center = CGPointMake(CGRectGetMidX(view.frame) + self.numberOfPlayersTextField.frame.size.width/2.0, CGRectGetMidY(view.frame));
-    self.numberOfPlayersTextField.text = @"4";
-    self.numberOfPlayersTextField.textColor = [UIColor whiteColor];
-    self.numberOfPlayersTextField.keyboardType = UIKeyboardTypeNumberPad;
-    self.numberOfPlayersTextField.autocorrectionType = UITextAutocorrectionTypeNo;
-    [self.numberOfPlayersTextField addTarget:self.gameNameTextField action:@selector(resignFirstResponder) forControlEvents:UIControlEventEditingDidEndOnExit];
-    self.numberOfPlayersTextField.textAlignment = NSTextAlignmentLeft;
-    [view addSubview:self.numberOfPlayersTextField];
+    self.numberOfPlayersLabel = [[UILabel alloc] initWithFrame:CGRectMake(0.0, 0.0, 200.0, 20.0)];
+    self.numberOfPlayersLabel.text = @"Number of Players: 4";
+    self.numberOfPlayersLabel.center = CGPointMake(CGRectGetMidX(view.frame), CGRectGetMidY(self.frame));
+    self.numberOfPlayersLabel.textColor = [UIColor whiteColor];
+    self.numberOfPlayersLabel.textAlignment = NSTextAlignmentCenter;
+    [view addSubview:self.numberOfPlayersLabel];
     
-    UILabel *numberOfPlayersLabel = [[UILabel alloc] initWithFrame:CGRectMake(0.0, 0.0, 100.0, 20.0)];
-    numberOfPlayersLabel.text = @"Number of Players:";
-    numberOfPlayersLabel.center = CGPointMake(CGRectGetMidX(view.frame) - numberOfPlayersLabel.frame.size.width/2.0, self.numberOfPlayersTextField.center.y);
-    numberOfPlayersLabel.textColor = [UIColor whiteColor];
-    numberOfPlayersLabel.textAlignment = NSTextAlignmentRight;
-    [view addSubview:numberOfPlayersLabel];
+    UIStepper *numberOfPlayersStepper = [[UIStepper alloc] init];
+    numberOfPlayersStepper.minimumValue = 2.0;
+    numberOfPlayersStepper.maximumValue = 8.0;
+    numberOfPlayersStepper.value = 4.0;
+    numberOfPlayersStepper.tintColor = [UIColor whiteColor];
+    numberOfPlayersStepper.center = CGPointMake(self.numberOfPlayersLabel.center.x + (self.numberOfPlayersLabel.frame.size.width/2.0 + numberOfPlayersStepper.frame.size.width/2.0), self.numberOfPlayersLabel.center.y);
+    [numberOfPlayersStepper addTarget:self action:@selector(stepperValueChanged:) forControlEvents:UIControlEventValueChanged];
+    [view addSubview:numberOfPlayersStepper];
 }
 
 - (void)didMoveToView:(SKView *)view
@@ -96,18 +101,30 @@
     }
 }
 
+- (void)stepperValueChanged:(UIStepper *)stepper
+{
+    self.numberOfPlayersLabel.text = [NSString stringWithFormat:@"Number of Players: %.0lF", stepper.value];
+}
+
 - (void)createGame
 {
-    NSInteger numberOfPlayers = [self.numberOfPlayersTextField.text integerValue];
+    NSInteger numberOfPlayers = [[self.numberOfPlayersLabel.text componentsSeparatedByString:@":"][1] integerValue];
     NSString *name = ([[GKLocalPlayer localPlayer] isAuthenticated]) ? [[GKLocalPlayer localPlayer] alias] : [[UIDevice currentDevice] name];
     ACPlayer *localPlayer = [[ACPlayer alloc] initWithName:name];
     localPlayer.player1 = YES;
     localPlayer.color = [UIColor blueColor];
+    
+    NSMutableArray *colorsArray = [self colorsArray];
     NSMutableArray *playersArray = @[localPlayer].mutableCopy;
     for (NSInteger i = 1; i < numberOfPlayers; i++)
     {
         NSString *playerName = [NSString stringWithFormat:@"Player%ld", i];
-        [playersArray addObject:[[ACPlayer alloc] initWithName:playerName]];
+        ACAIPlayer *player = [[ACAIPlayer alloc] initWithName:playerName];
+        NSInteger randomNumber = (NSInteger)arc4random_uniform((uint32_t)colorsArray.count);
+        player.color = colorsArray[randomNumber];
+        [playersArray addObject:player];
+        
+        [colorsArray removeObjectAtIndex:randomNumber];
     }
     
     ACGame *game = [[ACGame alloc] initWithName:self.gameNameTextField.text players:[NSArray arrayWithArray:playersArray]];
@@ -115,6 +132,7 @@
 
     ACGalaxyScene *galaxyScene = [[ACGalaxyScene alloc] initWithGalaxy:game.galaxy size:self.size];
     [self.view presentScene:galaxyScene transition:[SKTransition fadeWithDuration:0.5]];
+    [game startGame];
     
     [self removeViews];
 }
@@ -141,6 +159,7 @@
     
     ACGalaxyScene *galaxyScene = [[ACGalaxyScene alloc] initWithGalaxy:game.galaxy size:self.size];
     [self.view presentScene:galaxyScene transition:[SKTransition fadeWithDuration:0.5]];
+    [game startGame];
     
     [self removeViews];
 }

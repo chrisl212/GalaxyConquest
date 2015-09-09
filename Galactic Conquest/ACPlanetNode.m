@@ -61,8 +61,9 @@ SCNVector3 vectorFromQuadrant(NSInteger q)
         
         if (planet.atmosphere)
         {
-            SCNNode *atmosphereNode = [SCNNode nodeWithGeometry:[SCNSphere sphereWithRadius:2.05]];
+            SCNNode *atmosphereNode = [SCNNode nodeWithGeometry:[SCNSphere sphereWithRadius:2.1]];
             atmosphereNode.opacity = 0.3;
+            atmosphereNode.geometry.firstMaterial.diffuse.contents = [UIColor colorWithRed:0.7 green:0.7 blue:1.0 alpha:1.0];
             [self.scnScene.rootNode addChildNode:atmosphereNode];
         }
         

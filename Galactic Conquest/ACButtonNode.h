@@ -8,10 +8,15 @@
 
 #import <SpriteKit/SpriteKit.h>
 
+@class ACButtonNode;
+
+typedef void(^ACButtonNodeTouchHandler)(ACButtonNode *);
+
 @interface ACButtonNode : SKSpriteNode
 
 @property (strong, nonatomic) NSString *title;
 @property (strong, nonatomic) UIFont *font;
+@property (strong, nonatomic) ACButtonNodeTouchHandler touchHandler;
 
 - (id)initWithTitle:(NSString *)title;
 - (id)initWithTitle:(NSString *)title font:(UIFont *)font;

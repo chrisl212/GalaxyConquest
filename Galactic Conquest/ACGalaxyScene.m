@@ -6,6 +6,7 @@
 //  Copyright (c) 2015 Christopher Loonam. All rights reserved.
 //
 
+#import <SceneKit/SceneKit.h>
 #import "ACGalaxyScene.h"
 #import "ACGalaxyNode.h"
 #import "ACButtonNode.h"
@@ -16,8 +17,8 @@
 #import "ACStarSystemScene.h"
 #import "ACInfoNode.h"
 #import "ACPlayer.h"
-#import "ACGame.h"
 #import "AppDelegate.h"
+#import "ACPauseMenuScene.h"
 
 inline CGPoint findB(double Ax, double Ay, double Cx, double Cy, double L, int clockwise)
 {
@@ -39,6 +40,8 @@ inline CGPoint findB(double Ax, double Ay, double Cx, double Cy, double L, int c
 @interface ACGalaxyScene ()
 
 @property (strong, nonatomic) ACGalaxyNode *galaxyNode;
+@property (strong, nonatomic) ACButtonNode *nextTurnButtonNode;
+@property (strong, nonatomic) ACInfoNode *playerInfoNode;
 
 @end
 
@@ -85,12 +88,7 @@ inline CGPoint findB(double Ax, double Ay, double Cx, double Cy, double L, int c
         menuButton.position = CGPointMake(menuButton.frame.size.width/2.0, self.frame.size.height - menuButton.frame.size.height/2.0);
         [menuButton addTarget:self action:@selector(pauseMenu)];
         [self addChild:menuButton];
-        
-        ACButtonNode *saveButton = [[ACButtonNode alloc] initWithTitle:@"Save" font:[UIFont systemFontOfSize:14.0]];
-        saveButton.position = CGPointMake(saveButton.size.width/2.0, saveButton.size.height/2.0);
-        [saveButton addTarget:[self appDelegate].currentGame action:@selector(saveGame)];
-        [self addChild:saveButton];
-        
+
         for (ACStar *star in self.galaxy.stars)
         {
             ACStarMapNode *starMapNode = [[ACStarMapNode alloc] initWithStar:star];
@@ -111,11 +109,28 @@ inline CGPoint findB(double Ax, double Ay, double Cx, double Cy, double L, int c
             [self addChild:infoNode];
             [self addChild:starMapNode];
         }
+        
         ACPlayer *currentPlayer = [self appDelegate].currentGame.currentPlayer;
         NSArray *playerInfoStrings = @[currentPlayer.name, [NSString stringWithFormat:@"Money:%ldk", currentPlayer.money], [NSString stringWithFormat:@"Minerals:%ldk", currentPlayer.minerals], [NSString stringWithFormat:@"Fuel:%ldk", currentPlayer.fuel]];
-        ACInfoNode *playerInfoNode = [[ACInfoNode alloc] initWithStrings:playerInfoStrings size:CGSizeMake(200.0, 200.0)];
-        playerInfoNode.position = CGPointMake(self.size.width - playerInfoNode.size.width, playerInfoNode.size.height);
-        [self addChild:playerInfoNode];
+        self.playerInfoNode = [[ACInfoNode alloc] initWithStrings:playerInfoStrings size:CGSizeMake(200.0, 200.0)];
+        self.playerInfoNode.position = CGPointMake(self.size.width - self.playerInfoNode.size.width, self.playerInfoNode.size.height);
+        [self addChild:self.playerInfoNode];
+        
+        [currentPlayer addObserver:self forKeyPath:@"minerals" options:kNilOptions context:NULL];
+        [currentPlayer addObserver:self forKeyPath:@"fuel" options:kNilOptions context:NULL];
+        [currentPlayer addObserver:self forKeyPath:@"money" options:kNilOptions context:NULL];
+        
+        self.nextTurnButtonNode = [[ACButtonNode alloc] initWithTitle:@"Next Turn" font:[UIFont systemFontOfSize:14.0]];
+        self.nextTurnButtonNode.position = CGPointMake(self.playerInfoNode.position.x + self.playerInfoNode.size.width/2.0, self.playerInfoNode.position.y + self.nextTurnButtonNode.size.height/2.0);
+        self.nextTurnButtonNode.touchHandler = ^(ACButtonNode *button)
+        {
+            if ([currentPlayer.delegate respondsToSelector:@selector(playerDidFinishTurn:)])
+                [currentPlayer.delegate playerDidFinishTurn:currentPlayer];
+        };
+        [self addChild:self.nextTurnButtonNode];
+        
+        ACGame *currentGame = [self appDelegate].currentGame;
+        currentGame.delegate = self;
     }
     return self;
 }
@@ -132,14 +147,38 @@ inline CGPoint findB(double Ax, double Ay, double Cx, double Cy, double L, int c
 
 - (void)pauseMenu
 {
-    ACMainMenuScene *mainMenuScene = [[ACMainMenuScene alloc] initWithSize:self.size];
-    [self.view presentScene:mainMenuScene transition:[SKTransition fadeWithDuration:0.5]];
+    UIGraphicsBeginImageContextWithOptions(self.view.bounds.size, NO, 2.0);
+    [self.view drawViewHierarchyInRect:self.frame afterScreenUpdates:NO];
+    UIImage *viewImage = UIGraphicsGetImageFromCurrentImageContext();
+    UIGraphicsEndImageContext();
+    
+    ACPauseMenuScene *pauseMenuScene = [[ACPauseMenuScene alloc] initWithPreviousScene:self snapshot:viewImage];
+    [self.view presentScene:pauseMenuScene];
 }
 
 - (void)starSelected:(ACStarMapNode *)starMapNode
 {
     ACStarSystemScene *starSystemScene = [[ACStarSystemScene alloc] initWithStar:starMapNode.star size:self.size];
     [self.view presentScene:starSystemScene transition:[SKTransition fadeWithDuration:0.5]];
+}
+
+- (void)game:(ACGame *)game turnDidChangeToPlayer:(ACPlayer *)player
+{
+    if (!player.isPlayer1)
+        self.nextTurnButtonNode.title = @"Loading...", self.nextTurnButtonNode.userInteractionEnabled = NO;
+    else
+        self.nextTurnButtonNode.title = @"Next Turn", self.nextTurnButtonNode.userInteractionEnabled = YES;
+}
+
+- (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context
+{
+    [self.playerInfoNode removeFromParent];
+    
+    ACPlayer *currentPlayer = [self appDelegate].currentGame.currentPlayer;
+    NSArray *playerInfoStrings = @[currentPlayer.name, [NSString stringWithFormat:@"Money:%ldk", currentPlayer.money], [NSString stringWithFormat:@"Minerals:%ldk", currentPlayer.minerals], [NSString stringWithFormat:@"Fuel:%ldk", currentPlayer.fuel]];
+    self.playerInfoNode = [[ACInfoNode alloc] initWithStrings:playerInfoStrings size:CGSizeMake(200.0, 200.0)];
+    self.playerInfoNode.position = CGPointMake(self.size.width - self.playerInfoNode.size.width, self.playerInfoNode.size.height);
+    [self addChild:self.playerInfoNode];
 }
 
 @end

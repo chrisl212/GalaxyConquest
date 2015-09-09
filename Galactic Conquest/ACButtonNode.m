@@ -104,6 +104,8 @@
         SEL action = NSSelectorFromString(self.selectors[i]);
         [self.targets[i] performSelector:action];
     }
+    if (self.touchHandler)
+        self.touchHandler(self);
 }
 
 @end

@@ -7,6 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "ACPlayer.h"
 
 extern NSString *const ACGameKeyGalaxy;
 extern NSString *const ACGameKeyPlayers;
@@ -14,16 +15,27 @@ extern NSString *const ACGameKeyName;
 extern NSString *const ACGameKeyCurrentPlayer;
 
 @class ACGalaxy, ACPlayer;
+@protocol ACGameDelegate;
 
-@interface ACGame : NSObject <NSCoding>
+@interface ACGame : NSObject <NSCoding, ACPlayerDelegate>
 
 @property (strong, nonatomic) ACGalaxy *galaxy;
 @property (strong, nonatomic) NSArray *players;
 @property (strong, nonatomic) NSString *name;
 @property (strong, nonatomic) ACPlayer *currentPlayer;
+@property (weak, nonatomic) id<ACGameDelegate> delegate; //doesn't need to be encoded because the delegate is re-established when the UI is recreated ... right?
 
 - (id)initWithName:(NSString *)name players:(NSArray *)players;
+- (void)startGame;
 - (void)saveGame;
 - (void)saveToPath:(NSString *)path;
+
+@end
+
+@protocol ACGameDelegate <NSObject>
+
+@optional
+- (void)gameDidStart:(ACGame *)game;
+- (void)game:(ACGame *)game turnDidChangeToPlayer:(ACPlayer *)player;
 
 @end

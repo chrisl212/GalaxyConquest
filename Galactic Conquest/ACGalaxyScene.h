@@ -7,10 +7,11 @@
 //
 
 #import <SpriteKit/SpriteKit.h>
+#import "ACGame.h"
 
 @class ACGalaxy;
 
-@interface ACGalaxyScene : SKScene
+@interface ACGalaxyScene : SKScene <ACGameDelegate>
 
 @property (strong, nonatomic) ACGalaxy *galaxy;
 

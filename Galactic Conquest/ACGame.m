@@ -7,7 +7,6 @@
 //
 
 #import "ACGame.h"
-#import "ACPlayer.h"
 #import "ACGalaxy.h"
 #import "ACStar.h"
 #import "ACPlanet.h"
@@ -36,6 +35,7 @@ NSString *const ACGameKeyCurrentPlayer = @"game-currentPlayer";
         self.players = players;
         for (ACPlayer *player in self.players)
         {
+            player.delegate = self;
             do
             {
                 NSUInteger randomStarNumber = arc4random_uniform((uint32_t)self.galaxy.stars.count);
@@ -63,6 +63,24 @@ NSString *const ACGameKeyCurrentPlayer = @"game-currentPlayer";
 - (void)saveToPath:(NSString *)path
 {
     [NSKeyedArchiver archiveRootObject:self toFile:path];
+}
+
+- (void)startGame
+{
+    [self.currentPlayer beginTurn];
+    if ([self.delegate respondsToSelector:@selector(gameDidStart:)])
+        [self.delegate gameDidStart:self];
+}
+
+- (void)playerDidFinishTurn:(ACPlayer *)player
+{
+    NSInteger currentIndex = [self.players indexOfObject:self.currentPlayer];
+    NSInteger nextIndex = ((currentIndex + 1) == self.players.count) ? 0 : currentIndex + 1;
+    self.currentPlayer = self.players[nextIndex];
+    if ([self.delegate respondsToSelector:@selector(game:turnDidChangeToPlayer:)])
+        [self.delegate game:self turnDidChangeToPlayer:self.currentPlayer];
+    [self.currentPlayer incrementResources];
+    [self.currentPlayer beginTurn];
 }
 
 #pragma mark - NSCoding

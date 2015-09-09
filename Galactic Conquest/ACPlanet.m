@@ -20,6 +20,7 @@ NSString *const ACPlanetKeyFleets = @"planet-fleets";
 NSString *const ACPlanetKeyType = @"planet-type";
 NSString *const ACPlanetKeyInhabited = @"planet-inhabited";
 NSString *const ACPlanetKeyAtmosphere = @"planet-atmosphere";
+NSString *const ACPlanetKeyBuildQueue = @"planet-buildQueue";
 
 NSString *const ACPlanetTypeGas = @"planetType-gas";
 NSString *const ACPlanetTypeRocky = @"planetType-rocky";
@@ -52,6 +53,7 @@ NSString *const ACPlanetTypeRocky = @"planetType-rocky";
     [aCoder encodeInteger:self.fuelValue forKey:ACPlanetKeyFuelValue];
     [aCoder encodeObject:self.fleets forKey:ACPlanetKeyFleets];
     [aCoder encodeBool:self.atmosphere forKey:ACPlanetKeyAtmosphere];
+    [aCoder encodeObject:self.buildQueue forKey:ACPlanetKeyBuildQueue];
 }
 
 - (id)initWithCoder:(NSCoder *)aDecoder
@@ -67,6 +69,7 @@ NSString *const ACPlanetTypeRocky = @"planetType-rocky";
         self.fuelValue = [aDecoder decodeIntegerForKey:ACPlanetKeyFuelValue];
         self.fleets = [aDecoder decodeObjectForKey:ACPlanetKeyFleets];
         self.atmosphere = [aDecoder decodeBoolForKey:ACPlanetKeyAtmosphere];
+        self.buildQueue = [aDecoder decodeObjectForKey:ACPlanetKeyBuildQueue];
     }
     return self;
 }

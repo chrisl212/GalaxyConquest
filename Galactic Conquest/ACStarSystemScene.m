@@ -18,7 +18,7 @@
 #import "ACPlayer.h"
 #import "ACInfoNode.h"
 #import "AppDelegate.h"
-#import "ACGame.h"
+#import "ACPauseMenuScene.h"
 
 #define PLANET_WIDTH 50.0
 #define PLANET_HEIGHT 50.0
@@ -48,6 +48,8 @@ CGPoint findB(double Ax, double Ay, double Cx, double Cy, double L, int clockwis
 @interface ACStarSystemScene ()
 
 @property (strong, nonatomic) ACStarNode *starNode;
+@property (strong, nonatomic) ACButtonNode *nextTurnButtonNode;
+@property (strong, nonatomic) ACInfoNode *playerInfoNode;
 
 @end
 
@@ -85,9 +87,81 @@ CGPoint findB(double Ax, double Ay, double Cx, double Cy, double L, int clockwis
         
         ACPlayer *currentPlayer = [self appDelegate].currentGame.currentPlayer;
         NSArray *playerInfoStrings = @[currentPlayer.name, [NSString stringWithFormat:@"Money:%ldk", currentPlayer.money], [NSString stringWithFormat:@"Minerals:%ldk", currentPlayer.minerals], [NSString stringWithFormat:@"Fuel:%ldk", currentPlayer.fuel]];
-        ACInfoNode *playerInfoNode = [[ACInfoNode alloc] initWithStrings:playerInfoStrings size:CGSizeMake(200.0, 200.0)];
-        playerInfoNode.position = CGPointMake(self.size.width - playerInfoNode.size.width, playerInfoNode.size.height);
-        [self addChild:playerInfoNode];
+        self.playerInfoNode = [[ACInfoNode alloc] initWithStrings:playerInfoStrings size:CGSizeMake(200.0, 200.0)];
+        self.playerInfoNode.position = CGPointMake(self.size.width - self.playerInfoNode.size.width, self.playerInfoNode.size.height);
+        [self addChild:self.playerInfoNode];
+        
+        self.nextTurnButtonNode = [[ACButtonNode alloc] initWithTitle:@"Next Turn" font:[UIFont systemFontOfSize:14.0]];
+        self.nextTurnButtonNode.position = CGPointMake(self.playerInfoNode.position.x + self.playerInfoNode.size.width/2.0, self.playerInfoNode.position.y + self.nextTurnButtonNode.size.height/2.0);
+        self.nextTurnButtonNode.touchHandler = ^(ACButtonNode *button)
+        {
+            if ([currentPlayer.delegate respondsToSelector:@selector(playerDidFinishTurn:)])
+                [currentPlayer.delegate playerDidFinishTurn:currentPlayer];
+        };
+        [self addChild:self.nextTurnButtonNode];
+        
+        [currentPlayer addObserver:self forKeyPath:@"minerals" options:kNilOptions context:NULL];
+        [currentPlayer addObserver:self forKeyPath:@"fuel" options:kNilOptions context:NULL];
+        [currentPlayer addObserver:self forKeyPath:@"money" options:kNilOptions context:NULL];
+        
+        ACGame *currentGame = [self appDelegate].currentGame;
+        currentGame.delegate = self;
+        
+        for (ACPlanet *planet in self.star.planets)
+        {
+            UIGraphicsBeginImageContext(self.size);
+            CGContextRef context = UIGraphicsGetCurrentContext();
+            CGContextSetStrokeColorWithColor(context, [UIColor colorWithRed:1.0 green:1.0 blue:1.0 alpha:0.35].CGColor);
+            CGContextSetLineWidth(context, 3.0);
+            CGContextSetAllowsAntialiasing(context, YES);
+            CGContextSetLineCap(context, kCGLineCapRound);
+            CGContextSetLineJoin(context, kCGLineJoinRound);
+            CGContextSetShouldAntialias(context, YES);
+            CGContextSetMiterLimit(context, 2.0);
+            
+            CGFloat radius = ((self.size.height - PLANET_HEIGHT/2.0)/2.0) * planet.orbitalDistance;
+            
+            CGContextAddArc(context, CGRectGetMidX(self.frame), CGRectGetMidY(self.frame), radius, 30.0, 0.0, 1);
+            CGContextStrokePath(context);
+            
+            UIImage *orbitImage = UIGraphicsGetImageFromCurrentImageContext();
+            
+            UIGraphicsEndImageContext();
+            
+            SKSpriteNode *orbitNode = [[SKSpriteNode alloc] initWithTexture:[SKTexture textureWithImage:orbitImage]];
+            orbitNode.position = CGPointMake(CGRectGetMidX(self.frame), CGRectGetMidY(self.frame));
+            [self insertChild:orbitNode atIndex:0];
+        }
+        for (ACPlanet *planet in self.star.planets)
+        {
+            NSInteger randomPosition = arc4random_uniform(10) + 1;
+            
+            CGFloat radius = ((self.size.height - PLANET_HEIGHT/2.0)/2.0) * planet.orbitalDistance;
+            
+            CGFloat topX = CGRectGetMidX(self.frame);
+            CGFloat topY = CGRectGetMidY(self.frame) + radius;
+            
+            CGFloat orbitalDiameter = radius * 2.0;
+            CGFloat orbitalCircumference = M_PI * orbitalDiameter;
+            CGFloat oneTenthCircumference = orbitalCircumference/10.0;
+            
+            CGFloat positionCircumference = oneTenthCircumference * randomPosition;
+            
+            CGPoint position = findB(topX, topY, CGRectGetMidX(self.frame), CGRectGetMidY(self.frame), positionCircumference, 1);
+            CGFloat ang = (angle(topX, topY, position.x, position.y) * (180.0/M_PI));
+            
+            ACPlanetNode *planetNode = [[ACPlanetNode alloc] initWithPlanet:planet size:CGSizeMake(PLANET_WIDTH, PLANET_HEIGHT) lightAngle:ang];
+            planetNode.delegate = self;
+            
+            planetNode.position = position;
+            
+            ACInfoNode *infoNode = [[ACInfoNode alloc] initWithStrings:@[planet.name, [NSString stringWithFormat:@"Owner: %@", planet.owner.name]] size:CGSizeMake(80.0, 40.0)];
+            infoNode.position = planetNode.position;
+            infoNode.color = planet.owner.color;
+            
+            [self addChild:planetNode];
+            [self addChild:infoNode];
+        }
     }
     return self;
 }
@@ -95,67 +169,18 @@ CGPoint findB(double Ax, double Ay, double Cx, double Cy, double L, int clockwis
 - (void)didMoveToView:(SKView *)view
 {
     [super didMoveToView:view];
-    for (ACPlanet *planet in self.star.planets)
-    {
-        UIGraphicsBeginImageContext(self.size);
-        CGContextRef context = UIGraphicsGetCurrentContext();
-        CGContextSetStrokeColorWithColor(context, [UIColor colorWithRed:1.0 green:1.0 blue:1.0 alpha:0.35].CGColor);
-        CGContextSetLineWidth(context, 3.0);
-        CGContextSetAllowsAntialiasing(context, YES);
-        CGContextSetLineCap(context, kCGLineCapRound);
-        CGContextSetLineJoin(context, kCGLineJoinRound);
-        CGContextSetShouldAntialias(context, YES);
-        CGContextSetMiterLimit(context, 2.0);
-        
-        CGFloat radius = ((self.size.height - PLANET_HEIGHT/2.0)/2.0) * planet.orbitalDistance;
-        
-        CGContextAddArc(context, CGRectGetMidX(self.frame), CGRectGetMidY(self.frame), radius, 30.0, 0.0, 1);
-        CGContextStrokePath(context);
-        
-        UIImage *orbitImage = UIGraphicsGetImageFromCurrentImageContext();
-        
-        UIGraphicsEndImageContext();
-        
-        SKSpriteNode *orbitNode = [[SKSpriteNode alloc] initWithTexture:[SKTexture textureWithImage:orbitImage]];
-        orbitNode.position = CGPointMake(CGRectGetMidX(self.frame), CGRectGetMidY(self.frame));
-        [self insertChild:orbitNode atIndex:0];
-    }
-    for (ACPlanet *planet in self.star.planets)
-    {
-        NSInteger randomPosition = arc4random_uniform(10) + 1;
-        
-        CGFloat radius = ((self.size.height - PLANET_HEIGHT/2.0)/2.0) * planet.orbitalDistance;
-        
-        CGFloat topX = CGRectGetMidX(self.frame);
-        CGFloat topY = CGRectGetMidY(self.frame) + radius;
-        
-        CGFloat orbitalDiameter = radius * 2.0;
-        CGFloat orbitalCircumference = M_PI * orbitalDiameter;
-        CGFloat oneTenthCircumference = orbitalCircumference/10.0;
-        
-        CGFloat positionCircumference = oneTenthCircumference * randomPosition;
-        
-        CGPoint position = findB(topX, topY, CGRectGetMidX(self.frame), CGRectGetMidY(self.frame), positionCircumference, 1);
-        CGFloat ang = (angle(topX, topY, position.x, position.y) * (180.0/M_PI));
-        
-        ACPlanetNode *planetNode = [[ACPlanetNode alloc] initWithPlanet:planet size:CGSizeMake(PLANET_WIDTH, PLANET_HEIGHT) lightAngle:ang];
-        planetNode.delegate = self;
-        
-        planetNode.position = position;
-        
-        ACInfoNode *infoNode = [[ACInfoNode alloc] initWithStrings:@[planet.name, [NSString stringWithFormat:@"Owner: %@", planet.owner.name]] size:CGSizeMake(80.0, 40.0)];
-        infoNode.position = planetNode.position;
-        infoNode.color = planet.owner.color;
-        
-        [self addChild:planetNode];
-        [self addChild:infoNode];
-    }
+
 }
 
 - (void)pauseMenu
 {
-    ACMainMenuScene *mainMenuScene = [[ACMainMenuScene alloc] initWithSize:self.size];
-    [self.view presentScene:mainMenuScene transition:[SKTransition fadeWithDuration:0.5]];
+    UIGraphicsBeginImageContextWithOptions(self.view.bounds.size, NO, 2.0);
+    [self.view drawViewHierarchyInRect:self.frame afterScreenUpdates:NO];
+    UIImage *viewImage = UIGraphicsGetImageFromCurrentImageContext();
+    UIGraphicsEndImageContext();
+    
+    ACPauseMenuScene *pauseMenuScene = [[ACPauseMenuScene alloc] initWithPreviousScene:self snapshot:viewImage];
+    [self.view presentScene:pauseMenuScene];
 }
 
 - (void)displayGalaxy
@@ -167,6 +192,25 @@ CGPoint findB(double Ax, double Ay, double Cx, double Cy, double L, int clockwis
 - (void)update:(NSTimeInterval)currentTime
 {
 
+}
+
+- (void)game:(ACGame *)game turnDidChangeToPlayer:(ACPlayer *)player
+{
+    if (!player.isPlayer1)
+        self.nextTurnButtonNode.title = @"Loading...", self.nextTurnButtonNode.userInteractionEnabled = NO;
+    else
+        self.nextTurnButtonNode.title = @"Next Turn", self.nextTurnButtonNode.userInteractionEnabled = YES;
+}
+
+- (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context
+{
+    [self.playerInfoNode removeFromParent];
+    
+    ACPlayer *currentPlayer = [self appDelegate].currentGame.currentPlayer;
+    NSArray *playerInfoStrings = @[currentPlayer.name, [NSString stringWithFormat:@"Money:%ldk", currentPlayer.money], [NSString stringWithFormat:@"Minerals:%ldk", currentPlayer.minerals], [NSString stringWithFormat:@"Fuel:%ldk", currentPlayer.fuel]];
+    self.playerInfoNode = [[ACInfoNode alloc] initWithStrings:playerInfoStrings size:CGSizeMake(200.0, 200.0)];
+    self.playerInfoNode.position = CGPointMake(self.size.width - self.playerInfoNode.size.width, self.playerInfoNode.size.height);
+    [self addChild:self.playerInfoNode];
 }
 
 #pragma mark - Planet Node Delegate

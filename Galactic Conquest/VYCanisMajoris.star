@@ -6,40 +6,40 @@
                {
                "name":"Marsia",
                "type":"rocky",
-               "textureImage":"rocky-2.jpg",
-               "orbitalDistance":1.0,
-               "mineralValue":50.0,
+               "textureImage":"rocky-1.jpg",
+               "orbitalDistance":0.3,
+               "mineralValue":75.0,
+               "fuelValue":50.0,
+               "inhabited":0,
+               "atmosphere":1
+               },
+               {
+               "name":"Inhabia",
+               "type":"rocky",
+               "textureImage":"rocky-4.jpg",
+               "orbitalDistance":0.5,
+               "mineralValue":75.0,
                "fuelValue":50.0,
                "inhabited":1,
                "atmosphere":1
                },
                {
-               "name":"planet7",
+               "name":"Rokia",
                "type":"rocky",
-               "textureImage":"rocky-1.jpg",
-               "orbitalDistance":0.55,
+               "textureImage":"rocky-3.png",
+               "orbitalDistance":0.7,
                "mineralValue":75.0,
-               "fuelValue":25.0,
+               "fuelValue":50.0,
                "inhabited":0,
                "atmosphere":0
                },
                {
-               "name":"planet6",
+               "name":"Outeria",
                "type":"gas",
-               "textureImage":"gas-1.png",
-               "orbitalDistance":0.4,
-               "mineralValue":50.0,
-               "fuelValue":50.0,
-               "inhabited":0,
-               "atmosphere":1
-               },
-               {
-               "name":"planet9",
-               "type":"rocky",
-               "textureImage":"rocky-1.jpg",
-               "orbitalDistance":0.7,
-               "mineralValue":75.0,
-               "fuelValue":25.0,
+               "textureImage":"gas-3.png",
+               "orbitalDistance":1.0,
+               "mineralValue":25.0,
+               "fuelValue":75.0,
                "inhabited":0,
                "atmosphere":0
                }

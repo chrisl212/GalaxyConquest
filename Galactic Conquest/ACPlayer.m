@@ -17,6 +17,7 @@ NSString *const ACPlayerKeyMoney = @"player-money";
 NSString *const ACPlayerKeyMinerals = @"player-minerals";
 NSString *const ACPlayerKeyFuel = @"player-fuel";
 NSString *const ACPlayerKeyPlayer1 = @"player-isPlayer1";
+NSString *const ACPlayerKeyDelegate = @"player-delegate";
 
 @implementation ACPlayer
 
@@ -36,7 +37,25 @@ NSString *const ACPlayerKeyPlayer1 = @"player-isPlayer1";
 
 - (void)setPlanets:(NSArray *)planets
 {
+    NSArray *before = self.planets.copy;
     _planets = planets;
+    for (ACPlanet *p in self.planets)
+    {
+        if (![before containsObject:p])
+        {
+            self.minerals += p.mineralValue;
+            self.fuel += p.fuelValue;
+        }
+    }
+}
+
+- (void)beginTurn
+{
+    NSLog(@"Turn has begun for %@", self.name);
+}
+
+- (void)incrementResources
+{
     for (ACPlanet *p in self.planets)
     {
         self.minerals += p.mineralValue;
@@ -56,6 +75,7 @@ NSString *const ACPlayerKeyPlayer1 = @"player-isPlayer1";
     [aCoder encodeInteger:self.minerals forKey:ACPlayerKeyMinerals];
     [aCoder encodeInteger:self.fuel forKey:ACPlayerKeyFuel];
     [aCoder encodeBool:self.player1 forKey:ACPlayerKeyPlayer1];
+    [aCoder encodeObject:self.delegate forKey:ACPlayerKeyDelegate];
 }
 
 - (id)initWithCoder:(NSCoder *)aDecoder
@@ -70,6 +90,7 @@ NSString *const ACPlayerKeyPlayer1 = @"player-isPlayer1";
         self.minerals = [aDecoder decodeIntegerForKey:ACPlayerKeyMinerals];
         self.fuel = [aDecoder decodeIntegerForKey:ACPlayerKeyFuel];
         self.player1 = [aDecoder decodeBoolForKey:ACPlayerKeyPlayer1];
+        self.delegate = [aDecoder decodeObjectForKey:ACPlayerKeyDelegate];
     }
     return self;
 }

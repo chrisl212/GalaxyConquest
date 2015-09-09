@@ -51,6 +51,15 @@
 		AB2AB1EF1B9B3E5900D7A8B6 /* ACStar.sks in Resources */ = {isa = PBXBuildFile; fileRef = AB2AB1EE1B9B3E5900D7A8B6 /* ACStar.sks */; };
 		AB2AB1F11B9B491F00D7A8B6 /* gas-1.png in Resources */ = {isa = PBXBuildFile; fileRef = AB2AB1F01B9B491F00D7A8B6 /* gas-1.png */; };
 		ABADCA9D1B9E6B4B007F9117 /* rocky-2.jpg in Resources */ = {isa = PBXBuildFile; fileRef = ABADCA9C1B9E6B4B007F9117 /* rocky-2.jpg */; };
+		ABADCAA31B9E77B0007F9117 /* gas-2.png in Resources */ = {isa = PBXBuildFile; fileRef = ABADCA9F1B9E77B0007F9117 /* gas-2.png */; };
+		ABADCAA41B9E77B0007F9117 /* gas-3.png in Resources */ = {isa = PBXBuildFile; fileRef = ABADCAA01B9E77B0007F9117 /* gas-3.png */; };
+		ABADCAA51B9E77B0007F9117 /* rocky-4.jpg in Resources */ = {isa = PBXBuildFile; fileRef = ABADCAA11B9E77B0007F9117 /* rocky-4.jpg */; };
+		ABADCAA61B9E77B0007F9117 /* rocky-3.png in Resources */ = {isa = PBXBuildFile; fileRef = ABADCAA21B9E77B0007F9117 /* rocky-3.png */; };
+		ABADCAAC1B9E8D18007F9117 /* rocky-5.png in Resources */ = {isa = PBXBuildFile; fileRef = ABADCAAB1B9E8D18007F9117 /* rocky-5.png */; };
+		ABADCAAE1B9E8E2A007F9117 /* gas-4.jpg in Resources */ = {isa = PBXBuildFile; fileRef = ABADCAAD1B9E8E2A007F9117 /* gas-4.jpg */; };
+		ABADCAB51B9F5FB9007F9117 /* ACAIPlayer.m in Sources */ = {isa = PBXBuildFile; fileRef = ABADCAB41B9F5FB9007F9117 /* ACAIPlayer.m */; };
+		ABADCAC61B9F8C13007F9117 /* ACBuildTableViewDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = ABADCAC51B9F8C13007F9117 /* ACBuildTableViewDataSource.m */; };
+		ABADCACA1B9F8CC0007F9117 /* ACPauseMenuScene.m in Sources */ = {isa = PBXBuildFile; fileRef = ABADCAC91B9F8CC0007F9117 /* ACPauseMenuScene.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -126,6 +135,18 @@
 		AB2AB1EE1B9B3E5900D7A8B6 /* ACStar.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = ACStar.sks; sourceTree = "<group>"; };
 		AB2AB1F01B9B491F00D7A8B6 /* gas-1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "gas-1.png"; path = "Assets/gas-1.png"; sourceTree = SOURCE_ROOT; };
 		ABADCA9C1B9E6B4B007F9117 /* rocky-2.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = "rocky-2.jpg"; path = "Assets/rocky-2.jpg"; sourceTree = SOURCE_ROOT; };
+		ABADCA9F1B9E77B0007F9117 /* gas-2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "gas-2.png"; path = "Assets/gas-2.png"; sourceTree = SOURCE_ROOT; };
+		ABADCAA01B9E77B0007F9117 /* gas-3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "gas-3.png"; path = "Assets/gas-3.png"; sourceTree = SOURCE_ROOT; };
+		ABADCAA11B9E77B0007F9117 /* rocky-4.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = "rocky-4.jpg"; path = "Assets/rocky-4.jpg"; sourceTree = SOURCE_ROOT; };
+		ABADCAA21B9E77B0007F9117 /* rocky-3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "rocky-3.png"; path = "Assets/rocky-3.png"; sourceTree = SOURCE_ROOT; };
+		ABADCAAB1B9E8D18007F9117 /* rocky-5.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "rocky-5.png"; path = "Assets/rocky-5.png"; sourceTree = SOURCE_ROOT; };
+		ABADCAAD1B9E8E2A007F9117 /* gas-4.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = "gas-4.jpg"; path = "Assets/gas-4.jpg"; sourceTree = SOURCE_ROOT; };
+		ABADCAB31B9F5FB9007F9117 /* ACAIPlayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ACAIPlayer.h; sourceTree = "<group>"; };
+		ABADCAB41B9F5FB9007F9117 /* ACAIPlayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ACAIPlayer.m; sourceTree = "<group>"; };
+		ABADCAC41B9F8C13007F9117 /* ACBuildTableViewDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ACBuildTableViewDataSource.h; sourceTree = "<group>"; };
+		ABADCAC51B9F8C13007F9117 /* ACBuildTableViewDataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ACBuildTableViewDataSource.m; sourceTree = "<group>"; };
+		ABADCAC81B9F8CC0007F9117 /* ACPauseMenuScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ACPauseMenuScene.h; sourceTree = "<group>"; };
+		ABADCAC91B9F8CC0007F9117 /* ACPauseMenuScene.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ACPauseMenuScene.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -224,21 +245,13 @@
 		AB2AB16D1B9A201900D7A8B6 /* Scenes */ = {
 			isa = PBXGroup;
 			children = (
-				AB2AB16A1B9A200100D7A8B6 /* ACMainMenuScene.h */,
-				AB2AB16B1B9A200100D7A8B6 /* ACMainMenuScene.m */,
-				AB2AB1D61B9A85B200D7A8B6 /* ACLoadGameScene.h */,
-				AB2AB1D71B9A85B200D7A8B6 /* ACLoadGameScene.m */,
-				AB2AB16E1B9A202A00D7A8B6 /* ACGalaxyScene.h */,
-				AB2AB16F1B9A202A00D7A8B6 /* ACGalaxyScene.m */,
-				AB2AB1E81B9A9CFC00D7A8B6 /* spark.png */,
-				AB2AB1711B9A203F00D7A8B6 /* ACStarSystemScene.h */,
-				AB2AB1721B9A203F00D7A8B6 /* ACStarSystemScene.m */,
-				AB2AB1741B9A205F00D7A8B6 /* ACPlanetScene.h */,
-				AB2AB1751B9A205F00D7A8B6 /* ACPlanetScene.m */,
-				AB2AB1771B9A207200D7A8B6 /* ACSpaceBattleScene.h */,
-				AB2AB1781B9A207200D7A8B6 /* ACSpaceBattleScene.m */,
-				AB2AB17A1B9A208B00D7A8B6 /* ACLandBattleScene.h */,
-				AB2AB17B1B9A208B00D7A8B6 /* ACLandBattleScene.m */,
+				ABADCAB91B9F8AFA007F9117 /* Main Menu Scene */,
+				ABADCABA1B9F8B01007F9117 /* Load Game Scene */,
+				ABADCABB1B9F8B08007F9117 /* Galaxy Scene */,
+				ABADCAB81B9F8AE1007F9117 /* Star System Scene */,
+				ABADCAB71B9F8ADB007F9117 /* Planet Scene */,
+				ABADCAB61B9F8AD0007F9117 /* Battle Scenes */,
+				ABADCAC71B9F8CA9007F9117 /* Pause Menu Scene */,
 			);
 			name = Scenes;
 			sourceTree = "<group>";
@@ -246,24 +259,13 @@
 		AB2AB17D1B9A20D700D7A8B6 /* Sprite Nodes */ = {
 			isa = PBXGroup;
 			children = (
-				AB2AB1D31B9A754900D7A8B6 /* ACButtonNode.h */,
-				AB2AB1D41B9A754900D7A8B6 /* ACButtonNode.m */,
-				AB227C011B9BFB8B003880CF /* ACInfoNode.h */,
-				AB227C021B9BFB8B003880CF /* ACInfoNode.m */,
-				AB2AB17E1B9A214200D7A8B6 /* ACPlanetNode.h */,
-				AB2AB17F1B9A214200D7A8B6 /* ACPlanetNode.m */,
-				AB2AB1EB1B9AA33600D7A8B6 /* ACStarMapNode.h */,
-				AB2AB1EC1B9AA33600D7A8B6 /* ACStarMapNode.m */,
-				AB2AB1E71B9A9CFC00D7A8B6 /* ACStarMapParticle.sks */,
-				AB2AB1811B9A255B00D7A8B6 /* ACStarNode.h */,
-				AB2AB1821B9A255B00D7A8B6 /* ACStarNode.m */,
-				AB2AB1EE1B9B3E5900D7A8B6 /* ACStar.sks */,
-				AB2AB1841B9A256900D7A8B6 /* ACGalaxyNode.h */,
-				AB2AB1851B9A256900D7A8B6 /* ACGalaxyNode.m */,
-				AB2AB1871B9A257800D7A8B6 /* ACShipNode.h */,
-				AB2AB1881B9A257800D7A8B6 /* ACShipNode.m */,
-				AB2AB18A1B9A258C00D7A8B6 /* ACTroopCarrierShipNode.h */,
-				AB2AB18B1B9A258C00D7A8B6 /* ACTroopCarrierShipNode.m */,
+				ABADCABC1B9F8B11007F9117 /* Button Node */,
+				ABADCABD1B9F8B19007F9117 /* Info Node */,
+				ABADCABE1B9F8B1F007F9117 /* Planet Node */,
+				ABADCABF1B9F8B27007F9117 /* Star Map Node */,
+				ABADCAC01B9F8B31007F9117 /* Star Node */,
+				ABADCAC11B9F8B3A007F9117 /* Galaxy Node */,
+				ABADCAC21B9F8B43007F9117 /* Ship Nodes */,
 			);
 			name = "Sprite Nodes";
 			sourceTree = "<group>";
@@ -280,6 +282,7 @@
 		AB2AB1D01B9A750700D7A8B6 /* Assets */ = {
 			isa = PBXGroup;
 			children = (
+				AB2AB1E81B9A9CFC00D7A8B6 /* spark.png */,
 				AB2AB1E31B9A974700D7A8B6 /* spiral-1.png */,
 				AB18CC281B9C93C300C1807F /* stars.jpg */,
 				AB2AB1D11B9A751700D7A8B6 /* button@2x.png */,
@@ -298,6 +301,8 @@
 				AB2AB1951B9A720500D7A8B6 /* ACGame.m */,
 				AB2AB1671B9A1FC700D7A8B6 /* ACPlayer.h */,
 				AB2AB1681B9A1FC700D7A8B6 /* ACPlayer.m */,
+				ABADCAB31B9F5FB9007F9117 /* ACAIPlayer.h */,
+				ABADCAB41B9F5FB9007F9117 /* ACAIPlayer.m */,
 				AB2AB1DA1B9A8A8700D7A8B6 /* ACPlanet.h */,
 				AB2AB1DB1B9A8A8700D7A8B6 /* ACPlanet.m */,
 				AB2AB1DD1B9A8A9D00D7A8B6 /* ACGalaxy.h */,
@@ -315,11 +320,167 @@
 		ABADCA9E1B9E6B51007F9117 /* Planet Textures */ = {
 			isa = PBXGroup;
 			children = (
-				AB2AB1F01B9B491F00D7A8B6 /* gas-1.png */,
-				AB18CC3B1B9E5B0300C1807F /* rocky-1.jpg */,
-				ABADCA9C1B9E6B4B007F9117 /* rocky-2.jpg */,
+				ABADCAA81B9E77C2007F9117 /* Gas */,
+				ABADCAA71B9E77BA007F9117 /* Rocky */,
 			);
 			name = "Planet Textures";
+			sourceTree = "<group>";
+		};
+		ABADCAA71B9E77BA007F9117 /* Rocky */ = {
+			isa = PBXGroup;
+			children = (
+				AB18CC3B1B9E5B0300C1807F /* rocky-1.jpg */,
+				ABADCA9C1B9E6B4B007F9117 /* rocky-2.jpg */,
+				ABADCAA21B9E77B0007F9117 /* rocky-3.png */,
+				ABADCAA11B9E77B0007F9117 /* rocky-4.jpg */,
+				ABADCAAB1B9E8D18007F9117 /* rocky-5.png */,
+			);
+			name = Rocky;
+			sourceTree = "<group>";
+		};
+		ABADCAA81B9E77C2007F9117 /* Gas */ = {
+			isa = PBXGroup;
+			children = (
+				AB2AB1F01B9B491F00D7A8B6 /* gas-1.png */,
+				ABADCA9F1B9E77B0007F9117 /* gas-2.png */,
+				ABADCAA01B9E77B0007F9117 /* gas-3.png */,
+				ABADCAAD1B9E8E2A007F9117 /* gas-4.jpg */,
+			);
+			name = Gas;
+			sourceTree = "<group>";
+		};
+		ABADCAB61B9F8AD0007F9117 /* Battle Scenes */ = {
+			isa = PBXGroup;
+			children = (
+				AB2AB1771B9A207200D7A8B6 /* ACSpaceBattleScene.h */,
+				AB2AB1781B9A207200D7A8B6 /* ACSpaceBattleScene.m */,
+				AB2AB17A1B9A208B00D7A8B6 /* ACLandBattleScene.h */,
+				AB2AB17B1B9A208B00D7A8B6 /* ACLandBattleScene.m */,
+			);
+			name = "Battle Scenes";
+			sourceTree = "<group>";
+		};
+		ABADCAB71B9F8ADB007F9117 /* Planet Scene */ = {
+			isa = PBXGroup;
+			children = (
+				ABADCAC41B9F8C13007F9117 /* ACBuildTableViewDataSource.h */,
+				ABADCAC51B9F8C13007F9117 /* ACBuildTableViewDataSource.m */,
+				AB2AB1741B9A205F00D7A8B6 /* ACPlanetScene.h */,
+				AB2AB1751B9A205F00D7A8B6 /* ACPlanetScene.m */,
+			);
+			name = "Planet Scene";
+			sourceTree = "<group>";
+		};
+		ABADCAB81B9F8AE1007F9117 /* Star System Scene */ = {
+			isa = PBXGroup;
+			children = (
+				AB2AB1711B9A203F00D7A8B6 /* ACStarSystemScene.h */,
+				AB2AB1721B9A203F00D7A8B6 /* ACStarSystemScene.m */,
+			);
+			name = "Star System Scene";
+			sourceTree = "<group>";
+		};
+		ABADCAB91B9F8AFA007F9117 /* Main Menu Scene */ = {
+			isa = PBXGroup;
+			children = (
+				AB2AB16A1B9A200100D7A8B6 /* ACMainMenuScene.h */,
+				AB2AB16B1B9A200100D7A8B6 /* ACMainMenuScene.m */,
+			);
+			name = "Main Menu Scene";
+			sourceTree = "<group>";
+		};
+		ABADCABA1B9F8B01007F9117 /* Load Game Scene */ = {
+			isa = PBXGroup;
+			children = (
+				AB2AB1D61B9A85B200D7A8B6 /* ACLoadGameScene.h */,
+				AB2AB1D71B9A85B200D7A8B6 /* ACLoadGameScene.m */,
+			);
+			name = "Load Game Scene";
+			sourceTree = "<group>";
+		};
+		ABADCABB1B9F8B08007F9117 /* Galaxy Scene */ = {
+			isa = PBXGroup;
+			children = (
+				AB2AB16E1B9A202A00D7A8B6 /* ACGalaxyScene.h */,
+				AB2AB16F1B9A202A00D7A8B6 /* ACGalaxyScene.m */,
+			);
+			name = "Galaxy Scene";
+			sourceTree = "<group>";
+		};
+		ABADCABC1B9F8B11007F9117 /* Button Node */ = {
+			isa = PBXGroup;
+			children = (
+				AB2AB1D31B9A754900D7A8B6 /* ACButtonNode.h */,
+				AB2AB1D41B9A754900D7A8B6 /* ACButtonNode.m */,
+			);
+			name = "Button Node";
+			sourceTree = "<group>";
+		};
+		ABADCABD1B9F8B19007F9117 /* Info Node */ = {
+			isa = PBXGroup;
+			children = (
+				AB227C011B9BFB8B003880CF /* ACInfoNode.h */,
+				AB227C021B9BFB8B003880CF /* ACInfoNode.m */,
+			);
+			name = "Info Node";
+			sourceTree = "<group>";
+		};
+		ABADCABE1B9F8B1F007F9117 /* Planet Node */ = {
+			isa = PBXGroup;
+			children = (
+				AB2AB17E1B9A214200D7A8B6 /* ACPlanetNode.h */,
+				AB2AB17F1B9A214200D7A8B6 /* ACPlanetNode.m */,
+			);
+			name = "Planet Node";
+			sourceTree = "<group>";
+		};
+		ABADCABF1B9F8B27007F9117 /* Star Map Node */ = {
+			isa = PBXGroup;
+			children = (
+				AB2AB1EB1B9AA33600D7A8B6 /* ACStarMapNode.h */,
+				AB2AB1EC1B9AA33600D7A8B6 /* ACStarMapNode.m */,
+				AB2AB1E71B9A9CFC00D7A8B6 /* ACStarMapParticle.sks */,
+			);
+			name = "Star Map Node";
+			sourceTree = "<group>";
+		};
+		ABADCAC01B9F8B31007F9117 /* Star Node */ = {
+			isa = PBXGroup;
+			children = (
+				AB2AB1811B9A255B00D7A8B6 /* ACStarNode.h */,
+				AB2AB1821B9A255B00D7A8B6 /* ACStarNode.m */,
+				AB2AB1EE1B9B3E5900D7A8B6 /* ACStar.sks */,
+			);
+			name = "Star Node";
+			sourceTree = "<group>";
+		};
+		ABADCAC11B9F8B3A007F9117 /* Galaxy Node */ = {
+			isa = PBXGroup;
+			children = (
+				AB2AB1841B9A256900D7A8B6 /* ACGalaxyNode.h */,
+				AB2AB1851B9A256900D7A8B6 /* ACGalaxyNode.m */,
+			);
+			name = "Galaxy Node";
+			sourceTree = "<group>";
+		};
+		ABADCAC21B9F8B43007F9117 /* Ship Nodes */ = {
+			isa = PBXGroup;
+			children = (
+				AB2AB1871B9A257800D7A8B6 /* ACShipNode.h */,
+				AB2AB1881B9A257800D7A8B6 /* ACShipNode.m */,
+				AB2AB18A1B9A258C00D7A8B6 /* ACTroopCarrierShipNode.h */,
+				AB2AB18B1B9A258C00D7A8B6 /* ACTroopCarrierShipNode.m */,
+			);
+			name = "Ship Nodes";
+			sourceTree = "<group>";
+		};
+		ABADCAC71B9F8CA9007F9117 /* Pause Menu Scene */ = {
+			isa = PBXGroup;
+			children = (
+				ABADCAC81B9F8CC0007F9117 /* ACPauseMenuScene.h */,
+				ABADCAC91B9F8CC0007F9117 /* ACPauseMenuScene.m */,
+			);
+			name = "Pause Menu Scene";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -386,14 +547,20 @@
 			buildActionMask = 2147483647;
 			files = (
 				AB2AB1E41B9A974700D7A8B6 /* spiral-1.png in Resources */,
+				ABADCAA41B9E77B0007F9117 /* gas-3.png in Resources */,
+				ABADCAAE1B9E8E2A007F9117 /* gas-4.jpg in Resources */,
 				ABADCA9D1B9E6B4B007F9117 /* rocky-2.jpg in Resources */,
 				AB227C001B9BF765003880CF /* MilkyWay.galaxy in Resources */,
 				AB18CC441B9E5FC500C1807F /* AlphaCentauri.star in Resources */,
+				ABADCAAC1B9E8D18007F9117 /* rocky-5.png in Resources */,
+				ABADCAA31B9E77B0007F9117 /* gas-2.png in Resources */,
+				ABADCAA61B9E77B0007F9117 /* rocky-3.png in Resources */,
 				AB2AB1F11B9B491F00D7A8B6 /* gas-1.png in Resources */,
 				AB2AB1EA1B9A9CFC00D7A8B6 /* spark.png in Resources */,
 				AB2AB1521B9940A900D7A8B6 /* LaunchScreen.xib in Resources */,
 				AB2AB1E91B9A9CFC00D7A8B6 /* ACStarMapParticle.sks in Resources */,
 				AB18CC381B9E3A6C00C1807F /* Fighter.ship in Resources */,
+				ABADCAA51B9E77B0007F9117 /* rocky-4.jpg in Resources */,
 				AB2AB1EF1B9B3E5900D7A8B6 /* ACStar.sks in Resources */,
 				AB2AB1D21B9A751700D7A8B6 /* button@2x.png in Resources */,
 				AB18CC3C1B9E5B0300C1807F /* rocky-1.jpg in Resources */,
@@ -417,6 +584,7 @@
 				AB2AB1E21B9A8AAB00D7A8B6 /* ACStar.m in Sources */,
 				AB2AB1791B9A207200D7A8B6 /* ACSpaceBattleScene.m in Sources */,
 				AB227C031B9BFB8B003880CF /* ACInfoNode.m in Sources */,
+				ABADCACA1B9F8CC0007F9117 /* ACPauseMenuScene.m in Sources */,
 				AB2AB1421B9940A800D7A8B6 /* AppDelegate.m in Sources */,
 				AB2AB1DC1B9A8A8700D7A8B6 /* ACPlanet.m in Sources */,
 				AB2AB1901B9A25A900D7A8B6 /* ACFleetNode.m in Sources */,
@@ -429,11 +597,13 @@
 				AB2AB1ED1B9AA33600D7A8B6 /* ACStarMapNode.m in Sources */,
 				AB18CC351B9E331D00C1807F /* ACShip.m in Sources */,
 				AB2AB1761B9A205F00D7A8B6 /* ACPlanetScene.m in Sources */,
+				ABADCAB51B9F5FB9007F9117 /* ACAIPlayer.m in Sources */,
 				AB2AB1691B9A1FC700D7A8B6 /* ACPlayer.m in Sources */,
 				AB18CC321B9E32F600C1807F /* ACFleet.m in Sources */,
 				AB2AB17C1B9A208B00D7A8B6 /* ACLandBattleScene.m in Sources */,
 				AB2AB18C1B9A258C00D7A8B6 /* ACTroopCarrierShipNode.m in Sources */,
 				AB18CC2F1B9E09C300C1807F /* ACLoadGameViewController.m in Sources */,
+				ABADCAC61B9F8C13007F9117 /* ACBuildTableViewDataSource.m in Sources */,
 				AB2AB1731B9A203F00D7A8B6 /* ACStarSystemScene.m in Sources */,
 				AB2AB1961B9A720500D7A8B6 /* ACGame.m in Sources */,
 				AB2AB1931B9A25CB00D7A8B6 /* ACGameViewController.m in Sources */,

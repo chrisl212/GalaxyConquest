@@ -19,6 +19,7 @@ extern NSString *const ACPlanetKeyFleets;
 extern NSString *const ACPlanetKeyType;
 extern NSString *const ACPlanetKeyInhabited;
 extern NSString *const ACPlanetKeyAtmosphere;
+extern NSString *const ACPlanetKeyBuildQueue;
 
 extern NSString *const ACPlanetTypeGas; //only space battles
 extern NSString *const ACPlanetTypeRocky; //space/land battles
@@ -38,6 +39,7 @@ extern NSString *const ACPlanetTypeRocky; //space/land battles
 @property (nonatomic) BOOL inhabited; //if inhabited, must fight for it if unowned
 @property (nonatomic) BOOL atmosphere;
 @property (strong, nonatomic) NSArray *fleets;
+@property (strong, nonatomic) NSMutableArray *buildQueue;
 
 - (id)initWithName:(NSString *)name parentStar:(ACStar *)parentStar textureImage:(UIImage *)textureImage orbitalDistance:(CGFloat)distance;
 

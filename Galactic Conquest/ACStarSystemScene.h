@@ -8,10 +8,11 @@
 
 #import <SpriteKit/SpriteKit.h>
 #import "ACPlanetNode.h"
+#import "ACGame.h"
 
 @class ACStar;
 
-@interface ACStarSystemScene : SKScene <ACPlanetNodeDelegate>
+@interface ACStarSystemScene : SKScene <ACPlanetNodeDelegate, ACGameDelegate>
 
 @property (strong, nonatomic) ACStar *star;
 
