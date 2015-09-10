@@ -17,8 +17,27 @@
 #import "ACStarSystemScene.h"
 #import "ACInfoNode.h"
 #import "ACPlayer.h"
+#import "ACPlanet.h"
 #import "AppDelegate.h"
 #import "ACPauseMenuScene.h"
+#import "ACFleet.h"
+
+CGFloat angleFromTwoPoints(CGPoint a, CGPoint b)
+{
+    return atan2(b.y-a.y, b.x-a.x);
+}
+
+CGFloat distanceBetweenPoints(CGPoint a, CGPoint b)
+{
+    CGFloat width = a.x-b.x;
+    CGFloat height = a.y-b.y;
+    return sqrt(pow(width, 2) + pow(height, 2));
+}
+
+CGPoint convertPointInRect(CGPoint a, CGRect r) //converts from SK to UIKit
+{
+    return CGPointMake(a.x, r.size.height - a.y);
+}
 
 inline CGPoint findB(double Ax, double Ay, double Cx, double Cy, double L, int clockwise)
 {
@@ -42,6 +61,7 @@ inline CGPoint findB(double Ax, double Ay, double Cx, double Cy, double L, int c
 @property (strong, nonatomic) ACGalaxyNode *galaxyNode;
 @property (strong, nonatomic) ACButtonNode *nextTurnButtonNode;
 @property (strong, nonatomic) ACInfoNode *playerInfoNode;
+@property (strong, nonatomic) NSMutableArray *starMapNodes;
 
 @end
 
@@ -68,6 +88,7 @@ inline CGPoint findB(double Ax, double Ay, double Cx, double Cy, double L, int c
         [self insertChild:backgroundNode atIndex:0];
         backgroundNode.position = CGPointMake(CGRectGetMidX(self.frame), CGRectGetMidY(self.frame));
         
+        self.starMapNodes = @[].mutableCopy;
         self.galaxy = galaxy;
         self.backgroundColor = [UIColor blackColor];
         
@@ -108,6 +129,7 @@ inline CGPoint findB(double Ax, double Ay, double Cx, double Cy, double L, int c
             
             [self addChild:infoNode];
             [self addChild:starMapNode];
+            [self.starMapNodes addObject:starMapNode];
         }
         
         ACPlayer *currentPlayer = [self appDelegate].currentGame.currentPlayer;
@@ -131,6 +153,50 @@ inline CGPoint findB(double Ax, double Ay, double Cx, double Cy, double L, int c
         
         ACGame *currentGame = [self appDelegate].currentGame;
         currentGame.delegate = self;
+        
+        for (ACFleet *fleet in currentGame.movingFleets)
+        {
+            CGPoint originLocation, destinationLocation;
+            for (ACStarMapNode *mapNode in self.starMapNodes)
+            {
+                if ([mapNode.star isEqual:fleet.location.parentStar])
+                    originLocation = convertPointInRect(mapNode.position, self.frame);
+                else if ([mapNode.star isEqual:fleet.destination.parentStar])
+                    destinationLocation = convertPointInRect(mapNode.position, self.frame);
+            }
+            UIGraphicsBeginImageContextWithOptions(self.size, NO, 2.0);
+            
+            CGContextRef context = UIGraphicsGetCurrentContext();
+            CGContextSetLineWidth(context, 3.0);
+            CGContextSetStrokeColorWithColor(context, [UIColor whiteColor].CGColor);
+            
+            CGPoint points[2] = {originLocation, destinationLocation};
+            CGContextAddLines(context, points, 2);
+            
+            CGContextStrokePath(context);
+            UIImage *textureImage = UIGraphicsGetImageFromCurrentImageContext();
+            UIGraphicsEndImageContext();
+            
+            SKSpriteNode *pathNode = [SKSpriteNode spriteNodeWithTexture:[SKTexture textureWithImage:textureImage]];
+            pathNode.position = CGPointMake(CGRectGetMidX(self.frame), CGRectGetMidY(self.frame));
+            [self insertChild:pathNode atIndex:0];
+            
+            originLocation = convertPointInRect(originLocation, self.frame);
+            destinationLocation = convertPointInRect(destinationLocation, self.frame);
+            
+            SKSpriteNode *fleetSpriteNode = [SKSpriteNode spriteNodeWithColor:[UIColor grayColor] size:CGSizeMake(8.0, 8.0)];
+            //CGFloat distance = distanceBetweenPoints(originLocation, destinationLocation)/fleet.turnsRemaining*2.0;
+            //CGFloat angle = angleFromTwoPoints(originLocation, destinationLocation);
+            CGFloat x = (originLocation.x+destinationLocation.x)/2.0;
+            CGFloat y = (originLocation.y+destinationLocation.y)/2.0;
+            fleetSpriteNode.position = CGPointMake(x, y);
+            [self addChild:fleetSpriteNode];
+            
+            NSArray *infoStrings = @[fleet.name, [NSString stringWithFormat:@"%ld turns", fleet.turnsRemaining]];
+            ACInfoNode *infoNode = [[ACInfoNode alloc] initWithStrings:infoStrings size:CGSizeMake(200.0, 200.0)];
+            infoNode.position = fleetSpriteNode.position;
+            [self addChild:infoNode];
+        }
     }
     return self;
 }

@@ -60,6 +60,14 @@
 		ABADCAB51B9F5FB9007F9117 /* ACAIPlayer.m in Sources */ = {isa = PBXBuildFile; fileRef = ABADCAB41B9F5FB9007F9117 /* ACAIPlayer.m */; };
 		ABADCAC61B9F8C13007F9117 /* ACBuildTableViewDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = ABADCAC51B9F8C13007F9117 /* ACBuildTableViewDataSource.m */; };
 		ABADCACA1B9F8CC0007F9117 /* ACPauseMenuScene.m in Sources */ = {isa = PBXBuildFile; fileRef = ABADCAC91B9F8CC0007F9117 /* ACPauseMenuScene.m */; };
+		ABADCACE1BA0B278007F9117 /* ACBuildCell.m in Sources */ = {isa = PBXBuildFile; fileRef = ABADCACC1BA0B278007F9117 /* ACBuildCell.m */; };
+		ABADCACF1BA0B278007F9117 /* ACBuildCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = ABADCACD1BA0B278007F9117 /* ACBuildCell.xib */; };
+		ABADCAD11BA0ECE7007F9117 /* Fighter.dae in Resources */ = {isa = PBXBuildFile; fileRef = ABADCAD01BA0ECE7007F9117 /* Fighter.dae */; };
+		ABADCAD31BA0ED18007F9117 /* fighter-texture.png in Resources */ = {isa = PBXBuildFile; fileRef = ABADCAD21BA0ED18007F9117 /* fighter-texture.png */; };
+		ABADCAD61BA0F262007F9117 /* ACFleetsTableViewDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = ABADCAD51BA0F262007F9117 /* ACFleetsTableViewDataSource.m */; };
+		ABADCADA1BA0FF3C007F9117 /* ACPlanetSelectDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = ABADCAD91BA0FF3C007F9117 /* ACPlanetSelectDataSource.m */; };
+		ABADCADE1BA100B9007F9117 /* ACPlanetSelectCell.m in Sources */ = {isa = PBXBuildFile; fileRef = ABADCADC1BA100B9007F9117 /* ACPlanetSelectCell.m */; };
+		ABADCADF1BA100B9007F9117 /* ACPlanetSelectCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = ABADCADD1BA100B9007F9117 /* ACPlanetSelectCell.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -147,6 +155,18 @@
 		ABADCAC51B9F8C13007F9117 /* ACBuildTableViewDataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ACBuildTableViewDataSource.m; sourceTree = "<group>"; };
 		ABADCAC81B9F8CC0007F9117 /* ACPauseMenuScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ACPauseMenuScene.h; sourceTree = "<group>"; };
 		ABADCAC91B9F8CC0007F9117 /* ACPauseMenuScene.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ACPauseMenuScene.m; sourceTree = "<group>"; };
+		ABADCACB1BA0B278007F9117 /* ACBuildCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ACBuildCell.h; sourceTree = "<group>"; };
+		ABADCACC1BA0B278007F9117 /* ACBuildCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ACBuildCell.m; sourceTree = "<group>"; };
+		ABADCACD1BA0B278007F9117 /* ACBuildCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ACBuildCell.xib; sourceTree = "<group>"; };
+		ABADCAD01BA0ECE7007F9117 /* Fighter.dae */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml.dae; name = Fighter.dae; path = Assets/Fighter.dae; sourceTree = SOURCE_ROOT; };
+		ABADCAD21BA0ED18007F9117 /* fighter-texture.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "fighter-texture.png"; path = "Assets/fighter-texture.png"; sourceTree = SOURCE_ROOT; };
+		ABADCAD41BA0F262007F9117 /* ACFleetsTableViewDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ACFleetsTableViewDataSource.h; sourceTree = "<group>"; };
+		ABADCAD51BA0F262007F9117 /* ACFleetsTableViewDataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ACFleetsTableViewDataSource.m; sourceTree = "<group>"; };
+		ABADCAD81BA0FF3C007F9117 /* ACPlanetSelectDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ACPlanetSelectDataSource.h; sourceTree = "<group>"; };
+		ABADCAD91BA0FF3C007F9117 /* ACPlanetSelectDataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ACPlanetSelectDataSource.m; sourceTree = "<group>"; };
+		ABADCADB1BA100B9007F9117 /* ACPlanetSelectCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ACPlanetSelectCell.h; sourceTree = "<group>"; };
+		ABADCADC1BA100B9007F9117 /* ACPlanetSelectCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ACPlanetSelectCell.m; sourceTree = "<group>"; };
+		ABADCADD1BA100B9007F9117 /* ACPlanetSelectCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ACPlanetSelectCell.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -224,7 +244,6 @@
 				AB18CC2C1B9E099F00C1807F /* View Controllers */,
 				AB2AB1D91B9A8A7300D7A8B6 /* Objects */,
 				AB2AB16D1B9A201900D7A8B6 /* Scenes */,
-				AB2AB18D1B9A259400D7A8B6 /* Nodes */,
 				AB2AB17D1B9A20D700D7A8B6 /* Sprite Nodes */,
 				AB2AB14E1B9940A900D7A8B6 /* Images.xcassets */,
 				AB2AB1501B9940A900D7A8B6 /* LaunchScreen.xib */,
@@ -259,6 +278,7 @@
 		AB2AB17D1B9A20D700D7A8B6 /* Sprite Nodes */ = {
 			isa = PBXGroup;
 			children = (
+				ABADCAE21BA1191D007F9117 /* Fleet Node */,
 				ABADCABC1B9F8B11007F9117 /* Button Node */,
 				ABADCABD1B9F8B19007F9117 /* Info Node */,
 				ABADCABE1B9F8B1F007F9117 /* Planet Node */,
@@ -270,18 +290,11 @@
 			name = "Sprite Nodes";
 			sourceTree = "<group>";
 		};
-		AB2AB18D1B9A259400D7A8B6 /* Nodes */ = {
-			isa = PBXGroup;
-			children = (
-				AB2AB18E1B9A25A900D7A8B6 /* ACFleetNode.h */,
-				AB2AB18F1B9A25A900D7A8B6 /* ACFleetNode.m */,
-			);
-			name = Nodes;
-			sourceTree = "<group>";
-		};
 		AB2AB1D01B9A750700D7A8B6 /* Assets */ = {
 			isa = PBXGroup;
 			children = (
+				ABADCAD21BA0ED18007F9117 /* fighter-texture.png */,
+				ABADCAD01BA0ECE7007F9117 /* Fighter.dae */,
 				AB2AB1E81B9A9CFC00D7A8B6 /* spark.png */,
 				AB2AB1E31B9A974700D7A8B6 /* spiral-1.png */,
 				AB18CC281B9C93C300C1807F /* stars.jpg */,
@@ -363,8 +376,8 @@
 		ABADCAB71B9F8ADB007F9117 /* Planet Scene */ = {
 			isa = PBXGroup;
 			children = (
-				ABADCAC41B9F8C13007F9117 /* ACBuildTableViewDataSource.h */,
-				ABADCAC51B9F8C13007F9117 /* ACBuildTableViewDataSource.m */,
+				ABADCAD71BA0F269007F9117 /* Building Ships */,
+				ABADCAE01BA100D1007F9117 /* Fleets */,
 				AB2AB1741B9A205F00D7A8B6 /* ACPlanetScene.h */,
 				AB2AB1751B9A205F00D7A8B6 /* ACPlanetScene.m */,
 			);
@@ -483,6 +496,49 @@
 			name = "Pause Menu Scene";
 			sourceTree = "<group>";
 		};
+		ABADCAD71BA0F269007F9117 /* Building Ships */ = {
+			isa = PBXGroup;
+			children = (
+				ABADCACB1BA0B278007F9117 /* ACBuildCell.h */,
+				ABADCACC1BA0B278007F9117 /* ACBuildCell.m */,
+				ABADCACD1BA0B278007F9117 /* ACBuildCell.xib */,
+				ABADCAC41B9F8C13007F9117 /* ACBuildTableViewDataSource.h */,
+				ABADCAC51B9F8C13007F9117 /* ACBuildTableViewDataSource.m */,
+			);
+			name = "Building Ships";
+			sourceTree = "<group>";
+		};
+		ABADCAE01BA100D1007F9117 /* Fleets */ = {
+			isa = PBXGroup;
+			children = (
+				ABADCAD41BA0F262007F9117 /* ACFleetsTableViewDataSource.h */,
+				ABADCAD51BA0F262007F9117 /* ACFleetsTableViewDataSource.m */,
+				ABADCAE11BA100DB007F9117 /* Planet Selection */,
+			);
+			name = Fleets;
+			sourceTree = "<group>";
+		};
+		ABADCAE11BA100DB007F9117 /* Planet Selection */ = {
+			isa = PBXGroup;
+			children = (
+				ABADCADB1BA100B9007F9117 /* ACPlanetSelectCell.h */,
+				ABADCADC1BA100B9007F9117 /* ACPlanetSelectCell.m */,
+				ABADCADD1BA100B9007F9117 /* ACPlanetSelectCell.xib */,
+				ABADCAD81BA0FF3C007F9117 /* ACPlanetSelectDataSource.h */,
+				ABADCAD91BA0FF3C007F9117 /* ACPlanetSelectDataSource.m */,
+			);
+			name = "Planet Selection";
+			sourceTree = "<group>";
+		};
+		ABADCAE21BA1191D007F9117 /* Fleet Node */ = {
+			isa = PBXGroup;
+			children = (
+				AB2AB18E1B9A25A900D7A8B6 /* ACFleetNode.h */,
+				AB2AB18F1B9A25A900D7A8B6 /* ACFleetNode.m */,
+			);
+			name = "Fleet Node";
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -555,13 +611,17 @@
 				ABADCAAC1B9E8D18007F9117 /* rocky-5.png in Resources */,
 				ABADCAA31B9E77B0007F9117 /* gas-2.png in Resources */,
 				ABADCAA61B9E77B0007F9117 /* rocky-3.png in Resources */,
+				ABADCADF1BA100B9007F9117 /* ACPlanetSelectCell.xib in Resources */,
 				AB2AB1F11B9B491F00D7A8B6 /* gas-1.png in Resources */,
 				AB2AB1EA1B9A9CFC00D7A8B6 /* spark.png in Resources */,
 				AB2AB1521B9940A900D7A8B6 /* LaunchScreen.xib in Resources */,
+				ABADCAD11BA0ECE7007F9117 /* Fighter.dae in Resources */,
 				AB2AB1E91B9A9CFC00D7A8B6 /* ACStarMapParticle.sks in Resources */,
+				ABADCAD31BA0ED18007F9117 /* fighter-texture.png in Resources */,
 				AB18CC381B9E3A6C00C1807F /* Fighter.ship in Resources */,
 				ABADCAA51B9E77B0007F9117 /* rocky-4.jpg in Resources */,
 				AB2AB1EF1B9B3E5900D7A8B6 /* ACStar.sks in Resources */,
+				ABADCACF1BA0B278007F9117 /* ACBuildCell.xib in Resources */,
 				AB2AB1D21B9A751700D7A8B6 /* button@2x.png in Resources */,
 				AB18CC3C1B9E5B0300C1807F /* rocky-1.jpg in Resources */,
 				AB18CC401B9E5F3D00C1807F /* VYCanisMajoris.star in Resources */,
@@ -581,6 +641,7 @@
 				AB2AB1831B9A255B00D7A8B6 /* ACStarNode.m in Sources */,
 				AB2AB16C1B9A200100D7A8B6 /* ACMainMenuScene.m in Sources */,
 				AB2AB1D81B9A85B200D7A8B6 /* ACLoadGameScene.m in Sources */,
+				ABADCADA1BA0FF3C007F9117 /* ACPlanetSelectDataSource.m in Sources */,
 				AB2AB1E21B9A8AAB00D7A8B6 /* ACStar.m in Sources */,
 				AB2AB1791B9A207200D7A8B6 /* ACSpaceBattleScene.m in Sources */,
 				AB227C031B9BFB8B003880CF /* ACInfoNode.m in Sources */,
@@ -591,8 +652,10 @@
 				AB2AB13F1B9940A800D7A8B6 /* main.m in Sources */,
 				AB2AB1861B9A256900D7A8B6 /* ACGalaxyNode.m in Sources */,
 				AB2AB1D51B9A754900D7A8B6 /* ACButtonNode.m in Sources */,
+				ABADCAD61BA0F262007F9117 /* ACFleetsTableViewDataSource.m in Sources */,
 				AB2AB1701B9A202A00D7A8B6 /* ACGalaxyScene.m in Sources */,
 				AB2AB1DF1B9A8A9D00D7A8B6 /* ACGalaxy.m in Sources */,
+				ABADCADE1BA100B9007F9117 /* ACPlanetSelectCell.m in Sources */,
 				AB2AB1801B9A214200D7A8B6 /* ACPlanetNode.m in Sources */,
 				AB2AB1ED1B9AA33600D7A8B6 /* ACStarMapNode.m in Sources */,
 				AB18CC351B9E331D00C1807F /* ACShip.m in Sources */,
@@ -608,6 +671,7 @@
 				AB2AB1961B9A720500D7A8B6 /* ACGame.m in Sources */,
 				AB2AB1931B9A25CB00D7A8B6 /* ACGameViewController.m in Sources */,
 				AB2AB1891B9A257800D7A8B6 /* ACShipNode.m in Sources */,
+				ABADCACE1BA0B278007F9117 /* ACBuildCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -712,7 +776,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = "Galactic Conquest/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
@@ -727,7 +791,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = "Galactic Conquest/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";

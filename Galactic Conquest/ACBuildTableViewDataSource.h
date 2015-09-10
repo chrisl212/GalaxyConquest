@@ -10,8 +10,25 @@
 
 @class ACPlanet;
 
+typedef struct
+{
+    NSInteger fuelCost;
+    NSInteger mineralsCost;
+} ACBuildCost;
+
+@protocol ACBuildDelegate <NSObject>
+
+- (BOOL)userCanAffordCost:(ACBuildCost)cost;
+
+@optional
+- (void)userDidBuildShips:(NSArray *)ships cost:(ACBuildCost)cost;
+
+@end
+
 @interface ACBuildTableViewDataSource : NSObject <UITableViewDataSource, UITableViewDelegate>
 
-- (id)initWithPlanet:(ACPlanet *)planet;
+@property (weak, nonatomic) id<ACBuildDelegate> delegate;
+
+- (id)initWithDelegate:(id<ACBuildDelegate>)delegate;
 
 @end

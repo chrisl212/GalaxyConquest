@@ -13,6 +13,7 @@ extern NSString *const ACGameKeyGalaxy;
 extern NSString *const ACGameKeyPlayers;
 extern NSString *const ACGameKeyName;
 extern NSString *const ACGameKeyCurrentPlayer;
+extern NSString *const ACGameKeyMovingFleets;
 
 @class ACGalaxy, ACPlayer;
 @protocol ACGameDelegate;
@@ -23,6 +24,7 @@ extern NSString *const ACGameKeyCurrentPlayer;
 @property (strong, nonatomic) NSArray *players;
 @property (strong, nonatomic) NSString *name;
 @property (strong, nonatomic) ACPlayer *currentPlayer;
+@property (strong, nonatomic) NSMutableArray *movingFleets;
 @property (weak, nonatomic) id<ACGameDelegate> delegate; //doesn't need to be encoded because the delegate is re-established when the UI is recreated ... right?
 
 - (id)initWithName:(NSString *)name players:(NSArray *)players;

@@ -13,6 +13,8 @@ extern NSString *const ACGalaxyKeyStars;
 extern NSString *const ACGalaxyKeyTextureImage;
 extern NSString *const ACGalaxyKeyGalacticRadius;
 
+@class ACStar;
+
 @interface ACGalaxy : NSObject <NSCoding>
 
 @property (strong, nonatomic) NSString *name;
@@ -22,5 +24,12 @@ extern NSString *const ACGalaxyKeyGalacticRadius;
 
 - (id)initWithName:(NSString *)name image:(UIImage *)textureImage;
 - (id)initWithFile:(NSString *)filePath;
+
+@end
+
+@interface ACGalaxy (DistanceCalculations)
+
+- (CGFloat)distanceFromStar:(ACStar *)s1 toStar:(ACStar *)s2;
+- (NSInteger)turnNumberFromDistance:(CGFloat)distance;
 
 @end

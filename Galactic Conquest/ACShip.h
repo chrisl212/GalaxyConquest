@@ -8,6 +8,20 @@
 
 #import <Foundation/Foundation.h>
 
-@interface ACShip : NSObject
+extern NSString *const ACShipKeyName;
+extern NSString *const ACShipKeyFuelCost;
+extern NSString *const ACShipKeyMineralsCost;
+extern NSString *const ACShipKeyHP;
+extern NSString *const ACShipKeySceneName;
+
+@interface ACShip : NSObject <NSCoding, NSCopying>
+
+@property (strong, nonatomic) NSString *name;
+@property (nonatomic) NSInteger fuelCost;
+@property (nonatomic) NSInteger mineralsCost;
+@property (nonatomic) NSInteger hp;
+
+- (NSString *)scenePath;
+- (id)initWithFile:(NSString *)file;
 
 @end

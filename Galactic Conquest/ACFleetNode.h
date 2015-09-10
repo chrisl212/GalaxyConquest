@@ -8,6 +8,6 @@
 
 #import <SpriteKit/SpriteKit.h>
 
-@interface ACFleetNode : SKNode
+@interface ACFleetNode : SKSpriteNode
 
 @end

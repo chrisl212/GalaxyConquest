@@ -109,10 +109,10 @@ CGPoint findB(double Ax, double Ay, double Cx, double Cy, double L, int clockwis
         
         for (ACPlanet *planet in self.star.planets)
         {
-            UIGraphicsBeginImageContext(self.size);
+            UIGraphicsBeginImageContextWithOptions(self.size, NO, 2.0);
             CGContextRef context = UIGraphicsGetCurrentContext();
             CGContextSetStrokeColorWithColor(context, [UIColor colorWithRed:1.0 green:1.0 blue:1.0 alpha:0.35].CGColor);
-            CGContextSetLineWidth(context, 3.0);
+            CGContextSetLineWidth(context, 1.5);
             CGContextSetAllowsAntialiasing(context, YES);
             CGContextSetLineCap(context, kCGLineCapRound);
             CGContextSetLineJoin(context, kCGLineJoinRound);

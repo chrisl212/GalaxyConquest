@@ -112,3 +112,65 @@ NSString *letters = @"abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ012345
 }
 
 @end
+
+CGFloat degToRad(CGFloat deg)
+{
+    return deg*(M_PI/180.0);
+}
+
+CGFloat convertAngle(CGFloat ang)
+{
+    return 360.0-(ang-90.0);
+}
+
+CGFloat referenceAngle(CGFloat ang)
+{
+    if (ang <= 90)
+        return ang;
+    else if (ang <= 180)
+        return 180.0-ang;
+    else if (ang <= 270)
+        return ang-180.0;
+    else
+        return 360.0-ang;
+}
+
+@implementation ACGalaxy (DistanceCalculations)
+
+- (CGFloat)distanceFromStar:(ACStar *)s1 toStar:(ACStar *)s2
+{
+    CGFloat star1Angle = convertAngle(s1.orbitalAngle);
+    CGFloat star1X = s1.orbitalDistance*cos(degToRad(referenceAngle(star1Angle)));
+    if (star1Angle > 90 && star1Angle < 270)
+        star1X *= -1;
+    CGFloat star1Y = s1.orbitalDistance*sin(degToRad(referenceAngle(star1Angle)));
+    if (star1Angle > 180)
+        star1Y *= -1;
+    CGPoint star1Location = CGPointMake(star1X, star1Y);
+    
+    CGFloat star2Angle = convertAngle(s2.orbitalAngle);
+    CGFloat star2X = s2.orbitalDistance*cos(degToRad(referenceAngle(star2Angle)));
+    if (star2Angle > 90 && star2Angle < 270)
+        star2X *= -1;
+    CGFloat star2Y = s2.orbitalDistance*sin(degToRad(referenceAngle(star2Angle)));
+    if (star2Angle > 180)
+        star2Y *= -1;
+    CGPoint star2Location = CGPointMake(star2X, star2Y);
+    
+    CGFloat distanceWidth = star2Location.x - star1Location.x;
+    CGFloat distanceHeight = star2Location.y - star1Location.y;
+    
+    return sqrt(pow(distanceHeight, 2) + pow(distanceWidth, 2)) * self.galacticRadius;
+}
+
+- (NSInteger)turnNumberFromDistance:(CGFloat)distance
+{
+    distance /= self.galacticRadius*2.0;
+    if (distance < 0.3)
+        return 3;
+    else if (distance < 0.7)
+        return 4;
+    return 5;
+}
+
+@end

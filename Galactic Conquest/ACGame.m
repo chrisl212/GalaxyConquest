@@ -10,11 +10,13 @@
 #import "ACGalaxy.h"
 #import "ACStar.h"
 #import "ACPlanet.h"
+#import "ACFleet.h"
 
 NSString *const ACGameKeyGalaxy = @"game-galaxy";
 NSString *const ACGameKeyPlayers = @"game-players";
 NSString *const ACGameKeyName = @"game-name";
 NSString *const ACGameKeyCurrentPlayer = @"game-currentPlayer";
+NSString *const ACGameKeyMovingFleets = @"game-movingFleets";
 
 @implementation ACGame
 
@@ -51,6 +53,7 @@ NSString *const ACGameKeyCurrentPlayer = @"game-currentPlayer";
             } while (1);
         }
         self.currentPlayer = self.players[0];
+        self.movingFleets = @[].mutableCopy;
     }
     return self;
 }
@@ -80,7 +83,34 @@ NSString *const ACGameKeyCurrentPlayer = @"game-currentPlayer";
     if ([self.delegate respondsToSelector:@selector(game:turnDidChangeToPlayer:)])
         [self.delegate game:self turnDidChangeToPlayer:self.currentPlayer];
     [self.currentPlayer incrementResources];
+    if (self.currentPlayer.isPlayer1)
+        [self roundWasCompleted];
     [self.currentPlayer beginTurn];
+}
+
+- (void)roundWasCompleted
+{
+    NSMutableArray *newMovingFleets = [self.movingFleets mutableCopy];
+    for (ACFleet *fleet in self.movingFleets)
+    {
+        fleet.turnsRemaining--;
+        if (fleet.turnsRemaining < 1)
+        {
+            NSMutableArray *oldPlanetFleets = fleet.location.fleets.mutableCopy;
+            [oldPlanetFleets removeObject:fleet];
+            fleet.location.fleets = oldPlanetFleets;
+            NSMutableArray *newPlanetFleets = fleet.destination.fleets.mutableCopy;
+            if (!newPlanetFleets)
+                newPlanetFleets = @[].mutableCopy;
+            [newPlanetFleets addObject:fleet];
+            fleet.destination.fleets = newPlanetFleets;
+            fleet.location = fleet.destination;
+            fleet.destination = nil;
+            
+            [newMovingFleets removeObject:fleet];
+        }
+    }
+    self.movingFleets = newMovingFleets;
 }
 
 #pragma mark - NSCoding
@@ -91,6 +121,7 @@ NSString *const ACGameKeyCurrentPlayer = @"game-currentPlayer";
     [aCoder encodeObject:self.players forKey:ACGameKeyPlayers];
     [aCoder encodeObject:self.name forKey:ACGameKeyName];
     [aCoder encodeObject:self.currentPlayer forKey:ACGameKeyCurrentPlayer];
+    [aCoder encodeObject:self.movingFleets forKey:ACGameKeyMovingFleets];
 }
 
 - (id)initWithCoder:(NSCoder *)aDecoder
@@ -101,6 +132,7 @@ NSString *const ACGameKeyCurrentPlayer = @"game-currentPlayer";
         self.players = [aDecoder decodeObjectForKey:ACGameKeyPlayers];
         self.name = [aDecoder decodeObjectForKey:ACGameKeyName];
         self.currentPlayer = [aDecoder decodeObjectForKey:ACGameKeyCurrentPlayer];
+        self.movingFleets = [aDecoder decodeObjectForKey:ACGameKeyMovingFleets];
     }
     return self;
 }

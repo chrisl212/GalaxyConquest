@@ -7,10 +7,12 @@
 //
 
 #import <SpriteKit/SpriteKit.h>
+#import "ACBuildTableViewDataSource.h"
+#import "ACFleetsTableViewDataSource.h"
 
 @class ACPlanet;
 
-@interface ACPlanetScene : SKScene
+@interface ACPlanetScene : SKScene <ACBuildDelegate, ACFleetsTableDelegate>
 
 @property (strong, nonatomic) ACPlanet *planet;
 
