@@ -63,12 +63,17 @@ NSString *const ACPlayerKeyDelegate = @"player-delegate";
     }
 }
 
+- (NSString *)imageFilePath
+{
+    return [[NSBundle mainBundle] pathForResource:self.image.stringByDeletingPathExtension ofType:self.image.pathExtension];
+}
+
 #pragma mark - NSCoding
 
 - (void)encodeWithCoder:(NSCoder *)aCoder
 {
     [aCoder encodeObject:self.name forKey:ACPlayerKeyName];    
-    [aCoder encodeObject:UIImagePNGRepresentation(self.image) forKey:ACPlayerKeyImage];
+    [aCoder encodeObject:self.image/*UIImagePNGRepresentation(self.image)*/ forKey:ACPlayerKeyImage];
     [aCoder encodeObject:self.color forKey:ACPlayerKeyColor];
     [aCoder encodeObject:self.planets forKey:ACPlayerKeyPlanets];
     [aCoder encodeInteger:self.money forKey:ACPlayerKeyMoney];
@@ -83,7 +88,7 @@ NSString *const ACPlayerKeyDelegate = @"player-delegate";
     if (self = [super init])
     {
         self.name = [aDecoder decodeObjectForKey:ACPlayerKeyName];
-        self.image = [UIImage imageWithData:[aDecoder decodeObjectForKey:ACPlayerKeyImage]];
+        self.image = [aDecoder decodeObjectForKey:ACPlayerKeyImage];/*[UIImage imageWithData:[aDecoder decodeObjectForKey:ACPlayerKeyImage]]*/;
         self.color = [aDecoder decodeObjectForKey:ACPlayerKeyColor];
         self.planets = [aDecoder decodeObjectForKey:ACPlayerKeyPlanets];
         self.money = [aDecoder decodeIntegerForKey:ACPlayerKeyMoney];

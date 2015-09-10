@@ -13,7 +13,7 @@
 
 - (id)initWithGalaxy:(ACGalaxy *)galaxy
 {
-    return [self initWithTexture:[SKTexture textureWithImage:galaxy.textureImage]];
+    return [self initWithTexture:[SKTexture textureWithImage:[UIImage imageWithContentsOfFile:galaxy.textureImageFilePath]]];
 }
 
 @end

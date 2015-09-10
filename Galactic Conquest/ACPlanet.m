@@ -27,17 +27,23 @@ NSString *const ACPlanetTypeRocky = @"planetType-rocky";
 
 @implementation ACPlanet
 
-- (id)initWithName:(NSString *)name parentStar:(ACStar *)parentStar textureImage:(UIImage *)textureImage orbitalDistance:(CGFloat)distance
+- (id)initWithName:(NSString *)name parentStar:(ACStar *)parentStar textureImage:(NSString *)textureImageName orbitalDistance:(CGFloat)distance
 {
     if (self = [super init])
     {
         self.name = name;
         self.parentStar = parentStar;
-        self.textureImage = textureImage;
+        self.textureImageName = textureImageName;
+        self.textureImage = [UIImage imageWithContentsOfFile:self.textureImageFilePath];
         self.orbitalDistance = distance;
         self.owner = [[ACPlayer alloc] initWithName:@"None"];
     }
     return self;
+}
+
+- (NSString *)textureImageFilePath
+{
+    return [[NSBundle mainBundle] pathForResource:self.textureImageName.stringByDeletingPathExtension ofType:self.textureImageName.pathExtension];
 }
 
 #pragma mark - NSCoding
@@ -46,7 +52,7 @@ NSString *const ACPlanetTypeRocky = @"planetType-rocky";
 {
     [aCoder encodeObject:self.name forKey:ACPlanetKeyName];
     [aCoder encodeObject:self.parentStar forKey:ACPlanetKeyParentStar];
-    [aCoder encodeObject:UIImagePNGRepresentation(self.textureImage) forKey:ACPlanetKeyTextureImage];
+    [aCoder encodeObject:self.textureImageName forKey:ACPlanetKeyTextureImage];//UIImagePNGRepresentation(self.textureImage) forKey:ACPlanetKeyTextureImage];
     [aCoder encodeDouble:self.orbitalDistance forKey:ACPlanetKeyOrbitalDistance];
     [aCoder encodeObject:self.owner forKey:ACPlanetKeyOwner];
     [aCoder encodeInteger:self.mineralValue forKey:ACPlanetKeyMineralValue];
@@ -62,7 +68,7 @@ NSString *const ACPlanetTypeRocky = @"planetType-rocky";
     {
         self.name = [aDecoder decodeObjectForKey:ACPlanetKeyName];
         self.parentStar = [aDecoder decodeObjectForKey:ACPlanetKeyParentStar];
-        self.textureImage = [UIImage imageWithData:[aDecoder decodeObjectForKey:ACPlanetKeyTextureImage]];
+        self.textureImageName = [aDecoder decodeObjectForKey:ACPlanetKeyTextureImage];// = [UIImage imageWithData:[aDecoder decodeObjectForKey:ACPlanetKeyTextureImage]];
         self.orbitalDistance = [aDecoder decodeDoubleForKey:ACPlanetKeyOrbitalDistance];
         self.owner = [aDecoder decodeObjectForKey:ACPlanetKeyOwner];
         self.mineralValue = [aDecoder decodeIntegerForKey:ACPlanetKeyMineralValue];
@@ -70,6 +76,8 @@ NSString *const ACPlanetTypeRocky = @"planetType-rocky";
         self.fleets = [aDecoder decodeObjectForKey:ACPlanetKeyFleets];
         self.atmosphere = [aDecoder decodeBoolForKey:ACPlanetKeyAtmosphere];
         self.buildQueue = [aDecoder decodeObjectForKey:ACPlanetKeyBuildQueue];
+        
+        self.textureImage = [UIImage imageWithContentsOfFile:self.textureImageFilePath];
     }
     return self;
 }

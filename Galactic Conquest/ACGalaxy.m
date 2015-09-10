@@ -30,12 +30,12 @@ NSString *letters = @"abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ012345
     return randomString;
 }
 
-- (id)initWithName:(NSString *)name image:(UIImage *)textureImage
+- (id)initWithName:(NSString *)name
 {
     if (self = [super init])
     {
         self.name = name;
-        self.textureImage = textureImage;
+        self.textureImageName = @"spiral-1.png";
         
         NSMutableArray *stars = @[].mutableCopy;
         for (int i = 0; i < 7; i++)
@@ -54,7 +54,7 @@ NSString *letters = @"abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ012345
     {
         NSDictionary *rootDictionary = [NSJSONSerialization JSONObjectWithData:[NSData dataWithContentsOfFile:filePath] options:kNilOptions error:nil];
         self.name = rootDictionary[@"name"];
-        self.textureImage = [UIImage imageNamed:rootDictionary[@"textureImage"]];
+        self.textureImageName = rootDictionary[@"textureImage"];
         
         NSMutableArray *starsArray = [NSMutableArray array];
         for (NSDictionary *starDictionary in rootDictionary[@"stars"])
@@ -68,7 +68,7 @@ NSString *letters = @"abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ012345
                 NSMutableArray *planetsArray = [NSMutableArray array];
                 for (NSDictionary *planetDictionary in starDictionary[@"planets"])
                 {
-                    ACPlanet *planet = [[ACPlanet alloc] initWithName:planetDictionary[@"name"] parentStar:star textureImage:[UIImage imageNamed:planetDictionary[@"textureImage"]] orbitalDistance:[planetDictionary[@"orbitalDistance"] doubleValue]];
+                    ACPlanet *planet = [[ACPlanet alloc] initWithName:planetDictionary[@"name"] parentStar:star textureImage:planetDictionary[@"textureImage"] orbitalDistance:[planetDictionary[@"orbitalDistance"] doubleValue]];
                     planet.mineralValue = [planetDictionary[@"mineralValue"] integerValue];
                     planet.fuelValue = [planetDictionary[@"fuelValue"] integerValue];
                     [planetsArray addObject:planet];
@@ -89,13 +89,18 @@ NSString *letters = @"abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ012345
     return self;
 }
 
+- (NSString *)textureImageFilePath
+{
+    return [[NSBundle mainBundle] pathForResource:self.textureImageName.stringByDeletingPathExtension ofType:self.textureImageName.pathExtension];
+}
+
 #pragma mark - NSCoding
 
 - (void)encodeWithCoder:(NSCoder *)aCoder
 {
     [aCoder encodeObject:self.name forKey:ACGalaxyKeyName];
     [aCoder encodeObject:self.stars forKey:ACGalaxyKeyStars];
-    [aCoder encodeObject:UIImagePNGRepresentation(self.textureImage) forKey:ACGalaxyKeyTextureImage];
+    [aCoder encodeObject:self.textureImageName/*UIImagePNGRepresentation(self.textureImage)*/ forKey:ACGalaxyKeyTextureImage];
     [aCoder encodeDouble:self.galacticRadius forKey:ACGalaxyKeyGalacticRadius];
 }
 
@@ -105,7 +110,7 @@ NSString *letters = @"abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ012345
     {
         self.name = [aDecoder decodeObjectForKey:ACGalaxyKeyName];
         self.stars = [aDecoder decodeObjectForKey:ACGalaxyKeyStars];
-        self.textureImage = [UIImage imageWithData:[aDecoder decodeObjectForKey:ACGalaxyKeyTextureImage]];
+        self.textureImageName = /*[UIImage imageWithData:*/[aDecoder decodeObjectForKey:ACGalaxyKeyTextureImage];//];
         self.galacticRadius = [aDecoder decodeDoubleForKey:ACGalaxyKeyGalacticRadius];
     }
     return self;

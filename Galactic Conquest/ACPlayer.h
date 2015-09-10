@@ -24,7 +24,8 @@ extern NSString *const ACPlayerKeyDelegate;
 
 @property (strong, nonatomic) NSString *name;
 @property (strong, nonatomic) UIColor *color;
-@property (strong, nonatomic) UIImage *image;
+//@property (strong, nonatomic) UIImage *image;
+@property (strong, nonatomic) NSString *image;
 @property (strong, nonatomic) NSArray *planets;
 @property (nonatomic) NSInteger money;
 @property (nonatomic) NSInteger minerals;
@@ -35,6 +36,7 @@ extern NSString *const ACPlayerKeyDelegate;
 - (id)initWithName:(NSString *)name;
 - (void)incrementResources;
 - (void)beginTurn;
+- (NSString *)imageFilePath;
 
 @end
 

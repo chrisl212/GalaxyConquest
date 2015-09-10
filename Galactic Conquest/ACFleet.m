@@ -64,7 +64,7 @@ NSString *const ACFleetKeyTurnsRemaining = @"fleet-turnsRemaining";
     {
         self.owner = [aDecoder decodeObjectForKey:ACFleetKeyOwner];
         self.ships = [aDecoder decodeObjectForKey:ACFleetKeyShips];
-        self.name = [aDecoder decodeObjectForKey:self.name];
+        self.name = [aDecoder decodeObjectForKey:ACFleetKeyName];
         self.location = [aDecoder decodeObjectForKey:ACFleetKeyLocation];
         self.destination = [aDecoder decodeObjectForKey:ACFleetKeyDestination];
         self.turnsRemaining = [aDecoder decodeIntegerForKey:ACFleetKeyTurnsRemaining];

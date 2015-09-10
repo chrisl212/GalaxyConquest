@@ -32,6 +32,7 @@ extern NSString *const ACPlanetTypeRocky; //space/land battles
 @property (strong, nonatomic) NSString *name;
 @property (strong, nonatomic) NSString *type;
 @property (strong, nonatomic) UIImage *textureImage;
+@property (strong, nonatomic) NSString *textureImageName;
 @property (strong, nonatomic) ACPlayer *owner;
 @property (nonatomic) NSInteger mineralValue;
 @property (nonatomic) NSInteger fuelValue;
@@ -41,6 +42,7 @@ extern NSString *const ACPlanetTypeRocky; //space/land battles
 @property (strong, nonatomic) NSArray *fleets;
 @property (strong, nonatomic) NSMutableArray *buildQueue;
 
-- (id)initWithName:(NSString *)name parentStar:(ACStar *)parentStar textureImage:(UIImage *)textureImage orbitalDistance:(CGFloat)distance;
+- (NSString *)textureImageFilePath;
+- (id)initWithName:(NSString *)name parentStar:(ACStar *)parentStar textureImage:(NSString *)textureImageName orbitalDistance:(CGFloat)distance;
 
 @end

@@ -19,11 +19,12 @@ extern NSString *const ACGalaxyKeyGalacticRadius;
 
 @property (strong, nonatomic) NSString *name;
 @property (strong, nonatomic) NSArray *stars;
-@property (strong, nonatomic) UIImage *textureImage;
+@property (strong, nonatomic) NSString *textureImageName;
 @property (nonatomic) CGFloat galacticRadius;
 
-- (id)initWithName:(NSString *)name image:(UIImage *)textureImage;
+- (id)initWithName:(NSString *)name;
 - (id)initWithFile:(NSString *)filePath;
+- (NSString *)textureImageFilePath;
 
 @end
 

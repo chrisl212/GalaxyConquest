@@ -42,7 +42,7 @@ NSString *const ACStarKeyOrbitalAngle = @"star-orbitalAngle";
         NSMutableArray *planetsArray = [NSMutableArray array];
         for (NSDictionary *planetDictionary in starDictionary[@"planets"])
         {
-            ACPlanet *planet = [[ACPlanet alloc] initWithName:planetDictionary[@"name"] parentStar:self textureImage:[UIImage imageNamed:planetDictionary[@"textureImage"]] orbitalDistance:[planetDictionary[@"orbitalDistance"] doubleValue]];
+            ACPlanet *planet = [[ACPlanet alloc] initWithName:planetDictionary[@"name"] parentStar:self textureImage:planetDictionary[@"textureImage"] orbitalDistance:[planetDictionary[@"orbitalDistance"] doubleValue]];
             planet.mineralValue = [planetDictionary[@"mineralValue"] integerValue];
             planet.fuelValue = [planetDictionary[@"fuelValue"] integerValue];
             planet.inhabited = [planetDictionary[@"inhabited"] boolValue];
