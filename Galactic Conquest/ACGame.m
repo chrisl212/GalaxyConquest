@@ -80,11 +80,11 @@ NSString *const ACGameKeyMovingFleets = @"game-movingFleets";
     NSInteger currentIndex = [self.players indexOfObject:self.currentPlayer];
     NSInteger nextIndex = ((currentIndex + 1) == self.players.count) ? 0 : currentIndex + 1;
     self.currentPlayer = self.players[nextIndex];
+    if (self.currentPlayer.isPlayer1)
+        [self roundWasCompleted];
     if ([self.delegate respondsToSelector:@selector(game:turnDidChangeToPlayer:)])
         [self.delegate game:self turnDidChangeToPlayer:self.currentPlayer];
     [self.currentPlayer incrementResources];
-    if (self.currentPlayer.isPlayer1)
-        [self roundWasCompleted];
     [self.currentPlayer beginTurn];
 }
 
@@ -106,6 +106,11 @@ NSString *const ACGameKeyMovingFleets = @"game-movingFleets";
             fleet.destination.fleets = newPlanetFleets;
             fleet.location = fleet.destination;
             fleet.destination = nil;
+            if ([fleet.location.owner.name isEqualToString:@"None"] && fleet.location.inhabited == NO)
+                fleet.location.owner = fleet.owner;
+            else
+                if ([self.delegate respondsToSelector:@selector(fleet:didInvadePlanet:)])
+                    [self.delegate fleet:fleet didInvadePlanet:fleet.location];
             
             [newMovingFleets removeObject:fleet];
         }

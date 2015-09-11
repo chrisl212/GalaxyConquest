@@ -14,7 +14,7 @@
 {
     NSLog(@"AI turn has started for player %@", self.name);
     dispatch_async(dispatch_queue_create("com.a-cstudios.ai", NULL), ^{
-        sleep(1);
+        //sleep(1);
         [self.delegate playerDidFinishTurn:self];
     });
 }

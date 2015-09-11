@@ -119,7 +119,7 @@ CGPoint findB(double Ax, double Ay, double Cx, double Cy, double L, int clockwis
             CGContextSetShouldAntialias(context, YES);
             CGContextSetMiterLimit(context, 2.0);
             
-            CGFloat radius = ((self.size.height - PLANET_HEIGHT/2.0)/2.0) * planet.orbitalDistance;
+            CGFloat radius = ((self.size.height - PLANET_HEIGHT)/2.0) * planet.orbitalDistance;
             
             CGContextAddArc(context, CGRectGetMidX(self.frame), CGRectGetMidY(self.frame), radius, 30.0, 0.0, 1);
             CGContextStrokePath(context);
@@ -132,18 +132,20 @@ CGPoint findB(double Ax, double Ay, double Cx, double Cy, double L, int clockwis
             orbitNode.position = CGPointMake(CGRectGetMidX(self.frame), CGRectGetMidY(self.frame));
             [self insertChild:orbitNode atIndex:0];
         }
+        NSInteger counter = 0;
         for (ACPlanet *planet in self.star.planets)
         {
-            NSInteger randomPosition = arc4random_uniform(10) + 1;
+            NSInteger randomPosition = counter; //not random anymore
+            counter++;
             
-            CGFloat radius = ((self.size.height - PLANET_HEIGHT/2.0)/2.0) * planet.orbitalDistance;
+            CGFloat radius = ((self.size.height - PLANET_HEIGHT)/2.0) * planet.orbitalDistance;
             
             CGFloat topX = CGRectGetMidX(self.frame);
             CGFloat topY = CGRectGetMidY(self.frame) + radius;
             
             CGFloat orbitalDiameter = radius * 2.0;
             CGFloat orbitalCircumference = M_PI * orbitalDiameter;
-            CGFloat oneTenthCircumference = orbitalCircumference/10.0;
+            CGFloat oneTenthCircumference = orbitalCircumference/self.star.planets.count;//no longer one tenth
             
             CGFloat positionCircumference = oneTenthCircumference * randomPosition;
             

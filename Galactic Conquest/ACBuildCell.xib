@@ -51,7 +51,10 @@
                         <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="qRA-mq-hTz" customClass="SCNView">
+                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="x7D-5o-JVv">
+                        <rect key="frame" x="0.0" y="0.0" width="79" height="79"/>
+                    </imageView>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qRA-mq-hTz" customClass="SCNView">
                         <rect key="frame" x="0.0" y="0.0" width="79" height="79"/>
                     </view>
                 </subviews>
@@ -60,17 +63,17 @@
                     <mask key="subviews">
                         <exclude reference="B8t-AX-Ki6"/>
                         <exclude reference="cgI-Gb-uCp"/>
+                        <exclude reference="qRA-mq-hTz"/>
                     </mask>
                 </variation>
             </tableViewCellContentView>
             <connections>
                 <outlet property="shipFuelCostLabel" destination="gvm-UH-ZY9" id="KME-xX-pqn"/>
-                <outlet property="shipImageView" destination="B8t-AX-Ki6" id="ZXj-GS-EsB"/>
+                <outlet property="shipImageView" destination="x7D-5o-JVv" id="D46-Cu-pPp"/>
                 <outlet property="shipMineralsCostLabel" destination="VDR-LU-zqy" id="Mx5-m7-Jfi"/>
                 <outlet property="shipNameLabel" destination="edH-St-N8d" id="JZf-UV-t9W"/>
                 <outlet property="shipQuantityLabel" destination="Am0-4J-Dz5" id="cJz-nw-Kte"/>
                 <outlet property="shipQuantityStepper" destination="6MG-lq-uob" id="EjR-Tx-NhY"/>
-                <outlet property="shipSceneView" destination="qRA-mq-hTz" id="pRb-PO-F9O"/>
             </connections>
             <point key="canvasLocation" x="343" y="314"/>
         </tableViewCell>

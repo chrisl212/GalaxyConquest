@@ -8,6 +8,12 @@
 
 #import <SpriteKit/SpriteKit.h>
 
+@class ACShip;
+
 @interface ACShipNode : SKSpriteNode
+
+@property (nonatomic) CGFloat thrust;
+
+- (id)initWithShip:(ACShip *)ship size:(CGSize)size;
 
 @end

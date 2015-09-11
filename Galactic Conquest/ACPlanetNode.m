@@ -69,7 +69,7 @@ SCNVector3 vectorFromQuadrant(NSInteger q)
         
         CABasicAnimation *rotationAnimation = [CABasicAnimation animationWithKeyPath:@"rotation"];
         rotationAnimation.toValue = [NSValue valueWithSCNVector4:SCNVector4Make(0, 1, 0, M_PI * 2)];
-        rotationAnimation.duration = 50; // One revolution in ten seconds.
+        rotationAnimation.duration = 150; // One revolution in ten seconds.
         rotationAnimation.repeatCount = FLT_MAX; // Repeat the animation forever.
         [planetNode addAnimation:rotationAnimation forKey:nil]; // Attach the animation to the node to start it.
         

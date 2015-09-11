@@ -64,8 +64,9 @@
         cell.shipMineralsCostLabel.text = [NSString stringWithFormat:@"Minerals: %ld", ship.mineralsCost];
         cell.shipFuelCostLabel.text = [NSString stringWithFormat:@"Fuel: %ld", ship.fuelCost];
         
-        cell.shipSceneView.scene = [SCNScene sceneWithURL:[NSURL fileURLWithPath:ship.scenePath] options:nil error:nil];
-        cell.shipSceneView.backgroundColor = [UIColor clearColor];
+        //cell.shipSceneView.scene = [SCNScene sceneWithURL:[NSURL fileURLWithPath:ship.scenePath] options:nil error:nil];
+        //cell.shipSceneView.backgroundColor = [UIColor clearColor];
+        cell.shipImageView.image = [UIImage imageWithContentsOfFile:ship.imageFilePath];
         
         return cell;
     }

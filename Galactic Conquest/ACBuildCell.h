@@ -12,7 +12,6 @@
 @interface ACBuildCell : UITableViewCell
 
 @property (weak, nonatomic) IBOutlet UIImageView *shipImageView;
-@property (weak, nonatomic) IBOutlet SCNView *shipSceneView;
 @property (weak, nonatomic) IBOutlet UILabel *shipNameLabel;
 @property (weak, nonatomic) IBOutlet UILabel *shipFuelCostLabel;
 @property (weak, nonatomic) IBOutlet UILabel *shipMineralsCostLabel;

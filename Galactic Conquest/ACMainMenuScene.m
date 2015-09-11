@@ -12,6 +12,8 @@
 #import "ACPlanet.h"
 #import "ACLoadGameScene.h"
 #import "ACPlanetNode.h"
+#import "ACShip.h"
+#import "ACShipNode.h"
 
 @implementation ACMainMenuScene
 
@@ -81,7 +83,7 @@
     [self addChild:planetNode];
     
     NSArray *buttonTitles = @[@"Start Game", @"Add-ons", @"Options"];
-    NSArray *selectors = @[@"startGame", @"", @""];
+    NSArray *selectors = @[@"startGame", @"openAddOnsMenu", @""];
     
     for (NSInteger i = 0; i < buttonTitles.count; i++)
     {
@@ -92,6 +94,15 @@
         [button addTarget:self action:NSSelectorFromString(selectors[i])];
         [self addChild:button];
     }
+}
+
+- (void)openAddOnsMenu
+{
+    ACShip *transport = [[ACShip alloc] initWithFile:[[NSBundle mainBundle] pathForResource:@"Transport" ofType:@"ship"]];
+    ACShipNode *transportNode = [[ACShipNode alloc] initWithShip:transport size:CGSizeMake(200.0, 200.0)];
+    transportNode.position = CGPointMake(CGRectGetMidX(self.frame), CGRectGetMidY(self.frame));
+    [self addChild:transportNode];
+    transportNode.thrust = 0.75;
 }
 
 - (void)startGame

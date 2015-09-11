@@ -116,8 +116,20 @@
     }
     else
     {
-        ACFleet *fleet = self.planet.fleets[0];
-        [fleet.ships addObjectsFromArray:ships];
+        for (NSInteger i = 0; [self.planet.fleets[i] destination]; i++)
+        {
+            ACFleet *fleet = self.planet.fleets[0];
+            [fleet.ships addObjectsFromArray:ships];
+            if (i + 1 == self.planet.fleets.count)
+            {
+                ACFleet *newFleet = [[ACFleet alloc] initWithOwner:[self currentPlayer]];
+                newFleet.name = [NSString stringWithFormat:@"Fleet%ld", i];
+                newFleet.location = self.planet;
+                [newFleet.ships addObjectsFromArray:ships];
+                self.planet.fleets = [self.planet.fleets arrayByAddingObject:newFleet];
+                break;
+            }
+        }
     }
     ACPlayer *currentPlayer = [self currentPlayer];
     currentPlayer.fuel -= cost.fuelCost;

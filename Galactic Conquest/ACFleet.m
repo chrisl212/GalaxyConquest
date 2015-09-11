@@ -19,6 +19,7 @@ NSString *const ACFleetKeyName = @"fleet-name";
 NSString *const ACFleetKeyLocation = @"fleet-location";
 NSString *const ACFleetKeyDestination = @"fleet-destination";
 NSString *const ACFleetKeyTurnsRemaining = @"fleet-turnsRemaining";
+NSString *const ACFleetKeyTotalTurns = @"fleet-totalTurns";
 
 @implementation ACFleet
 
@@ -35,6 +36,7 @@ NSString *const ACFleetKeyTurnsRemaining = @"fleet-turnsRemaining";
         self.ships = @[].mutableCopy;
         self.name = @"";
         self.turnsRemaining = 0;
+        self.totalTurns = 0;
     }
     return self;
 }
@@ -43,7 +45,19 @@ NSString *const ACFleetKeyTurnsRemaining = @"fleet-turnsRemaining";
 {
     self.destination = planet;
     self.turnsRemaining = [[self currentGame].galaxy turnNumberFromDistance:[self.location.parentStar.parentGalaxy distanceFromStar:self.location.parentStar toStar:planet.parentStar]];
+    self.totalTurns = self.turnsRemaining;
+    if ([self.location.parentStar isEqual:planet.parentStar])
+        self.turnsRemaining = 1, self.totalTurns = 1;
+    self.owner.fuel -= [ACFleet fuelCostForTurns:self.totalTurns];
     [[self currentGame].movingFleets addObject:self];
+}
+
+- (BOOL)canMoveToPlanet:(ACPlanet *)planet
+{
+    CGFloat turns = [[self currentGame].galaxy turnNumberFromDistance:[self.location.parentStar.parentGalaxy distanceFromStar:self.location.parentStar toStar:planet.parentStar]];
+    if ((self.owner.fuel - [ACFleet fuelCostForTurns:turns]) < 0)
+        return NO;
+    return YES;
 }
 
 #pragma mark - NSCoding
@@ -56,6 +70,7 @@ NSString *const ACFleetKeyTurnsRemaining = @"fleet-turnsRemaining";
     [aCoder encodeObject:self.location forKey:ACFleetKeyLocation];
     [aCoder encodeObject:self.destination forKey:ACFleetKeyDestination];
     [aCoder encodeInteger:self.turnsRemaining forKey:ACFleetKeyTurnsRemaining];
+    [aCoder encodeInteger:self.totalTurns forKey:ACFleetKeyTotalTurns];
 }
 
 - (id)initWithCoder:(NSCoder *)aDecoder
@@ -68,8 +83,25 @@ NSString *const ACFleetKeyTurnsRemaining = @"fleet-turnsRemaining";
         self.location = [aDecoder decodeObjectForKey:ACFleetKeyLocation];
         self.destination = [aDecoder decodeObjectForKey:ACFleetKeyDestination];
         self.turnsRemaining = [aDecoder decodeIntegerForKey:ACFleetKeyTurnsRemaining];
+        self.totalTurns = [aDecoder decodeIntegerForKey:ACFleetKeyTotalTurns];
     }
     return self;
+}
+
+#pragma mark -
+
++ (double)fuelCostForTurns:(NSInteger)turns
+{
+    if (turns < 3)
+        return 35.0;
+    else if (turns == 3)
+        return 45.0;
+    else if (turns == 4)
+        return 55.0;
+    else if (turns == 5)
+        return 65.0;
+    else
+        return 75.0;
 }
 
 @end

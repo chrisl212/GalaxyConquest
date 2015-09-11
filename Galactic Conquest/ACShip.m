@@ -12,12 +12,11 @@ NSString *const ACShipKeyName = @"ship-name";
 NSString *const ACShipKeyFuelCost = @"ship-fuel";
 NSString *const ACShipKeyMineralsCost = @"ship-minerals";
 NSString *const ACShipKeyHP = @"ship-hp";
-NSString *const ACShipKeySceneName = @"ship-scene";
+NSString *const ACShipKeyImageFileName = @"ship-imageFile";
+NSString *const ACShipKeySceneFileName = @"ship-sceneFile";
+NSString *const ACShipKeyEnginePositions = @"ship-enginePositions";
 
 @implementation ACShip
-{
-    NSString *sceneFileName;
-}
 
 - (id)initWithFile:(NSString *)file
 {
@@ -28,14 +27,36 @@ NSString *const ACShipKeySceneName = @"ship-scene";
         self.fuelCost = [rootDictionary[@"fuelCost"] integerValue];
         self.mineralsCost = [rootDictionary[@"mineralsCost"] integerValue];
         self.hp = [rootDictionary[@"hp"] integerValue];
-        sceneFileName = rootDictionary[@"scene"];
+        self.imageFileName = rootDictionary[@"image"];
+        self.sceneFileName = rootDictionary[@"scene"];
+        
+        NSArray *enginesArray = rootDictionary[@"enginePositions"];
+        self.enginePositions = calloc(sizeof(CGPoint), enginesArray.count);
+        
+        NSInteger counter = 0;
+        for (NSArray *pointArray in enginesArray)
+        {
+            self.enginePositions[counter] = CGPointMake([pointArray[0] doubleValue], [pointArray[1] doubleValue]);
+            
+            counter++;
+        }
     }
     return self;
 }
 
 - (NSString *)scenePath
 {
-    return [[NSBundle mainBundle] pathForResource:sceneFileName ofType:@"dae"];
+    return [[NSBundle mainBundle] pathForResource:self.sceneFileName ofType:@"dae"];
+}
+
+- (NSString *)imageFilePath
+{
+    return [[NSBundle mainBundle] pathForResource:self.imageFileName.stringByDeletingPathExtension ofType:self.imageFileName.pathExtension];
+}
+
+- (NSString *)sceneFilePath
+{
+    return [[NSBundle mainBundle] pathForResource:self.sceneFileName.stringByDeletingPathExtension ofType:self.sceneFileName.pathExtension];
 }
 
 #pragma mark - NSCoding
@@ -46,7 +67,9 @@ NSString *const ACShipKeySceneName = @"ship-scene";
     [aCoder encodeInteger:self.fuelCost forKey:ACShipKeyFuelCost];
     [aCoder encodeInteger:self.mineralsCost forKey:ACShipKeyMineralsCost];
     [aCoder encodeInteger:self.hp forKey:ACShipKeyHP];
-    [aCoder encodeObject:sceneFileName forKey:ACShipKeySceneName];
+    [aCoder encodeObject:self.imageFileName forKey:ACShipKeyImageFileName];
+    [aCoder encodeObject:self.sceneFileName forKey:ACShipKeySceneFileName];
+    //TODO:implement [aCoder encodeBytes:self.enginePositions length:<#(NSUInteger)#> forKey:<#(NSString *)#>]
 }
 
 - (id)initWithCoder:(NSCoder *)aDecoder
@@ -57,7 +80,8 @@ NSString *const ACShipKeySceneName = @"ship-scene";
         self.fuelCost = [aDecoder decodeIntegerForKey:ACShipKeyFuelCost];
         self.mineralsCost = [aDecoder decodeIntegerForKey:ACShipKeyMineralsCost];
         self.hp = [aDecoder decodeIntegerForKey:ACShipKeyHP];
-        sceneFileName = [aDecoder decodeObjectForKey:ACShipKeySceneName];
+        self.imageFileName = [aDecoder decodeObjectForKey:ACShipKeyImageFileName];
+        self.sceneFileName = [aDecoder decodeObjectForKey:ACShipKeySceneFileName];
     }
     return self;
 }
@@ -71,7 +95,8 @@ NSString *const ACShipKeySceneName = @"ship-scene";
     newShip.fuelCost = self.fuelCost;
     newShip.mineralsCost = self.mineralsCost;
     newShip.hp = self.hp;
-    newShip->sceneFileName = [sceneFileName copy];
+    newShip.imageFileName = [self.imageFileName copy];
+    newShip.sceneFileName = [self.sceneFileName copy];
     return newShip;
 }
 

@@ -8,8 +8,8 @@
                "type":"rocky",
                "textureImage":"rocky-1.jpg",
                "orbitalDistance":0.3,
-               "mineralValue":75.0,
-               "fuelValue":50.0,
+               "mineralValue":7.5,
+               "fuelValue":5.0,
                "inhabited":0,
                "atmosphere":1
                },
@@ -18,8 +18,8 @@
                "type":"rocky",
                "textureImage":"rocky-4.jpg",
                "orbitalDistance":0.5,
-               "mineralValue":75.0,
-               "fuelValue":50.0,
+               "mineralValue":7.5,
+               "fuelValue":5.0,
                "inhabited":1,
                "atmosphere":1
                },
@@ -28,8 +28,8 @@
                "type":"rocky",
                "textureImage":"rocky-3.png",
                "orbitalDistance":0.7,
-               "mineralValue":75.0,
-               "fuelValue":50.0,
+               "mineralValue":7.5,
+               "fuelValue":5.0,
                "inhabited":0,
                "atmosphere":0
                },
@@ -38,8 +38,8 @@
                "type":"gas",
                "textureImage":"gas-3.png",
                "orbitalDistance":1.0,
-               "mineralValue":25.0,
-               "fuelValue":75.0,
+               "mineralValue":2.5,
+               "fuelValue":7.5,
                "inhabited":0,
                "atmosphere":0
                }

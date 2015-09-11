@@ -122,7 +122,13 @@
     [self dismiss];
     if ([planet isEqual:self.fleet.location])
         return;
-    [self.fleet moveToPlanet:planet];
+    if ([self.fleet canMoveToPlanet:planet])
+        [self.fleet moveToPlanet:planet];
+    else
+    {
+        UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"Error" message:@"Not enough fuel to send fleet" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
+        [alertView show];
+    }
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath

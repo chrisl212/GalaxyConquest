@@ -8,6 +8,10 @@
 
 #import <SpriteKit/SpriteKit.h>
 
+@class ACFleet, ACPlanet;
+
 @interface ACSpaceBattleScene : SKScene
+
+- (id)initWithInvadingFleet:(ACFleet *)fleet size:(CGSize)size;
 
 @end

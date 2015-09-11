@@ -15,7 +15,7 @@ extern NSString *const ACGameKeyName;
 extern NSString *const ACGameKeyCurrentPlayer;
 extern NSString *const ACGameKeyMovingFleets;
 
-@class ACGalaxy, ACPlayer;
+@class ACGalaxy, ACFleet, ACPlanet;
 @protocol ACGameDelegate;
 
 @interface ACGame : NSObject <NSCoding, ACPlayerDelegate>
@@ -39,5 +39,6 @@ extern NSString *const ACGameKeyMovingFleets;
 @optional
 - (void)gameDidStart:(ACGame *)game;
 - (void)game:(ACGame *)game turnDidChangeToPlayer:(ACPlayer *)player;
+- (void)fleet:(ACFleet *)player didInvadePlanet:(ACPlanet *)planet;
 
 @end

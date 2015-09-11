@@ -16,6 +16,7 @@ extern NSString *const ACFleetKeyName;
 extern NSString *const ACFleetKeyLocation;
 extern NSString *const ACFleetKeyDestination;
 extern NSString *const ACFleetKeyTurnsRemaining;
+extern NSString *const ACFleetKeyTotalTurns;
 
 @interface ACFleet : NSObject <NSCoding>
 
@@ -25,8 +26,12 @@ extern NSString *const ACFleetKeyTurnsRemaining;
 @property (strong, nonatomic) ACPlanet *location;
 @property (strong, nonatomic) ACPlanet *destination;
 @property (nonatomic) NSInteger turnsRemaining;
+@property (nonatomic) NSInteger totalTurns;
 
 - (id)initWithOwner:(ACPlayer *)owner;
 - (void)moveToPlanet:(ACPlanet *)planet;
+- (BOOL)canMoveToPlanet:(ACPlanet *)planet;
+
++ (double)fuelCostForTurns:(NSInteger)turns;
 
 @end

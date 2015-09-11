@@ -68,6 +68,10 @@
 		ABADCADA1BA0FF3C007F9117 /* ACPlanetSelectDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = ABADCAD91BA0FF3C007F9117 /* ACPlanetSelectDataSource.m */; };
 		ABADCADE1BA100B9007F9117 /* ACPlanetSelectCell.m in Sources */ = {isa = PBXBuildFile; fileRef = ABADCADC1BA100B9007F9117 /* ACPlanetSelectCell.m */; };
 		ABADCADF1BA100B9007F9117 /* ACPlanetSelectCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = ABADCADD1BA100B9007F9117 /* ACPlanetSelectCell.xib */; };
+		ABADCAE41BA22FC6007F9117 /* transport-image.png in Resources */ = {isa = PBXBuildFile; fileRef = ABADCAE31BA22FC6007F9117 /* transport-image.png */; };
+		ABADCAE71BA22FF3007F9117 /* Transport.ship in Resources */ = {isa = PBXBuildFile; fileRef = ABADCAE61BA22FF3007F9117 /* Transport.ship */; };
+		ABADCAE91BA23897007F9117 /* Transport.dae in Resources */ = {isa = PBXBuildFile; fileRef = ABADCAE81BA23897007F9117 /* Transport.dae */; };
+		ABE9C5681BA26B0C00316568 /* ACEngineEmitter.sks in Resources */ = {isa = PBXBuildFile; fileRef = ABE9C5671BA26B0C00316568 /* ACEngineEmitter.sks */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -167,6 +171,10 @@
 		ABADCADB1BA100B9007F9117 /* ACPlanetSelectCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ACPlanetSelectCell.h; sourceTree = "<group>"; };
 		ABADCADC1BA100B9007F9117 /* ACPlanetSelectCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ACPlanetSelectCell.m; sourceTree = "<group>"; };
 		ABADCADD1BA100B9007F9117 /* ACPlanetSelectCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ACPlanetSelectCell.xib; sourceTree = "<group>"; };
+		ABADCAE31BA22FC6007F9117 /* transport-image.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "transport-image.png"; path = "Assets/transport-image.png"; sourceTree = SOURCE_ROOT; };
+		ABADCAE61BA22FF3007F9117 /* Transport.ship */ = {isa = PBXFileReference; explicitFileType = text.json; fileEncoding = 4; path = Transport.ship; sourceTree = "<group>"; };
+		ABADCAE81BA23897007F9117 /* Transport.dae */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml.dae; name = Transport.dae; path = Assets/Transport.dae; sourceTree = SOURCE_ROOT; };
+		ABE9C5671BA26B0C00316568 /* ACEngineEmitter.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = ACEngineEmitter.sks; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -192,12 +200,13 @@
 			name = "View Controllers";
 			sourceTree = "<group>";
 		};
-		AB18CC361B9E3A4400C1807F /* Ships */ = {
+		AB18CC361B9E3A4400C1807F /* Ship Files */ = {
 			isa = PBXGroup;
 			children = (
 				AB18CC371B9E3A6C00C1807F /* Fighter.ship */,
+				ABADCAE61BA22FF3007F9117 /* Transport.ship */,
 			);
-			name = Ships;
+			name = "Ship Files";
 			sourceTree = "<group>";
 		};
 		AB18CC3D1B9E5F0600C1807F /* Galaxies */ = {
@@ -293,8 +302,7 @@
 		AB2AB1D01B9A750700D7A8B6 /* Assets */ = {
 			isa = PBXGroup;
 			children = (
-				ABADCAD21BA0ED18007F9117 /* fighter-texture.png */,
-				ABADCAD01BA0ECE7007F9117 /* Fighter.dae */,
+				ABADCAE51BA22FD1007F9117 /* Ships */,
 				AB2AB1E81B9A9CFC00D7A8B6 /* spark.png */,
 				AB2AB1E31B9A974700D7A8B6 /* spiral-1.png */,
 				AB18CC281B9C93C300C1807F /* stars.jpg */,
@@ -302,7 +310,6 @@
 				ABADCA9E1B9E6B51007F9117 /* Planet Textures */,
 				AB18CC3D1B9E5F0600C1807F /* Galaxies */,
 				AB18CC3E1B9E5F0F00C1807F /* Stars */,
-				AB18CC361B9E3A4400C1807F /* Ships */,
 			);
 			name = Assets;
 			sourceTree = "<group>";
@@ -481,6 +488,7 @@
 			children = (
 				AB2AB1871B9A257800D7A8B6 /* ACShipNode.h */,
 				AB2AB1881B9A257800D7A8B6 /* ACShipNode.m */,
+				ABE9C5671BA26B0C00316568 /* ACEngineEmitter.sks */,
 				AB2AB18A1B9A258C00D7A8B6 /* ACTroopCarrierShipNode.h */,
 				AB2AB18B1B9A258C00D7A8B6 /* ACTroopCarrierShipNode.m */,
 			);
@@ -537,6 +545,18 @@
 				AB2AB18F1B9A25A900D7A8B6 /* ACFleetNode.m */,
 			);
 			name = "Fleet Node";
+			sourceTree = "<group>";
+		};
+		ABADCAE51BA22FD1007F9117 /* Ships */ = {
+			isa = PBXGroup;
+			children = (
+				ABADCAE81BA23897007F9117 /* Transport.dae */,
+				AB18CC361B9E3A4400C1807F /* Ship Files */,
+				ABADCAE31BA22FC6007F9117 /* transport-image.png */,
+				ABADCAD21BA0ED18007F9117 /* fighter-texture.png */,
+				ABADCAD01BA0ECE7007F9117 /* Fighter.dae */,
+			);
+			name = Ships;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -604,6 +624,7 @@
 			files = (
 				AB2AB1E41B9A974700D7A8B6 /* spiral-1.png in Resources */,
 				ABADCAA41B9E77B0007F9117 /* gas-3.png in Resources */,
+				ABE9C5681BA26B0C00316568 /* ACEngineEmitter.sks in Resources */,
 				ABADCAAE1B9E8E2A007F9117 /* gas-4.jpg in Resources */,
 				ABADCA9D1B9E6B4B007F9117 /* rocky-2.jpg in Resources */,
 				AB227C001B9BF765003880CF /* MilkyWay.galaxy in Resources */,
@@ -611,6 +632,7 @@
 				ABADCAAC1B9E8D18007F9117 /* rocky-5.png in Resources */,
 				ABADCAA31B9E77B0007F9117 /* gas-2.png in Resources */,
 				ABADCAA61B9E77B0007F9117 /* rocky-3.png in Resources */,
+				ABADCAE41BA22FC6007F9117 /* transport-image.png in Resources */,
 				ABADCADF1BA100B9007F9117 /* ACPlanetSelectCell.xib in Resources */,
 				AB2AB1F11B9B491F00D7A8B6 /* gas-1.png in Resources */,
 				AB2AB1EA1B9A9CFC00D7A8B6 /* spark.png in Resources */,
@@ -622,6 +644,8 @@
 				ABADCAA51B9E77B0007F9117 /* rocky-4.jpg in Resources */,
 				AB2AB1EF1B9B3E5900D7A8B6 /* ACStar.sks in Resources */,
 				ABADCACF1BA0B278007F9117 /* ACBuildCell.xib in Resources */,
+				ABADCAE91BA23897007F9117 /* Transport.dae in Resources */,
+				ABADCAE71BA22FF3007F9117 /* Transport.ship in Resources */,
 				AB2AB1D21B9A751700D7A8B6 /* button@2x.png in Resources */,
 				AB18CC3C1B9E5B0300C1807F /* rocky-1.jpg in Resources */,
 				AB18CC401B9E5F3D00C1807F /* VYCanisMajoris.star in Resources */,
