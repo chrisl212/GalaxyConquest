@@ -8,6 +8,7 @@
 
 #import "ACPlanet.h"
 #import "ACPlayer.h"
+#import "ACFleet.h"
 
 NSString *const ACPlanetKeyName = @"planet-name";
 NSString *const ACPlanetKeyParentStar = @"planet-parentStar";
@@ -44,6 +45,25 @@ NSString *const ACPlanetTypeRocky = @"planetType-rocky";
 - (NSString *)textureImageFilePath
 {
     return [[NSBundle mainBundle] pathForResource:self.textureImageName.stringByDeletingPathExtension ofType:self.textureImageName.pathExtension];
+}
+
+- (void)addFleet:(ACFleet *)fleet
+{
+    fleet.location = self;
+    
+    if (!self.fleets || self.fleets.count < 1)
+    {
+        fleet.name = @"Fleet1";
+        self.fleets = @[fleet];
+    }
+    else
+    {
+        NSInteger nextFleetIndex = 1;
+        for (NSInteger i = 0; i < self.fleets.count; i++)
+            nextFleetIndex++;
+        fleet.name = [NSString stringWithFormat:@"Fleet%ld", (long)nextFleetIndex];
+        self.fleets = [self.fleets arrayByAddingObject:fleet];
+    }
 }
 
 #pragma mark - NSCoding

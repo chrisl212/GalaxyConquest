@@ -9,6 +9,7 @@
 #import "ACBuildTableViewDataSource.h"
 #import "ACShip.h"
 #import "ACBuildCell.h"
+#import "ACPlayer.h"
 
 @implementation ACBuildTableViewDataSource
 {

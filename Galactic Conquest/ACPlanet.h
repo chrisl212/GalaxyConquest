@@ -24,7 +24,7 @@ extern NSString *const ACPlanetKeyBuildQueue;
 extern NSString *const ACPlanetTypeGas; //only space battles
 extern NSString *const ACPlanetTypeRocky; //space/land battles
 
-@class ACStar, ACPlayer;
+@class ACStar, ACPlayer, ACFleet;
 
 @interface ACPlanet : NSObject <NSCoding>
 
@@ -44,5 +44,6 @@ extern NSString *const ACPlanetTypeRocky; //space/land battles
 
 - (NSString *)textureImageFilePath;
 - (id)initWithName:(NSString *)name parentStar:(ACStar *)parentStar textureImage:(NSString *)textureImageName orbitalDistance:(CGFloat)distance;
+- (void)addFleet:(ACFleet *)fleet;
 
 @end

@@ -31,6 +31,7 @@ extern NSString *const ACFleetKeyTotalTurns;
 - (id)initWithOwner:(ACPlayer *)owner;
 - (void)moveToPlanet:(ACPlanet *)planet;
 - (BOOL)canMoveToPlanet:(ACPlanet *)planet;
+- (BOOL)isMoving;
 
 + (double)fuelCostForTurns:(NSInteger)turns;
 

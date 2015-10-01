@@ -14,6 +14,8 @@
 #import "ACPlanetNode.h"
 #import "ACShip.h"
 #import "ACShipNode.h"
+#import "ACSpaceBattleScene.h"
+#import "ACFleet.h"
 
 @implementation ACMainMenuScene
 
@@ -83,7 +85,7 @@
     [self addChild:planetNode];
     
     NSArray *buttonTitles = @[@"Start Game", @"Add-ons", @"Options"];
-    NSArray *selectors = @[@"startGame", @"openAddOnsMenu", @""];
+    NSArray *selectors = @[@"startGame", @"openAddOnsMenu", @"openOptions"];
     
     for (NSInteger i = 0; i < buttonTitles.count; i++)
     {
@@ -98,11 +100,19 @@
 
 - (void)openAddOnsMenu
 {
-    ACShip *transport = [[ACShip alloc] initWithFile:[[NSBundle mainBundle] pathForResource:@"Transport" ofType:@"ship"]];
+    ACShip *transport = [[ACShip alloc] initWithFile:[[NSBundle mainBundle] pathForResource:@"Frigate" ofType:@"ship"]];
     ACShipNode *transportNode = [[ACShipNode alloc] initWithShip:transport size:CGSizeMake(200.0, 200.0)];
     transportNode.position = CGPointMake(CGRectGetMidX(self.frame), CGRectGetMidY(self.frame));
     [self addChild:transportNode];
+    [transportNode performTurn:ACShipTurnLeft];
     transportNode.thrust = 0.75;
+}
+
+- (void)openOptions
+{
+    ACFleet *fleet = [[ACFleet alloc] initWithOwner:nil];
+    ACSpaceBattleScene *spaceBattle = [[ACSpaceBattleScene alloc] initWithInvadingFleet:fleet size:self.size];
+    [self.view presentScene:spaceBattle];
 }
 
 - (void)startGame

@@ -8,6 +8,7 @@
 
 #import "ACPlayer.h"
 #import "ACPlanet.h"
+#import "ACFleet.h"
 
 NSString *const ACPlayerKeyName = @"player-name";
 NSString *const ACPlayerKeyColor = @"player-color";
@@ -66,6 +67,24 @@ NSString *const ACPlayerKeyDelegate = @"player-delegate";
 - (NSString *)imageFilePath
 {
     return [[NSBundle mainBundle] pathForResource:self.image.stringByDeletingPathExtension ofType:self.image.pathExtension];
+}
+
+- (BOOL)playerCanAffordCost:(ACBuildCost)cost
+{
+    if (self.fuel < cost.fuelCost || self.minerals < cost.mineralsCost)
+        return NO;
+    return YES;
+}
+
+- (void)buildShips:(NSArray *)ships atPlanet:(ACPlanet *)planet forCost:(ACBuildCost)cost
+{
+    ACFleet *newFleet = [[ACFleet alloc] initWithOwner:self];
+    [newFleet.ships addObjectsFromArray:ships];
+    [planet addFleet:newFleet];
+
+    self.fuel -= cost.fuelCost;
+    self.minerals -= cost.mineralsCost;
+    NSLog(@"Built %ld ships for %ld fuel and %ld minerals", ships.count, cost.fuelCost, cost.mineralsCost);
 }
 
 #pragma mark - NSCoding

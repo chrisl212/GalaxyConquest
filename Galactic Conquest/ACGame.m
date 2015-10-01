@@ -118,6 +118,14 @@ NSString *const ACGameKeyMovingFleets = @"game-movingFleets";
     self.movingFleets = newMovingFleets;
 }
 
+- (ACPlayer *)player1
+{
+    for (ACPlayer *p in self.players)
+        if (p.isPlayer1)
+            return p;
+    return nil;
+}
+
 #pragma mark - NSCoding
 
 - (void)encodeWithCoder:(NSCoder *)aCoder

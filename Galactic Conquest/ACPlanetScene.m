@@ -20,6 +20,7 @@
 #import "ACFleet.h"
 
 #define BUTTON_PADDING 2.0
+#define ANIMATION_DURATION 0.5
 
 @implementation ACPlanetScene
 {
@@ -63,7 +64,7 @@
         fleetsButton.position = CGPointMake(fleetsButton.size.width/2.0, fleetsButton.size.height/2.0);
         [self addChild:fleetsButton];
         
-        NSArray *planetInfoStrings = @[planet.name, [NSString stringWithFormat:@"Mineral value: %ld", planet.mineralValue], [NSString stringWithFormat:@"Fuel value: %ld", planet.fuelValue], [NSString stringWithFormat:@"Owner: %@", planet.owner.name], [NSString stringWithFormat:@"Fleets: %ld", planet.fleets.count]];
+        NSArray *planetInfoStrings = @[[NSString stringWithFormat:@"Mineral value: %ld", planet.mineralValue], [NSString stringWithFormat:@"Fuel value: %ld", planet.fuelValue], [NSString stringWithFormat:@"Owner: %@", planet.owner.name], [NSString stringWithFormat:@"Fleets: %ld", planet.fleets.count]];
 
         UIFont *font = [UIFont systemFontOfSize:22.0];
         for (NSInteger i = 0; i < planetInfoStrings.count; i++)
@@ -77,6 +78,14 @@
             [self addChild:labelNode];
         }
         
+        SKLabelNode *planetNameLabelNode = [[SKLabelNode alloc] initWithFontNamed:font.fontName];
+        planetNameLabelNode.fontSize = font.pointSize;
+        planetNameLabelNode.text = planet.name;
+        planetNameLabelNode.horizontalAlignmentMode = SKLabelHorizontalAlignmentModeCenter;
+        planetNameLabelNode.verticalAlignmentMode = SKLabelVerticalAlignmentModeTop;
+        planetNameLabelNode.position = CGPointMake(CGRectGetMidX(self.frame), self.size.height - planetNameLabelNode.frame.size.height/2.0);
+        [self addChild:planetNameLabelNode];
+        
         if (self.planet.owner.isPlayer1)
         {
             ACButtonNode *buildFleetButton = [[ACButtonNode alloc] initWithTitle:@"Build..." font:[UIFont systemFontOfSize:14.0]];
@@ -88,60 +97,23 @@
     return self;
 }
 
-- (BOOL)userCanAffordCost:(ACBuildCost)cost
+- (BOOL)userCanAffordCost:(struct ACBuildCost)cost
 {
-    if ([self currentPlayer].fuel < cost.fuelCost || [self currentPlayer].minerals < cost.mineralsCost)
-        return NO;
-    return YES;
+    return [[self currentPlayer] playerCanAffordCost:cost];
 }
 
 - (void)userDidBuildShips:(NSArray *)ships cost:(ACBuildCost)cost
 {
-    for (UIView *subview in self.view.subviews)
-    {
-        [subview removeFromSuperview];
-        for (SKNode *node in self.children)
-        {
-            node.userInteractionEnabled = YES;
-        }
-    }
-    
-    if (!self.planet.fleets || self.planet.fleets.count  < 1)
-    {
-        ACFleet *newFleet = [[ACFleet alloc] initWithOwner:[self currentPlayer]];
-        newFleet.name = @"Fleet1";
-        newFleet.location = self.planet;
-        [newFleet.ships addObjectsFromArray:ships];
-        self.planet.fleets = @[newFleet];
-    }
-    else
-    {
-        for (NSInteger i = 0; [self.planet.fleets[i] destination]; i++)
-        {
-            ACFleet *fleet = self.planet.fleets[0];
-            [fleet.ships addObjectsFromArray:ships];
-            if (i + 1 == self.planet.fleets.count)
-            {
-                ACFleet *newFleet = [[ACFleet alloc] initWithOwner:[self currentPlayer]];
-                newFleet.name = [NSString stringWithFormat:@"Fleet%ld", i];
-                newFleet.location = self.planet;
-                [newFleet.ships addObjectsFromArray:ships];
-                self.planet.fleets = [self.planet.fleets arrayByAddingObject:newFleet];
-                break;
-            }
-        }
-    }
-    ACPlayer *currentPlayer = [self currentPlayer];
-    currentPlayer.fuel -= cost.fuelCost;
-    currentPlayer.minerals -= cost.mineralsCost;
-    NSLog(@"Built %ld ships for %ld fuel and %ld minerals", ships.count, cost.fuelCost, cost.mineralsCost);
+    [self dismissFleetsTable];
+    if (ships.count > 0)
+        [[self currentPlayer] buildShips:ships atPlanet:self.planet forCost:cost];
 }
 
 - (void)openBuildMenu
 {
     buildDataSource = [[ACBuildTableViewDataSource alloc] initWithDelegate:self];
     
-    UITableView *buildTableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, 300.0, 300.0) style:UITableViewStyleGrouped];
+    UITableView *buildTableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, 300.0, self.view.frame.size.height) style:UITableViewStyleGrouped];
     buildTableView.dataSource = buildDataSource;
     buildTableView.delegate = buildDataSource;
     [buildTableView registerNib:[UINib nibWithNibName:@"ACBuildCell" bundle:nil] forCellReuseIdentifier:@"Cell"];
@@ -159,7 +131,7 @@
     {
         node.userInteractionEnabled = NO;
     }
-    [UIView animateWithDuration:0.5 animations:^{
+    [UIView animateWithDuration:ANIMATION_DURATION animations:^{
         buildTableView.alpha = 1.0;
         backgroundView.alpha = 0.6;
     }];
@@ -169,7 +141,7 @@
 {
     fleetsDataSource = [[ACFleetsTableViewDataSource alloc] initWithPlanet:self.planet delegate:self];
     
-    UITableView *buildTableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, 300.0, 300.0) style:UITableViewStyleGrouped];
+    UITableView *buildTableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, 300.0, self.view.frame.size.height) style:UITableViewStyleGrouped];
     buildTableView.dataSource = fleetsDataSource;
     buildTableView.delegate = fleetsDataSource;
     buildTableView.center = self.view.center;
@@ -186,7 +158,7 @@
     {
         node.userInteractionEnabled = NO;
     }
-    [UIView animateWithDuration:0.5 animations:^{
+    [UIView animateWithDuration:ANIMATION_DURATION animations:^{
         buildTableView.alpha = 1.0;
         backgroundView.alpha = 0.6;
     }];
@@ -213,8 +185,12 @@
 {
     for (UIView *subview in self.view.subviews)
     {
-        [subview removeFromSuperview];
-        
+        [UIView animateWithDuration:ANIMATION_DURATION animations:^{
+            subview.alpha = 0.0;
+        } completion:^(BOOL fi){
+            if (fi)
+                [subview removeFromSuperview];
+        }];
     }
     for (SKNode *node in self.children)
     {

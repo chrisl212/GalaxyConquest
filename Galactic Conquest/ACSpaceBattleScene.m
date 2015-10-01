@@ -97,10 +97,15 @@
         starNode.position = CGPointMake(CGRectGetMidX(self.frame)+size.width/4.0, CGRectGetMidY(self.frame) + size.height/4.0);
         [self addChild:starNode];
         
-        SK3DNode *shipNode = [[SK3DNode alloc] initWithViewportSize:CGSizeMake(300.0, 300.0)];
-        shipNode.scnScene = [SCNScene sceneNamed:@"Transport.dae"];
-        shipNode.position = CGPointMake(CGRectGetMidX(self.frame), CGRectGetMidY(self.frame));
-        [self addChild:shipNode];
+        ACShip *ship = [[ACShip alloc] initWithFile:[[NSBundle mainBundle] pathForResource:@"Transport" ofType:@"ship"]];
+        for (int i = 0; i < 4; i++)
+        {
+            ACShipNode *shipNode = [[ACShipNode alloc] initWithShip:ship size:CGSizeMake(20.0, 20.0)];
+            
+            shipNode.position = CGPointMake(arc4random_uniform(size.width), arc4random_uniform(size.height));
+            shipNode.thrust = 1.0/arc4random_uniform(10)+1;
+            [self addChild:shipNode];
+        }
     }
     return self;
 }

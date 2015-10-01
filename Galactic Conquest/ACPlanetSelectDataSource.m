@@ -55,6 +55,17 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
+    if (!tableView.tableFooterView)
+    {
+        UIButton *button = [UIButton buttonWithType:UIButtonTypeSystem];
+        button.frame = CGRectMake(0, 0, 300.0, 30.0);
+        [button setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+        [button setTitle:@"Cancel" forState:UIControlStateNormal];
+        [button addTarget:self action:@selector(dismiss) forControlEvents:UIControlEventTouchUpInside];
+        [button.titleLabel setFont:[UIFont systemFontOfSize:14.0]];
+    
+        tableView.tableFooterView = button;
+    }
     return [tableViewItems[section][@"planets"] count];
 }
 
@@ -134,23 +145,6 @@
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     return 60.0;
-}
-
-- (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section
-{
-    return 30.0;
-}
-
-- (UIView *)tableView:(UITableView *)tableView viewForFooterInSection:(NSInteger)section
-{
-    UIButton *button = [UIButton buttonWithType:UIButtonTypeSystem];
-    button.frame = CGRectMake(0, 0, 300.0, 30.0);
-    [button setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
-    [button setTitle:@"Cancel" forState:UIControlStateNormal];
-    [button addTarget:self action:@selector(dismiss) forControlEvents:UIControlEventTouchUpInside];
-    [button.titleLabel setFont:[UIFont systemFontOfSize:14.0]];
-    
-    return button;
 }
 
 - (void)dismiss

@@ -1,0 +1,9 @@
+{
+    "name" : "Frigate",
+    "mineralsCost" : 10.0,
+    "fuelCost" : 1.0,
+    "hp" : 100.0,
+    "scene" : "Frigate.dae",
+    "image" : "transport-image.png",
+    "enginePositions" : [ [0.0, 0.5] ]
+}

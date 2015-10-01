@@ -44,12 +44,15 @@
 		AB2AB1DC1B9A8A8700D7A8B6 /* ACPlanet.m in Sources */ = {isa = PBXBuildFile; fileRef = AB2AB1DB1B9A8A8700D7A8B6 /* ACPlanet.m */; };
 		AB2AB1DF1B9A8A9D00D7A8B6 /* ACGalaxy.m in Sources */ = {isa = PBXBuildFile; fileRef = AB2AB1DE1B9A8A9D00D7A8B6 /* ACGalaxy.m */; };
 		AB2AB1E21B9A8AAB00D7A8B6 /* ACStar.m in Sources */ = {isa = PBXBuildFile; fileRef = AB2AB1E11B9A8AAB00D7A8B6 /* ACStar.m */; };
-		AB2AB1E41B9A974700D7A8B6 /* spiral-1.png in Resources */ = {isa = PBXBuildFile; fileRef = AB2AB1E31B9A974700D7A8B6 /* spiral-1.png */; };
+		AB2AB1E41B9A974700D7A8B6 /* spiral-1@2x.jpg in Resources */ = {isa = PBXBuildFile; fileRef = AB2AB1E31B9A974700D7A8B6 /* spiral-1@2x.jpg */; };
 		AB2AB1E91B9A9CFC00D7A8B6 /* ACStarMapParticle.sks in Resources */ = {isa = PBXBuildFile; fileRef = AB2AB1E71B9A9CFC00D7A8B6 /* ACStarMapParticle.sks */; };
 		AB2AB1EA1B9A9CFC00D7A8B6 /* spark.png in Resources */ = {isa = PBXBuildFile; fileRef = AB2AB1E81B9A9CFC00D7A8B6 /* spark.png */; };
 		AB2AB1ED1B9AA33600D7A8B6 /* ACStarMapNode.m in Sources */ = {isa = PBXBuildFile; fileRef = AB2AB1EC1B9AA33600D7A8B6 /* ACStarMapNode.m */; };
 		AB2AB1EF1B9B3E5900D7A8B6 /* ACStar.sks in Resources */ = {isa = PBXBuildFile; fileRef = AB2AB1EE1B9B3E5900D7A8B6 /* ACStar.sks */; };
 		AB2AB1F11B9B491F00D7A8B6 /* gas-1.png in Resources */ = {isa = PBXBuildFile; fileRef = AB2AB1F01B9B491F00D7A8B6 /* gas-1.png */; };
+		AB438BA41BA36DF6009C5540 /* Frigate.dae in Resources */ = {isa = PBXBuildFile; fileRef = AB438BA31BA36DF6009C5540 /* Frigate.dae */; };
+		AB438BA61BA36E6A009C5540 /* Frigate.ship in Resources */ = {isa = PBXBuildFile; fileRef = AB438BA51BA36E6A009C5540 /* Frigate.ship */; };
+		AB438BAC1BA483F3009C5540 /* star.png in Resources */ = {isa = PBXBuildFile; fileRef = AB438BAA1BA483F3009C5540 /* star.png */; };
 		ABADCA9D1B9E6B4B007F9117 /* rocky-2.jpg in Resources */ = {isa = PBXBuildFile; fileRef = ABADCA9C1B9E6B4B007F9117 /* rocky-2.jpg */; };
 		ABADCAA31B9E77B0007F9117 /* gas-2.png in Resources */ = {isa = PBXBuildFile; fileRef = ABADCA9F1B9E77B0007F9117 /* gas-2.png */; };
 		ABADCAA41B9E77B0007F9117 /* gas-3.png in Resources */ = {isa = PBXBuildFile; fileRef = ABADCAA01B9E77B0007F9117 /* gas-3.png */; };
@@ -71,6 +74,7 @@
 		ABADCAE41BA22FC6007F9117 /* transport-image.png in Resources */ = {isa = PBXBuildFile; fileRef = ABADCAE31BA22FC6007F9117 /* transport-image.png */; };
 		ABADCAE71BA22FF3007F9117 /* Transport.ship in Resources */ = {isa = PBXBuildFile; fileRef = ABADCAE61BA22FF3007F9117 /* Transport.ship */; };
 		ABADCAE91BA23897007F9117 /* Transport.dae in Resources */ = {isa = PBXBuildFile; fileRef = ABADCAE81BA23897007F9117 /* Transport.dae */; };
+		ABB5223B1BAA0BFC001F44C5 /* Icon-60@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = ABB5223A1BAA0BFC001F44C5 /* Icon-60@2x.png */; };
 		ABE9C5681BA26B0C00316568 /* ACEngineEmitter.sks in Resources */ = {isa = PBXBuildFile; fileRef = ABE9C5671BA26B0C00316568 /* ACEngineEmitter.sks */; };
 /* End PBXBuildFile section */
 
@@ -139,13 +143,16 @@
 		AB2AB1DE1B9A8A9D00D7A8B6 /* ACGalaxy.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ACGalaxy.m; sourceTree = "<group>"; };
 		AB2AB1E01B9A8AAB00D7A8B6 /* ACStar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ACStar.h; sourceTree = "<group>"; };
 		AB2AB1E11B9A8AAB00D7A8B6 /* ACStar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ACStar.m; sourceTree = "<group>"; };
-		AB2AB1E31B9A974700D7A8B6 /* spiral-1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "spiral-1.png"; sourceTree = "<group>"; };
+		AB2AB1E31B9A974700D7A8B6 /* spiral-1@2x.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = "spiral-1@2x.jpg"; path = "../Assets/spiral-1@2x.jpg"; sourceTree = "<group>"; };
 		AB2AB1E71B9A9CFC00D7A8B6 /* ACStarMapParticle.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = ACStarMapParticle.sks; sourceTree = "<group>"; };
 		AB2AB1E81B9A9CFC00D7A8B6 /* spark.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = spark.png; sourceTree = "<group>"; };
 		AB2AB1EB1B9AA33600D7A8B6 /* ACStarMapNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ACStarMapNode.h; sourceTree = "<group>"; };
 		AB2AB1EC1B9AA33600D7A8B6 /* ACStarMapNode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ACStarMapNode.m; sourceTree = "<group>"; };
 		AB2AB1EE1B9B3E5900D7A8B6 /* ACStar.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = ACStar.sks; sourceTree = "<group>"; };
 		AB2AB1F01B9B491F00D7A8B6 /* gas-1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "gas-1.png"; path = "Assets/gas-1.png"; sourceTree = SOURCE_ROOT; };
+		AB438BA31BA36DF6009C5540 /* Frigate.dae */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml.dae; name = Frigate.dae; path = Assets/Frigate.dae; sourceTree = SOURCE_ROOT; };
+		AB438BA51BA36E6A009C5540 /* Frigate.ship */ = {isa = PBXFileReference; explicitFileType = text.json; fileEncoding = 4; path = Frigate.ship; sourceTree = "<group>"; };
+		AB438BAA1BA483F3009C5540 /* star.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = star.png; sourceTree = "<group>"; };
 		ABADCA9C1B9E6B4B007F9117 /* rocky-2.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = "rocky-2.jpg"; path = "Assets/rocky-2.jpg"; sourceTree = SOURCE_ROOT; };
 		ABADCA9F1B9E77B0007F9117 /* gas-2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "gas-2.png"; path = "Assets/gas-2.png"; sourceTree = SOURCE_ROOT; };
 		ABADCAA01B9E77B0007F9117 /* gas-3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "gas-3.png"; path = "Assets/gas-3.png"; sourceTree = SOURCE_ROOT; };
@@ -174,6 +181,7 @@
 		ABADCAE31BA22FC6007F9117 /* transport-image.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "transport-image.png"; path = "Assets/transport-image.png"; sourceTree = SOURCE_ROOT; };
 		ABADCAE61BA22FF3007F9117 /* Transport.ship */ = {isa = PBXFileReference; explicitFileType = text.json; fileEncoding = 4; path = Transport.ship; sourceTree = "<group>"; };
 		ABADCAE81BA23897007F9117 /* Transport.dae */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml.dae; name = Transport.dae; path = Assets/Transport.dae; sourceTree = SOURCE_ROOT; };
+		ABB5223A1BAA0BFC001F44C5 /* Icon-60@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Icon-60@2x.png"; path = "../../../DownloadManager/Icons/Icon-60@2x.png"; sourceTree = "<group>"; };
 		ABE9C5671BA26B0C00316568 /* ACEngineEmitter.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = ACEngineEmitter.sks; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -205,6 +213,7 @@
 			children = (
 				AB18CC371B9E3A6C00C1807F /* Fighter.ship */,
 				ABADCAE61BA22FF3007F9117 /* Transport.ship */,
+				AB438BA51BA36E6A009C5540 /* Frigate.ship */,
 			);
 			name = "Ship Files";
 			sourceTree = "<group>";
@@ -302,9 +311,10 @@
 		AB2AB1D01B9A750700D7A8B6 /* Assets */ = {
 			isa = PBXGroup;
 			children = (
+				ABB5223A1BAA0BFC001F44C5 /* Icon-60@2x.png */,
 				ABADCAE51BA22FD1007F9117 /* Ships */,
 				AB2AB1E81B9A9CFC00D7A8B6 /* spark.png */,
-				AB2AB1E31B9A974700D7A8B6 /* spiral-1.png */,
+				AB2AB1E31B9A974700D7A8B6 /* spiral-1@2x.jpg */,
 				AB18CC281B9C93C300C1807F /* stars.jpg */,
 				AB2AB1D11B9A751700D7A8B6 /* button@2x.png */,
 				ABADCA9E1B9E6B51007F9117 /* Planet Textures */,
@@ -450,6 +460,7 @@
 			children = (
 				AB2AB17E1B9A214200D7A8B6 /* ACPlanetNode.h */,
 				AB2AB17F1B9A214200D7A8B6 /* ACPlanetNode.m */,
+				AB438BAA1BA483F3009C5540 /* star.png */,
 			);
 			name = "Planet Node";
 			sourceTree = "<group>";
@@ -550,6 +561,7 @@
 		ABADCAE51BA22FD1007F9117 /* Ships */ = {
 			isa = PBXGroup;
 			children = (
+				AB438BA31BA36DF6009C5540 /* Frigate.dae */,
 				ABADCAE81BA23897007F9117 /* Transport.dae */,
 				AB18CC361B9E3A4400C1807F /* Ship Files */,
 				ABADCAE31BA22FC6007F9117 /* transport-image.png */,
@@ -622,14 +634,17 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				AB2AB1E41B9A974700D7A8B6 /* spiral-1.png in Resources */,
+				AB2AB1E41B9A974700D7A8B6 /* spiral-1@2x.jpg in Resources */,
 				ABADCAA41B9E77B0007F9117 /* gas-3.png in Resources */,
 				ABE9C5681BA26B0C00316568 /* ACEngineEmitter.sks in Resources */,
 				ABADCAAE1B9E8E2A007F9117 /* gas-4.jpg in Resources */,
 				ABADCA9D1B9E6B4B007F9117 /* rocky-2.jpg in Resources */,
 				AB227C001B9BF765003880CF /* MilkyWay.galaxy in Resources */,
+				AB438BA41BA36DF6009C5540 /* Frigate.dae in Resources */,
 				AB18CC441B9E5FC500C1807F /* AlphaCentauri.star in Resources */,
 				ABADCAAC1B9E8D18007F9117 /* rocky-5.png in Resources */,
+				ABB5223B1BAA0BFC001F44C5 /* Icon-60@2x.png in Resources */,
+				AB438BAC1BA483F3009C5540 /* star.png in Resources */,
 				ABADCAA31B9E77B0007F9117 /* gas-2.png in Resources */,
 				ABADCAA61B9E77B0007F9117 /* rocky-3.png in Resources */,
 				ABADCAE41BA22FC6007F9117 /* transport-image.png in Resources */,
@@ -641,6 +656,7 @@
 				AB2AB1E91B9A9CFC00D7A8B6 /* ACStarMapParticle.sks in Resources */,
 				ABADCAD31BA0ED18007F9117 /* fighter-texture.png in Resources */,
 				AB18CC381B9E3A6C00C1807F /* Fighter.ship in Resources */,
+				AB438BA61BA36E6A009C5540 /* Frigate.ship in Resources */,
 				ABADCAA51B9E77B0007F9117 /* rocky-4.jpg in Resources */,
 				AB2AB1EF1B9B3E5900D7A8B6 /* ACStar.sks in Resources */,
 				ABADCACF1BA0B278007F9117 /* ACBuildCell.xib in Resources */,

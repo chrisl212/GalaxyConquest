@@ -60,6 +60,11 @@ NSString *const ACFleetKeyTotalTurns = @"fleet-totalTurns";
     return YES;
 }
 
+- (BOOL)isMoving
+{
+    return (self.destination);
+}
+
 #pragma mark - NSCoding
 
 - (void)encodeWithCoder:(NSCoder *)aCoder

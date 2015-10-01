@@ -8,20 +8,16 @@
 
 #import <UIKit/UIKit.h>
 
-@class ACPlanet;
+struct ACBuildCost;
 
-typedef struct
-{
-    NSInteger fuelCost;
-    NSInteger mineralsCost;
-} ACBuildCost;
+@class ACPlanet;
 
 @protocol ACBuildDelegate <NSObject>
 
-- (BOOL)userCanAffordCost:(ACBuildCost)cost;
+- (BOOL)userCanAffordCost:(struct ACBuildCost)cost;
 
 @optional
-- (void)userDidBuildShips:(NSArray *)ships cost:(ACBuildCost)cost;
+- (void)userDidBuildShips:(NSArray *)ships cost:(struct ACBuildCost)cost;
 
 @end
 

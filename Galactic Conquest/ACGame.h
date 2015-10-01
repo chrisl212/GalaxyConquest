@@ -31,6 +31,7 @@ extern NSString *const ACGameKeyMovingFleets;
 - (void)startGame;
 - (void)saveGame;
 - (void)saveToPath:(NSString *)path;
+- (ACPlayer *)player1;
 
 @end
 

@@ -8,6 +8,13 @@
 
 #import <SpriteKit/SpriteKit.h>
 
+typedef NS_ENUM(NSInteger, ACShipTurn)
+{
+    ACShipTurnStraight,
+    ACShipTurnLeft,
+    ACShipTurnRight
+};
+
 @class ACShip;
 
 @interface ACShipNode : SKSpriteNode
@@ -15,5 +22,6 @@
 @property (nonatomic) CGFloat thrust;
 
 - (id)initWithShip:(ACShip *)ship size:(CGSize)size;
+- (void)performTurn:(ACShipTurn)turn;
 
 @end

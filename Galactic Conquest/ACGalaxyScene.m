@@ -68,6 +68,10 @@ inline CGPoint findB(double Ax, double Ay, double Cx, double Cy, double L, int c
 @end
 
 @implementation ACGalaxyScene
+{
+    CGFloat lastScale;
+    CGPoint lastPoint;
+}
 
 - (NSString *)localSavesPath
 {
@@ -82,6 +86,28 @@ inline CGPoint findB(double Ax, double Ay, double Cx, double Cy, double L, int c
     return (AppDelegate *)[UIApplication sharedApplication].delegate;
 }
 
+- (void)zoom:(UIPinchGestureRecognizer *)sender
+{
+    if (sender.state == UIGestureRecognizerStateBegan)
+    {
+        lastScale = 1.0;
+        lastPoint = [sender locationInView:self.view];
+        lastPoint = convertPointInRect(lastPoint, self.frame);
+    }
+    
+    // Scale
+    CGFloat scale = 1.0 - (lastScale - sender.scale);
+    [self.galaxyNode setScale:scale];
+    lastScale = sender.scale;
+    
+    // Translate
+    CGPoint point = [sender locationInView:self.view];
+    point = convertPointInRect(point, self.frame);
+   // [self.galaxyNode setPosition:CGPointMake(point.x - lastPoint.x, point.y - lastPoint.y)];
+    lastPoint = [sender locationInView:self.view];
+    lastPoint = convertPointInRect(lastPoint, self.frame);
+}
+
 - (id)initWithGalaxy:(ACGalaxy *)galaxy size:(CGSize)size
 {
     if (self = [super initWithSize:size])
@@ -94,15 +120,33 @@ inline CGPoint findB(double Ax, double Ay, double Cx, double Cy, double L, int c
         self.galaxy = galaxy;
         self.backgroundColor = [UIColor blackColor];
         
+        /*
+        SCNParticleSystem *galaxyEmitter = [SCNParticleSystem particleSystemNamed:@"ACGalaxy" inDirectory:nil];
+        
+        SK3DNode *no = [[SK3DNode alloc] initWithViewportSize:self.size];
+        SCNCamera *camera = [SCNCamera camera];
+        SCNNode *cameran = [SCNNode node];
+        cameran.camera = camera;
+        cameran.position = SCNVector3Make(0.0, 0.0, 8.0);
+        no.scnScene = [[SCNScene alloc] init];
+        no.autoenablesDefaultLighting = YES;
+        no.pointOfView = cameran;
+        no.position = CGPointMake(CGRectGetMidX(self.frame), CGRectGetMidY(self.frame));
+        [self addChild:no];
+        SCNNode *centerNode = [SCNNode node];
+        centerNode.position = SCNVector3Make(0.0, 0.0, 0.0);
+        [centerNode addParticleSystem:galaxyEmitter];
+        [no.scnScene.rootNode addChildNode:centerNode]; */
+        
         self.galaxyNode = [[ACGalaxyNode alloc] initWithGalaxy:self.galaxy];
         
         CGFloat oldHeight = self.galaxyNode.size.height;
         CGFloat scaleFactor = size.height/oldHeight;
         
-        CGFloat newHeight = oldHeight * scaleFactor;
-        CGFloat newWidth = self.galaxyNode.size.width * scaleFactor;
+        //CGFloat newHeight = oldHeight * scaleFactor;
+        //CGFloat newWidth = self.galaxyNode.size.width * scaleFactor;
         
-        self.galaxyNode.size = CGSizeMake(newWidth, newHeight);
+        //self.galaxyNode.size = CGSizeMake(newWidth, newHeight);
         self.galaxyNode.position = CGPointMake(CGRectGetMidX(self.frame), CGRectGetMidY(self.frame));
         
         [self addChild:self.galaxyNode];
@@ -116,11 +160,11 @@ inline CGPoint findB(double Ax, double Ay, double Cx, double Cy, double L, int c
         {
             ACStarMapNode *starMapNode = [[ACStarMapNode alloc] initWithStar:star];
             
-            CGFloat radius = (self.frame.size.height/2.0) * star.orbitalDistance;
-            CGFloat midX = CGRectGetMidX(self.frame);
-            CGFloat topY = CGRectGetMidY(self.frame) + radius;
+            CGFloat radius = (self.galaxyNode.size.height/2.0) * star.orbitalDistance;
+            CGFloat midX = CGRectGetMidX(self.galaxyNode.frame);
+            CGFloat topY = CGRectGetMidY(self.galaxyNode.frame) + radius;
             
-            CGPoint galaxyCenter = CGPointMake(CGRectGetMidX(self.frame), CGRectGetMidY(self.frame));
+            CGPoint galaxyCenter = CGPointMake(CGRectGetMidX(self.galaxyNode.frame), CGRectGetMidY(self.galaxyNode.frame));
             CGFloat arcLength = (star.orbitalAngle * (M_PI/180.0)) * radius;
             
             starMapNode.position = findB(midX, topY, galaxyCenter.x, galaxyCenter.y, arcLength, 1);
@@ -165,6 +209,8 @@ inline CGPoint findB(double Ax, double Ay, double Cx, double Cy, double L, int c
 - (void)didMoveToView:(SKView *)view
 {
     [super didMoveToView:view];
+    UIPinchGestureRecognizer *gestureRecognizer = [[UIPinchGestureRecognizer alloc] initWithTarget:self action:@selector(zoom:)];
+    [self.view addGestureRecognizer:gestureRecognizer];
 }
 
 - (void)update:(NSTimeInterval)currentTime
@@ -237,7 +283,7 @@ inline CGPoint findB(double Ax, double Ay, double Cx, double Cy, double L, int c
             else if ([mapNode.star isEqual:fleet.destination.parentStar])
                 destinationLocation = convertPointInRect(mapNode.position, self.frame);
         }
-        UIGraphicsBeginImageContextWithOptions(self.size, NO, 2.0);
+        UIGraphicsBeginImageContextWithOptions(self.size, NO, [[UIScreen mainScreen] scale]);
         
         CGContextRef context = UIGraphicsGetCurrentContext();
         CGContextSetLineWidth(context, 2.0);

@@ -1,6 +1,6 @@
 {
     "name":"Milky Way",
-    "textureImage":"spiral-1.png",
+    "textureImage":"spiral-1.jpg",
     "galacticRadius":100000,
     "stars":[
              "VYCanisMajoris",

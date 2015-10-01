@@ -18,6 +18,16 @@ extern NSString *const ACPlayerKeyFuel;
 extern NSString *const ACPlayerKeyPlayer1;
 extern NSString *const ACPlayerKeyDelegate;
 
+struct ACBuildCost
+{
+    NSInteger fuelCost;
+    NSInteger mineralsCost;
+};
+
+typedef struct ACBuildCost ACBuildCost;
+
+@class ACPlanet;
+
 @protocol ACPlayerDelegate;
 
 @interface ACPlayer : NSObject <NSCoding>
@@ -36,7 +46,9 @@ extern NSString *const ACPlayerKeyDelegate;
 - (id)initWithName:(NSString *)name;
 - (void)incrementResources;
 - (void)beginTurn;
+- (void)buildShips:(NSArray *)ships atPlanet:(ACPlanet *)planet forCost:(ACBuildCost)cost;
 - (NSString *)imageFilePath;
+- (BOOL)playerCanAffordCost:(ACBuildCost)cost;
 
 @end
 

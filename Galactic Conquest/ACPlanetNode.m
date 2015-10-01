@@ -92,6 +92,7 @@ SCNVector3 vectorFromQuadrant(NSInteger q)
         
         self.pointOfView = cameraNode;
         //self.autoenablesDefaultLighting = YES;
+        
     }
     return self;
 }
